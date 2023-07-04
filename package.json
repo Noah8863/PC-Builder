@@ -4,7 +4,8 @@
   "description": "A website to help you pick different components for your next PC build!",
   "main": "sever.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,9 @@
   "homepage": "https://github.com/Noah8863/PC-Builder#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "node": "^20.3.1",
+    "node": "^20.3.1"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.22"
   }
 }
