@@ -1,0 +1,24 @@
+{
+  "name": "pc-builder",
+  "version": "1.0.0",
+  "description": "A website to help you pick different components for your next PC build!",
+  "main": "sever.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noah8863/PC-Builder.git"
+  },
+  "author": "Noah Hoffman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Noah8863/PC-Builder/issues"
+  },
+  "homepage": "https://github.com/Noah8863/PC-Builder#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node": "^20.3.1",
+    "nodemon": "^2.0.22"
+  }
+}
