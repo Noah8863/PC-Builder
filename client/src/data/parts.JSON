@@ -1,21 +1,21 @@
 {
     "motherboards": [
       {
-        "id": 1,
+        "id": "MB1",
         "model": "MB001",
         "size": "ATX",
         "color": "Black",
         "price": 199.99
       },
       {
-        "id": 2,
+        "id": "MB2",
         "model": "MB002",
         "size": "Micro ATX",
         "color": "Silver",
         "price": 149.99
       },
       {
-        "id": 3,
+        "id": "MB3",
         "model": "MB003",
         "size": "Mini ITX",
         "color": "White",
@@ -24,21 +24,21 @@
     ],
     "cpus": [
       {
-        "id": 1,
+        "id": "CPU1",
         "model": "CPU001",
         "size": "LGA 1151",
         "color": "Silver",
         "price": 299.99
       },
       {
-        "id": 2,
+        "id": "CPU2",
         "model": "CPU002",
         "size": "AM4",
         "color": "Black",
         "price": 249.99
       },
       {
-        "id": 3,
+        "id": "CPU3",
         "model": "CPU003",
         "size": "LGA 1200",
         "color": "Silver",
@@ -47,21 +47,21 @@
     ],
     "gpus": [
       {
-        "id": 1,
+        "id": "GPU1",
         "model": "GPU001",
         "size": "Dual Slot",
         "color": "Black",
         "price": 699.99
       },
       {
-        "id": 2,
+        "id": "GPU2",
         "model": "GPU002",
         "size": "Triple Slot",
         "color": "Silver",
         "price": 899.99
       },
       {
-        "id": 3,
+        "id": "GPU3",
         "model": "GPU003",
         "size": "Dual Slot",
         "color": "White",
@@ -70,21 +70,21 @@
     ],
     "ram": [
       {
-        "id": 1,
+        "id": "RAM1",
         "model": "RAM001",
         "size": "16GB (2x8GB)",
         "color": "Black",
         "price": 149.99
       },
       {
-        "id": 2,
+        "id": "RAM2",
         "model": "RAM002",
         "size": "32GB (2x16GB)",
         "color": "Silver",
         "price": 249.99
       },
       {
-        "id": 3,
+        "id": "RAM3",
         "model": "RAM003",
         "size": "64GB (4x16GB)",
         "color": "Black",
@@ -93,21 +93,21 @@
     ],
     "cases": [
       {
-        "id": 1,
+        "id": "CASE1",
         "model": "CASE001",
         "size": "Mid Tower",
         "color": "Black",
         "price": 79.99
       },
       {
-        "id": 2,
+        "id": "CASE2",
         "model": "CASE002",
         "size": "Full Tower",
         "color": "Silver",
         "price": 129.99
       },
       {
-        "id": 3,
+        "id": "CASE3",
         "model": "CASE003",
         "size": "Mini ITX",
         "color": "White",

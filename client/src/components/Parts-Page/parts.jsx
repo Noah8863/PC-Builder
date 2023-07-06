@@ -5,23 +5,51 @@ function Parts() {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch("/parts/").then(res => {
-      if(res.ok){
-        return res.json()
-      }
-    }).then(jsonResult => {
-      setParts(jsonResult.partsList)
-    })
-  })
+    fetch('/motherboards')
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error('Error fetching parts data');
+        }
+      })
+      .then((jsonResult) => {
+        const motherboards = jsonResult.motherboards // Flatten the arrays of parts
+        setParts(motherboards);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
 
 
   return (
     <div>
       <p>Hello! This is the Parts component!</p>
-      {parts.map(part => <li>{part}</li>)}
+      <ul>
+        {parts.map((part) => (
+          <li key={part.id}>{part.size}</li>
+        ))}
+      </ul>
+      <div>
+        {parts.map((part) => {
+          return <p key={part.id}>{part.color}</p>
+        })}
+      </div>
+      <div>
+        {parts.map((part) => {
+          return <p key={part.id}>{part.price}</p>
+        })}
+      </div>
     </div>
   );
+  
 }
 
 export default Parts;
+
+
+
+
+

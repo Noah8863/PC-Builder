@@ -13,6 +13,7 @@ function NavBar() {
     setSelectedOption(option);
     setIsOpen(false);
   };
+
   return (
     <header className="bg-gray-800">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
