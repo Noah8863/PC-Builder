@@ -180,38 +180,39 @@
     "cpus": [
       {
         "id": "CPU1",
-        "title" : "ASUS Prime Z790-P Motherboard",
-        "model": "CPU001",
-        "manufacturer": "ASUS",
-        "socket": "LGA 1151",
+        "title" : "AMD Ryzen 7 5700G",
+        "model": "Ryzen 7 5700G",
+        "manufacturer": "AMD",
+        "socket": "AM4",
         "core": "8 cores", 
         "threads" : "16 Threads",
-        "clock-speed": "4.6 Ghz",
-        "price": 299.99
+        "clockSpeed": "4.6 Ghz",
+        "price": 189.99,
+        "img" : "https://m.media-amazon.com/images/I/51D3DrDmwkL._AC_SX679_.jpg"
       },
       {
         "id": "CPU2",
-        "title" : "",
-        "model": "",
-        "manufacturer": "",
-        "socket": "",
-        "core": "", 
-        "threads" : "",
-        "clock-speed": "",
-        "price": 2,
-        "img" : ""
+        "title" : "AMD Ryzen 5 5600X",
+        "model": "Ryzen 5 5600X",
+        "manufacturer": "AMD",
+        "socket": "AM4",
+        "core": "6", 
+        "threads" : "12",
+        "clockSpeed": "4.6 Ghz",
+        "price": 169.99,
+        "img" : "https://m.media-amazon.com/images/I/61vGQNUEsGL._AC_SX679_.jpg"
       },
       {
         "id": "CPU3",
-        "title" : "",
-        "model": "",
-        "manufacturer": "",
-        "socket": "",
-        "core": "", 
-        "threads" : "",
-        "clock-speed": "",
-        "price": 2,
-        "img" : ""
+        "title" : "Intel Core i7-13700K",
+        "model": "i7-13700K",
+        "manufacturer": "Intel",
+        "socket": "LGA 1700",
+        "core": "16", 
+        "threads" : "24",
+        "clockSpeed": "5.4 Ghz",
+        "price": 409.99,
+        "img" : "https://m.media-amazon.com/images/I/61m0zH-NiTL._AC_SX679_.jpg"
       },
       {
         "id": "CPU4",
@@ -221,7 +222,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -233,7 +234,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -245,7 +246,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -257,7 +258,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -269,7 +270,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -281,7 +282,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -293,7 +294,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -305,7 +306,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       },
@@ -317,7 +318,7 @@
         "socket": "",
         "core": "", 
         "threads" : "",
-        "clock-speed": "",
+        "clockSpeed": "",
         "price": 2,
         "img" : ""
       }
