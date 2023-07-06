@@ -7,7 +7,7 @@
         "model": "ROG Maximus Xii Extreme",
         "size": "ATX",
         "color": "Black",
-        "socket" : "Z490",
+        "socket" : "LGA 1700",
         "price": 949.99,
         "img": "https://www.asus.com/media/Odin/websites/global/ProductLine/20200819054034.png"
       },
@@ -18,7 +18,7 @@
         "model": "PRIME Z690-A",
         "size": "ATX",
         "color": "Silver",
-        "socket" : "Z690-A",
+        "socket" : "LGA 1700",
         "price": 219.99, 
         "img" : "https://dlcdnwebimgs.asus.com/gain/36e07492-4808-4066-8f4a-0b454ca0a1ef/"
       },
@@ -35,7 +35,7 @@
       },
       {
         "id": "MB4",
-        "title" : "Gigabyte Gigabyte Motherboard",
+        "title" : "Gigabyte B550M DS3H AC Motherboard",
         "manufacturer": "Gigabyte",
         "model": "B550M DS3H AC",
         "size": "Micro-ATX",
@@ -46,10 +46,135 @@
       },
       {
         "id": "MB5",
-        "model": "MB003",
+        "title" : "Gigabyte X570S AORUS MASTER Motherboard",
+        "manufacturer": "Gigabyte",
+        "model": "X570S AORUS MASTER",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "AM4",
+        "price": 249.99, 
+        "img" : "https://i.ebayimg.com/images/g/EaUAAOSwMJtg8AyM/s-l1200.webp"
+      }, 
+      {
+        "id": "MB6",
+        "title" : "Gigabyte Z690 Gaming X Motherboard",
+        "manufacturer": "Gigabyte",
+        "model": "Z690 Gaming X",
+        "size": "ATX",
+        "color": "Silver/Black",
+        "socket" : "LGA 1700",
+        "price": "299.99", 
+        "img" : "https://www.memoryc.com/images/products/550x550/image_8375828.jpg"
+      },
+      {
+        "id": "MB7",
+        "title" : "Gigabyte Z790 AORUS ELITE AX Motherboard",
+        "manufacturer": "Gigabyte",
+        "model": "Z790 AORUS ELITE AX",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "LGA 1700",
+        "price": "259.99", 
+        "img" : "https://90a1c75758623581b3f8-5c119c3de181c9857fcb2784776b17ef.ssl.cf2.rackcdn.com/659678_516385_01_front_comping.jpg"
+      },
+      {
+        "id": "MB8",
+        "title" : "MSI B550-A PRO Motherboard",
+        "manufacturer": "MSI",
+        "model": "B550-A PRO",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "AM4",
+        "price": "139.99", 
+        "img" : "https://storage-asset.msi.com/event/2020/mb/amd-550-motherboard/images/msi-meg_b550_unify-3d2.png"
+      },
+      {
+        "id": "MB9",
+        "title" : "MSI MPG Z690 Edge Motherboard",
+        "manufacturer": "MSI",
+        "model": "MPG Z690 Edge",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "LGA 1700",
+        "price": "269.99", 
+        "img" : "https://m.media-amazon.com/images/I/81xl402VUuL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB10",
+        "title" : "MSI MEG Z690I Unify Gaming Motherboard",
+        "manufacturer": "MSI",
+        "model": "MEG Z690I Unify",
         "size": "Mini ITX",
-        "color": "White",
-        "price": 179.99
+        "color": "Black",
+        "socket" : "LGA 1700 Socket",
+        "price": "399.99", 
+        "img" : "https://m.media-amazon.com/images/I/81HLFH2XAOL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB11",
+        "title" : "MSI AM1I Mini-ITX AMD Motherboard",
+        "manufacturer": "MSI",
+        "model": "AM1I",
+        "size": "Mini-ITX",
+        "color": "Black",
+        "socket" : "AM1",
+        "price": "199.99", 
+        "img" : "https://m.media-amazon.com/images/I/91SAL+zCZ3L._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB12",
+        "title" : "ASRock Z790 Pro RS/D4 Motherboard",
+        "manufacturer": "ASRock",
+        "model": "Z790 Pro RS/D4",
+        "size": "ATX",
+        "color": "White/Silver",
+        "socket" : "LGA 1700",
+        "price": "179.99", 
+        "img" : "https://m.media-amazon.com/images/I/81s9L+XZXFL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB13",
+        "title" : "ASRock B450M STEEL LEGEND Motherboard",
+        "manufacturer": "ASRock",
+        "model": "B450M STEEL LEGEND",
+        "size": "ATX",
+        "color": "Silver",
+        "socket" : "AM4",
+        "price": "109.99", 
+        "img" : "https://m.media-amazon.com/images/I/71LIALdCw+L._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB14",
+        "title" : "ASRock X670E PG Lightning Motherboard",
+        "manufacturer": "ASRock",
+        "model": "X670E PG Lightning",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "AM4",
+        "price": "259.99", 
+        "img" : "https://m.media-amazon.com/images/I/81iFMSIV2hL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB15",
+        "title" : "GIGABYTE Z790 UD AC LGA 1700/ Intel Z790 Motherboard",
+        "manufacturer": "GIGABYTE",
+        "model": "Z790 UD AC",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "LGA 1700",
+        "price": "179.99", 
+        "img" : "https://m.media-amazon.com/images/I/81VisyZMvVL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB16",
+        "title" : "ASUS Prime Z790-P Motherboard",
+        "manufacturer": "ASUS",
+        "model": "Prime Z790-P",
+        "size": "ATX",
+        "color": "Silver/White",
+        "socket" : "LGA 1700",
+        "price": "249.99", 
+        "img" : "https://m.media-amazon.com/images/I/81QVTuKByvL._AC_SX679_.jpg"
       }
     ],
     "cpus": [
