@@ -113,5 +113,51 @@
         "color": "White",
         "price": 89.99
       }
+    ],
+    "fans": [
+      {
+        "id": "FAN1",
+        "model": "FAN001",
+        "size": "120mm",
+        "color": "Black",
+        "price": 19.99
+      },
+      {
+        "id": "FAN2",
+        "model": "FAN002",
+        "size": "140mm",
+        "color": "Silver",
+        "price": 24.99
+      },
+      {
+        "id": "FAN3",
+        "model": "FAN003",
+        "size": "200mm",
+        "color": "White",
+        "price": 29.99
+      }
+    ],
+    "waterCoolingAccessories": [
+      {
+        "id": "WCA1",
+        "model": "WCA001",
+        "type": "Pump",
+        "color": "Black",
+        "price": 99.99
+      },
+      {
+        "id": "WCA2",
+        "model": "WCA002",
+        "type": "Radiator",
+        "color": "Silver",
+        "price": 79.99
+      },
+      {
+        "id": "WCA3",
+        "model": "WCA003",
+        "type": "Reservoir",
+        "color": "White",
+        "price": 49.99
+      }
     ]
 }

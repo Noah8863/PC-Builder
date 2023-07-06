@@ -2,7 +2,8 @@ import "./index.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar/NavBar.jsx";
-import Parts from "./components/Parts-Page/parts.jsx";
+import Motherboards from "./components/Motherboard-Page/motherboard.jsx";
+import CPU from "./components/CPU-Page/cpu.jsx";
 import Home from "./components/Home/home.jsx";
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/motherboards" element={<Parts />} />
+        <Route path="/motherboards" element={<Motherboards />} />
+        <Route path="/CPU" element={<CPU />} />
       </Routes>
     </Router>
   );

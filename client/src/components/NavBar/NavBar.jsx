@@ -51,55 +51,56 @@ function NavBar() {
                   aria-orientation="vertical"
                   aria-labelledby="options-menu"
                 >
+                  <a href="/motherboards">
                   <button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("Motherboards")}
                   >
                     Motherboards
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/CPU"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("CPUs")}
                   >
                     CPUs
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/GPU"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("GPUs")}
                   >
                     GPUs
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/RAM"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("RAM")}
                   >
                     RAM
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/Cases"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("Cases")}
                   >
                     Cases
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/Fans"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("Fans")}
                   >
                     Fans
-                  </button>
-                  <button
+                  </button></a>
+                  <a href="/Water-Cooling-Accessories"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("Water Cooling Accessories")}
                   >
                     Water Cooling Accessories
-                  </button>
+                  </button></a>
                 </div>
               </div>
             )}

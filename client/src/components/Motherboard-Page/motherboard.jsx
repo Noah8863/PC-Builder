@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function Parts() {
+function Motherboards() {
 
   const [parts, setParts] = useState([]);
 
@@ -26,7 +26,7 @@ function Parts() {
 
   return (
     <div>
-      <p>Hello! This is the Parts component!</p>
+      <p>Hello! This is the Motherboard component!</p>
       <ul>
         {parts.map((part) => (
           <li key={part.id}>{part.size}</li>
@@ -47,7 +47,7 @@ function Parts() {
   
 }
 
-export default Parts;
+export default Motherboards;
 
 
 
