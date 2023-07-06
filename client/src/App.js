@@ -10,7 +10,7 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/parts" component={Parts} />
+        <Route path="/parts" element={<Parts />} />
       </Routes>
     </Router>
   );
