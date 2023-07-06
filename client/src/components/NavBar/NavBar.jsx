@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
+import '../../index.css';
 
 function NavBar() {
   return (
-    <div>
-      <p>Hello! This is the NavBar component!</p>
-      
+    <div className="bg-gray-700">
+      <p>NavBar componet rendered!</p>
     </div>
   );
 }
 
-export {NavBar};
+export { NavBar };
