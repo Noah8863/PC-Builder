@@ -22,24 +22,6 @@ function Motherboards() {
   }, []);
 
   return (
-    // <div>
-    //   <p>Hello! This is the Motherboard component!</p>
-    //   <ul>
-    //     {parts.map((part) => (
-    //       <li key={part.id}>{part.size}</li>
-    //     ))}
-    //   </ul>
-    //   <div>
-    //     {parts.map((part) => {
-    //       return <p key={part.id}>{part.price}</p>
-    //     })}
-    //   </div>
-    //   <div>
-    //     {parts.map((part) => {
-    //       return <img key={part.id} src={part.img} alt={part.title} className="max-w-xs "></img>
-    //     })}
-    //   </div>
-    // </div>
     <main>
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
         MotherBoards
