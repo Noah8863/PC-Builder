@@ -2,20 +2,50 @@
     "motherboards": [
       {
         "id": "MB1",
-        "model": "MB001",
+        "title" : "ASUS ROG Maximus Xii Extreme Motherboard",
+        "manufacturer": "ASUS",
+        "model": "ROG Maximus Xii Extreme",
         "size": "ATX",
         "color": "Black",
-        "price": 199.99
+        "socket" : "Z490",
+        "price": 949.99,
+        "img": "https://www.asus.com/media/Odin/websites/global/ProductLine/20200819054034.png"
       },
       {
         "id": "MB2",
-        "model": "MB002",
-        "size": "Micro ATX",
+        "title" : "ASUS PRIME Z690-A Motherboard",
+        "manufacturer": "ASUS",
+        "model": "PRIME Z690-A",
+        "size": "ATX",
         "color": "Silver",
-        "price": 149.99
+        "socket" : "Z690-A",
+        "price": 219.99, 
+        "img" : "https://dlcdnwebimgs.asus.com/gain/36e07492-4808-4066-8f4a-0b454ca0a1ef/"
       },
       {
         "id": "MB3",
+        "title" : "ASUS ROG Crosshair Viii Hero Motherboard",
+        "manufacturer": "ASUS",
+        "model": "ROG Crosshair Viii Hero",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "AM4",
+        "price": 474.99, 
+        "img" : "https://webobjects2.cdw.com/is/image/CDW/5780366?$product-main$"
+      },
+      {
+        "id": "MB4",
+        "title" : "Gigabyte Gigabyte Motherboard",
+        "manufacturer": "Gigabyte",
+        "model": "Gigabyte",
+        "size": "Micro-ATX",
+        "color": "Black",
+        "socket" : "AM4",
+        "price": 119.99, 
+        "img" : "https://www.bhphotovideo.com/images/images1500x1500/gigabyte_b550m_ds3h_ac_amd_1756391.jpg"
+      },
+      {
+        "id": "MB5",
         "model": "MB003",
         "size": "Mini ITX",
         "color": "White",

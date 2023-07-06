@@ -21,7 +21,7 @@ function NavBar() {
           <h1 className="text-white font-bold text-xxl">PC Builder</h1>
         </div>
         <div>
-          <button className="px-4 py-2 text-white text-xl hover:underline">Home</button>
+          <a href="/"><button className="px-4 py-2 text-white text-xl hover:underline">Home</button></a>
           
           <div className="relative inline-block text-left ">
             <div>
