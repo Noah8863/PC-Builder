@@ -54,18 +54,42 @@ function Motherboards() {
             <div className="bg-white">
               {parts.length > 0 && (
                 <>
+                  <img src={parts[0].img} alt={parts[0].title} />
+                  <p>{parts[0].manufacturer}</p>
                   <p>{parts[0].model}</p>
-                  <p>{parts[0].color}</p>
-                  <img src={parts[0].image} alt={parts[0].title} />
                 </>
               )}
             </div>
 
-            <div className="bg-white"></div>
+            <div className="bg-white">
+            {parts.length > 0 && (
+                <>
+                  <img src={parts[1].img} alt={parts[1].title} />
+                  <p>{parts[1].manufacturer}</p>
+                  <p>{parts[1].model}</p>
+                </>
+              )}
+            </div>
 
-            <div className="bg-white"></div>
+            <div className="bg-white">
+            {parts.length > 0 && (
+                <>
+                  <img src={parts[2].img} alt={parts[2].title} />
+                  <p>{parts[2].manufacturer}</p>
+                  <p>{parts[2].model}</p>
+                </>
+              )}
+            </div>
 
-            <div className="bg-white">a</div>
+            <div className="bg-white">
+            {parts.length > 0 && (
+                <>
+                  <img src={parts[3].img} alt={parts[3].title} />
+                  <p>{parts[3].manufacturer}</p>
+                  <p>{parts[3].model}</p>
+                </>
+              )}
+            </div>
 
             <div className="bg-white">d</div>
 
