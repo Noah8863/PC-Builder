@@ -1,22 +1,18 @@
-
+import "./index.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {NavBar} from './components/NavBar/NavBar.jsx'
+import Parts from './components/Parts-Page/parts.jsx';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/parts" component={Parts} />
+      </Routes>
+    </Router>
   );
 }
 
