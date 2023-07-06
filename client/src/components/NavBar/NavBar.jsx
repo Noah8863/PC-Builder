@@ -23,7 +23,7 @@ function NavBar() {
           <button className="px-4 py-2 text-white text-xl hover:underline">Home</button>
           
           <div className="relative inline-block text-left ">
-            <div className="">
+            <div>
               <button
                 type="button"
                 className="inline-flex justify-center items-center w-full px-4 py-2 text-lg font-medium text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
