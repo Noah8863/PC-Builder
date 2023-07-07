@@ -94,12 +94,12 @@ function NavBar() {
                   >
                     Fans
                   </button></a>
-                  <a href="/Water-Cooling-Accessories"><button
+                  <a href="/PowerSupply"><button
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     role="menuitem"
                     onClick={() => handleOptionSelect("Water Cooling Accessories")}
                   >
-                    Water Cooling Accessories
+                    Power Supplies
                   </button></a>
                 </div>
               </div>

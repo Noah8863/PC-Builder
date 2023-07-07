@@ -8,7 +8,7 @@ import GPU from "./components/GPU-Page/gpu.jsx";
 import RAM from "./components/Ram-Page/ram.jsx";
 import Cases from "./components/Cases-Page/cases.jsx";
 import Fans from "./components/Fans-Page/fans.jsx";
-import WaterCoolingAccessories from "./components/WaterCA-Page/water.jsx";
+import PowerSupply from "./components/PowerSupply-Page/power.jsx";
 import Home from "./components/Home/home.jsx";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
         <Route path="/RAM" element={<RAM />} />
         <Route path="/Cases" element={<Cases />} />
         <Route path="/Fans" element={<Fans />} />
-        <Route path="/Water-Cooling-Accessories" element={<WaterCoolingAccessories />} />
+        <Route path="/PowerSupply" element={<PowerSupply />} />
       </Routes>
     </Router>
   );

@@ -9,7 +9,7 @@ app.use("/GPU/", require("./routes/partsRoute"))
 app.use("/RAM/", require("./routes/partsRoute"))
 app.use("/Cases/", require("./routes/partsRoute"))
 app.use("/Fans/", require("./routes/partsRoute"))
-app.use("/Water-Cooling-Accessories/", require("./routes/partsRoute"))
+app.use("/PowerSupply/", require("./routes/partsRoute"))
 
 app.use(express.static(path.join(__dirname, 'client', 'build')));
 

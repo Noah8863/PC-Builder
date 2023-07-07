@@ -331,7 +331,7 @@
         "manufacturer": "MSI",
         "size": "Single Slot",
         "color": "Black",
-        "v-ram": "2 GB",
+        "vRam": "2 GB",
         "price": 65.65,
         "img" : "https://m.media-amazon.com/images/I/71dKdhygnqL._AC_SX679_.jpg"
       },
@@ -342,7 +342,7 @@
         "manufacturer": "ZOTAC",
         "size": "Dual Slot",
         "color": "Black",
-        "v-ram": "12 GB",
+        "vRam": "12 GB",
         "price": 289.99,
         "img" : "https://m.media-amazon.com/images/I/7156DLyUsYL._AC_SX679_.jpg"
       },
@@ -353,7 +353,7 @@
         "manufacturer": "MSI",
         "size": "Dual Slot",
         "color": "Silver/Black",
-        "v-ram": "12 Gb",
+        "vRam": "12 Gb",
         "price": 369.99,
         "img" : "https://m.media-amazon.com/images/I/519qL7KKgfL._AC_SX679_.jpg"
       },
@@ -364,7 +364,7 @@
         "manufacturer": "MSI",
         "size": "Dula Slot",
         "color": "Silver",
-        "v-ram": "6 GB",
+        "vRam": "6 GB",
         "price": 239.99,
         "img" : "https://m.media-amazon.com/images/I/61WLhQGyMIL._AC_SX679_.jpg"
       },
@@ -375,7 +375,7 @@
         "manufacturer": "MSI",
         "size": "Dual slot",
         "color": "Silver",
-        "v-ram": "8 GB",
+        "vRam": "8 GB",
         "price": 264.99,
         "img" : "https://m.media-amazon.com/images/I/811J2PwncGL._AC_SX679_.jpg"
       },
@@ -386,7 +386,7 @@
         "manufacturer": "ASUS",
         "size": "Dual Slot",
         "color": "RGB/Black",
-        "v-ram": "24 GB",
+        "vRam": "24 GB",
         "price": 1154.99,
         "img" : "https://m.media-amazon.com/images/I/71MCUHMviGL._AC_SX679_.jpg"
       },
@@ -397,7 +397,7 @@
         "manufacturer": "ASUS",
         "size": "Dual Slot",
         "color": "Black/RGB",
-        "v-ram": "12 GB",
+        "vRam": "12 GB",
         "price": 989.99,
         "img" : "https://m.media-amazon.com/images/I/71MCoiRtMwL._AC_SX679_.jpg"
       },
@@ -408,7 +408,7 @@
         "manufacturer": "PowerColor",
         "size": "Dual Slot",
         "color": "Black",
-        "v-ram": "12 GB",
+        "vRam": "12 GB",
         "price": 449.99,
         "img" : "https://m.media-amazon.com/images/I/81Uh+dyZ-+L._AC_SX679_.jpg"
       },
@@ -419,7 +419,7 @@
         "manufacturer": "ZOTAC",
         "size": "Dual Slot",
         "color": "Black",
-        "v-ram": "12 GB",
+        "vRam": "12 GB",
         "price": 289.99,
         "img" : "https://m.media-amazon.com/images/I/7156DLyUsYL._AC_SX679_.jpg"
       },
@@ -430,7 +430,7 @@
         "manufacturer": "GIGABYTE",
         "size": "Dual Slot",
         "color": "Black",
-        "v-ram": "8 GB",
+        "vRam": "8 GB",
         "price": 499.99,
         "img" : "https://m.media-amazon.com/images/I/71XcVOdHX+S._AC_SX679_.jpg"
       },
@@ -441,7 +441,7 @@
         "manufacturer": "ASUS",
         "size": "Dual Slot",
         "color": "Black",
-        "v-ram": "8 GB",
+        "vRam": "8 GB",
         "price": 599.99,
         "img" : "https://m.media-amazon.com/images/I/613n8brVISL._AC_SX679_.jpg"
       },
@@ -452,7 +452,7 @@
         "manufacturer": "MSI",
         "size": "Dual Slot",
         "color": "Silver",
-        "v-ram": "12 GB",
+        "vRam": "12 GB",
         "price": 949.99,
         "img" : "https://m.media-amazon.com/images/I/71vVK55rfFL._AC_SX679_.jpg"
       },
@@ -463,7 +463,7 @@
         "manufacturer": "ASUS",
         "size": "Tripple slot",
         "color": "Black",
-        "v-ram": "16 GB",
+        "vRam": "16 GB",
         "price": 1399.99,
         "img" : "https://m.media-amazon.com/images/I/71vQnBuZ3yL._AC_SX679_.jpg"
       },
@@ -474,7 +474,7 @@
         "manufacturer": "PowerColor",
         "size": "Tripple slot",
         "color": "Black",
-        "v-ram": "16 GB",
+        "vRam": "16 GB",
         "price": 629.99,
         "img" : "https://m.media-amazon.com/images/I/81FTVf0jQCL._AC_SX679_.jpg"
       }

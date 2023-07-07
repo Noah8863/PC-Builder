@@ -35,9 +35,9 @@ router.get('/motherboards', (req, res) => {
     res.json(fans);
   });
 
-  router.get('/Water-Cooling-Accessories', (req, res) => {
-    const wt_acc = data.waterCoolingAccessories;
-    res.json(wt_acc);
+  router.get('/PowerSupply', (req, res) => {
+    const ptSupply = data.powerSupply;
+    res.json(ptSupply);
   });
 
 

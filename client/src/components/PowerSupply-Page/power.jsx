@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 
-function Cases() {
+function PowerSuppply() {
 
-  const [caseParts, setCaseParts] = useState([]);
+  const [powerParts, setPowerParts] = useState([]);
 
   useEffect(() => {
-    fetch('/Cases')
+    fetch('/PowerSupply')
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -14,8 +14,8 @@ function Cases() {
         }
       })
       .then((jsonResult) => {
-        const cases = jsonResult.cases // Flatten the arrays of parts
-        setCaseParts(cases);
+        const powerSupply = jsonResult.powerSupply // Flatten the arrays of parts
+        setPowerParts(powerSupply);
       })
       .catch((error) => {
         console.log(error);
@@ -27,7 +27,7 @@ function Cases() {
   return (
     <main>
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
-        Cases
+        Power Supplies
       </div>
       <div className="flex">
         <div className="w-1/5 bg-gray-200 max-h-screen m-4">
@@ -37,8 +37,8 @@ function Cases() {
         <div className="w-4/5 bg-gray-300 m-4">
           <div className="bg-white">
             <div className="grid grid-cols-4 gap-4">
-              {caseParts.length > 0 &&
-                caseParts.map((part, index) => (
+              {powerParts.length > 0 &&
+                powerParts.map((part, index) => (
                   <div key={index} className="relative">
                     <div className="flex flex-col items-center justify-center">
                       <img
@@ -49,10 +49,10 @@ function Cases() {
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                           <p className="text-center">
-                            Case Size: {part.size}
+                            Watts: {part.watts}
                           </p>
                           <p className="text-center">
-                            Fans Included: {part.fans}
+                            Power Rating: {part.powerRating}
                           </p>
                         </div>
                       </div>
@@ -70,4 +70,4 @@ function Cases() {
   
 }
 
-export default Cases;
+export default PowerSuppply;
