@@ -27,7 +27,7 @@ function CPU() {
   return (
     <main>
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
-        MotherBoards
+        CPUs
       </div>
       <div className="flex">
         <div className="w-1/5 bg-gray-200 max-h-screen m-4">
