@@ -31,25 +31,77 @@ function Cases() {
     setCaseParts(sortedCases);
   };
 
+  const sortAZ = () => {
+    const sortedCases = [...caseParts].sort((a, b) =>
+      a.manufacturer.localeCompare(b.manufacturer)
+    );
+    setCaseParts(sortedCases);
+  };
+
+  const sortZA = () => {
+    const sortedCases = [...caseParts].sort((a, b) =>
+      b.manufacturer.localeCompare(a.manufacturer)
+    );
+    setCaseParts(sortedCases);
+  };
+
+  const sortBlackFirst = () => {
+    const sortedCases = [...caseParts].sort((a, b) =>
+      a.color.localeCompare(b.color)
+    );
+    setCaseParts(sortedCases);
+  };
+
+  const sortWhiteFirst = () => {
+    const sortedCases = [...caseParts].sort((a, b) =>
+      b.color.localeCompare(a.color)
+    );
+    setCaseParts(sortedCases);
+  };
+
   return (
     <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
         Cases
       </div>
       <div className="flex flex-col sm:flex-row ">
-        <div className="w-90 sm:w-1/5 bg-gray-200 min-h-screen m-4">
-          <p className="text-xxl text-center">Sort By:</p>
+        <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
+          <p className="text-xxl text-left px-4 py-2">Sort By:</p>
           <button
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortMax}
           >
-            Highest Price to Lowest
+            Price: Highest to Lowest
           </button>
           <button
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortLeast}
           >
-            Lowest Price to Highest
+            Price: Lowest to Highest
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortAZ}
+          >
+            Sort: A - Z
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortZA}
+          >
+            Sort: Z - A
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortBlackFirst}
+          >
+            Color: Black
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortWhiteFirst}
+          >
+            Color: White
           </button>
         </div>
 
@@ -73,6 +125,7 @@ function Cases() {
                           </p>
                         </div>
                       </div>
+                      <p>{part.price}</p>
                       <p>{part.manufacturer}</p>
                       <p>{part.model}</p>
                     </div>
