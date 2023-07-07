@@ -15,7 +15,7 @@ function NavBar() {
   };
 
   return (
-    <header className="bg-gray-800">
+    <header className="bg-gray-800 z-3">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         <div>
           <h1 className="text-white font-bold text-xxl">PC Builder</h1>
@@ -23,7 +23,7 @@ function NavBar() {
         <div>
           <a href="/"><button className="px-4 py-2 text-white text-xl hover:underline">Home</button></a>
           
-          <div className="relative inline-block text-left ">
+          <div className="relative inline-block text-left z-3">
             <div>
               <button
                 type="button"
@@ -44,7 +44,7 @@ function NavBar() {
               
             </div>
             {isOpen && (
-              <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+              <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1"
                   role="menu"
