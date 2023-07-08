@@ -45,6 +45,10 @@ function Home() {
     Motherboard: ["MB"],
     CPU: ["CPU"],
     GPU: ["GPU"],
+    RAM: ["RAM"],
+    FANS : ["FAN"],
+    CASES : ["CASE"],
+    POWERSUPPLY: ["POWER"],
     // Add more categories as needed
   };
 
@@ -63,6 +67,10 @@ function Home() {
     Motherboard: ["MB"],
     CPU: ["CPU"],
     GPU: ["GPU"],
+    RAM: ["RAM"],
+    FANS : ["FAN"],
+    CASES : ["CASE"],
+    POWERSUPPLY: ["POWER"],
     // Add more categories as needed
   };
 
