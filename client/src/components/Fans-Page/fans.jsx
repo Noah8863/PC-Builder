@@ -21,41 +21,111 @@ function Fans() {
         console.log(error);
       });
   }, []);
+  const sortMax = () => {
+    const sortedParts = [...fanParts].sort((a, b) => b.price - a.price);
+    setFanParts(sortedParts);
+  };
 
+  const sortLeast = () => {
+    const sortedParts = [...fanParts].sort((a, b) => a.price - b.price);
+    setFanParts(sortedParts);
+  };
 
+  const sortAZ = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      a.manufacturer.localeCompare(b.manufacturer)
+    );
+    setFanParts(sortedParts);
+  };
+
+  const sortZA = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      b.manufacturer.localeCompare(a.manufacturer)
+    );
+    setFanParts(sortedParts);
+  };
+
+  const sortBlackFirst = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      a.color.localeCompare(b.color)
+    );
+    setFanParts(sortedParts);
+  };
+
+  const sortWhiteFirst = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      b.color.localeCompare(a.color)
+    );
+    setFanParts(sortedParts);
+  };
 
   return (
-    <main>
-      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
-        Fans
+    <main className="z-1">
+      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
+        Case Fans
       </div>
-      <div className="flex">
-        <div className="w-1/5 bg-gray-200 max-h-screen m-4">
-          <p className="text-xxl text-center">Sort By:</p>
+      <div className="flex flex-col sm:flex-row ">
+        <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
+          <p className="text-xxl text-left px-4 py-2">Sort By:</p>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMax}
+          >
+            Price: Highest to Lowest
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortLeast}
+          >
+            Price: Lowest to Highest
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortAZ}
+          >
+            Sort: A - Z
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortZA}
+          >
+            Sort: Z - A
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortBlackFirst}
+          >
+            Color: Black
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortWhiteFirst}
+          >
+            Color: White
+          </button>
         </div>
 
-        <div className="w-4/5 bg-gray-300 m-4">
+        <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
           <div className="bg-white">
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {fanParts.length > 0 &&
                 fanParts.map((part, index) => (
                   <div key={index} className="relative">
-                    <div className="flex flex-col items-center justify-center">
+                    <div className="flex flex-col items-center justify-cent z-1">
                       <img
                         src={part.img}
                         alt={part.title}
-                        className="max-w-full h-auto"
+                        className="w-80 h-auto p-2 z-1"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <p className="text-center">Fan Size: {part.size}</p>
                           <p className="text-center">
-                            Fan Size: {part.size}
-                          </p>
-                          <p className="text-center">
-                            Quantity: {part.quantity}
+                            Total quantity: {part.quantity}
                           </p>
                         </div>
                       </div>
+                      <p>{part.price}</p>
                       <p>{part.manufacturer}</p>
                       <p>{part.model}</p>
                     </div>

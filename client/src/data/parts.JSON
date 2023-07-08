@@ -901,7 +901,7 @@
         "size": "120mm",
         "quantity": "1",
         "color": "Tan/Brown",
-        "price": 1, 
+        "price": 21.95, 
         "img" : "https://m.media-amazon.com/images/I/81nbpVQbdcL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       }
     ],
@@ -915,6 +915,7 @@
         "powerRating": "80 Plus Gold",
         "price": 119.99, 
         "modular" : "Fully modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/71CnFDhomCL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
       },
       {
@@ -926,6 +927,7 @@
         "powerRating": "80 Plus Gold",
         "price": 189.99, 
         "modular" : "Fully Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/710giQRHyQS.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       },
       {
@@ -937,6 +939,7 @@
         "powerRating": "80 Plus Gold",
         "price": 69.99, 
         "modular" : "Semi Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/718jFgZcreL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       },
       {
@@ -948,6 +951,7 @@
         "powerRating": "80 Plus Bronze",
         "price": 69.99, 
         "modular" : "Semi Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/819dWHrRr-L.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       },
       {
@@ -959,6 +963,7 @@
         "powerRating": "80 Plus Gold",
         "price": 159.99, 
         "modular" : "Fully Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/71E0FOJfypS.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       },
       {
@@ -970,6 +975,7 @@
         "powerRating": "80 Plus Platinum",
         "price": 379.99, 
         "modular" : "Fully Modular",
+        "color" : "Black/Silver",
         "img" : "https://m.media-amazon.com/images/I/81IqY-18ftL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       },
       {
@@ -981,6 +987,7 @@
         "powerRating": "80 Plus Platinum",
         "price": 184.99, 
         "modular" : "Fully Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/818VLN7WdxL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
       },
       {
@@ -992,6 +999,7 @@
         "powerRating": "80 Plus Gold",
         "price": 159.99, 
         "modular" : "Fully Modular",
+        "color" : "White",
         "img" : "https://m.media-amazon.com/images/I/613ML8hifnL._AC_SY355_.jpg"
       },
       {
@@ -1003,6 +1011,7 @@
         "powerRating": "80 Plus Platinum",
         "price": 399.99, 
         "modular" : "Fully Modular",
+        "color" : "Black",
         "img" : "https://m.media-amazon.com/images/I/61UeJ-U1mSL._AC_SX450_.jpg"
       },
       {
@@ -1014,6 +1023,7 @@
         "powerRating": "80 Plus Gold",
         "price": 284.99, 
         "modular" : "Fully Modular",
+        "color" : "White",
         "img" : "https://m.media-amazon.com/images/I/61DyiqlbzKL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       }
     ]

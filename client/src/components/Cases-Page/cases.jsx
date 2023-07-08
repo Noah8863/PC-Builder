@@ -61,7 +61,7 @@ function Cases() {
 
   return (
     <main className="z-1">
-      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400">
+      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
         Cases
       </div>
       <div className="flex flex-col sm:flex-row ">
