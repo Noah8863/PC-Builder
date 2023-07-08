@@ -10,6 +10,8 @@ import Cases from "./components/Cases-Page/cases.jsx";
 import Fans from "./components/Fans-Page/fans.jsx";
 import PowerSupply from "./components/PowerSupply-Page/power.jsx";
 import Home from "./components/Home/home.jsx";
+import Login from "./components/login/login.jsx";
+import SignUp from "./components/signup/signup.jsx";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
         <Route path="/Cases" element={<Cases />} />
         <Route path="/Fans" element={<Fans />} />
         <Route path="/PowerSupply" element={<PowerSupply />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/SignUp" element={<SignUp />} />
       </Routes>
     </Router>
   );
