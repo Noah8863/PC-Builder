@@ -29,13 +29,18 @@ function Home() {
       });
   }, []);
 
-
   const findMostExpensiveItem = (partCategory) => {
-    const filteredParts = allParts.filter((part) => partCategory.some((prefix) => part.id.startsWith(prefix)));
+    const filteredParts = allParts.filter((part) =>
+      partCategory.some((prefix) => part.id.startsWith(prefix))
+    );
     if (filteredParts.length > 0) {
-      const mostExpensiveItem = filteredParts.reduce((maxPriceItem, currentItem) => {
-        return currentItem.price > maxPriceItem.price ? currentItem : maxPriceItem;
-      });
+      const mostExpensiveItem = filteredParts.reduce(
+        (maxPriceItem, currentItem) => {
+          return currentItem.price > maxPriceItem.price
+            ? currentItem
+            : maxPriceItem;
+        }
+      );
       return mostExpensiveItem;
     }
     return null;
@@ -46,17 +51,21 @@ function Home() {
     CPU: ["CPU"],
     GPU: ["GPU"],
     RAM: ["RAM"],
-    FANS : ["FAN"],
-    CASES : ["CASE"],
+    FANS: ["FAN"],
+    CASES: ["CASE"],
     POWERSUPPLY: ["POWER"],
     // Add more categories as needed
   };
 
   const findCheapestItem = (partCategory) => {
-    const filteredParts = allParts.filter((part) => partCategory.some((prefix) => part.id.startsWith(prefix)));
+    const filteredParts = allParts.filter((part) =>
+      partCategory.some((prefix) => part.id.startsWith(prefix))
+    );
     if (filteredParts.length > 0) {
       const cheapestItem = filteredParts.reduce((minPriceItem, currentItem) => {
-        return currentItem.price < minPriceItem.price ? currentItem : minPriceItem;
+        return currentItem.price < minPriceItem.price
+          ? currentItem
+          : minPriceItem;
       });
       return cheapestItem;
     }
@@ -68,50 +77,56 @@ function Home() {
     CPU: ["CPU"],
     GPU: ["GPU"],
     RAM: ["RAM"],
-    FANS : ["FAN"],
-    CASES : ["CASE"],
+    FANS: ["FAN"],
+    CASES: ["CASE"],
     POWERSUPPLY: ["POWER"],
     // Add more categories as needed
   };
 
   return (
     <main>
-      <h2>Most Expensive Items</h2>
-      {Object.entries(partCategories).map(([category, prefixes]) => {
-        const mostExpensiveItem = findMostExpensiveItem(prefixes);
-        return (
-          <div key={category}>
-            <h3>{category}</h3>
-            {mostExpensiveItem ? (
-              <>
-                <img src={mostExpensiveItem.img} alt={mostExpensiveItem.title} className="w-80 h-auto p-2 z-1"/>
-                <p>Title: {mostExpensiveItem.title}</p>
-                <p>Price: {mostExpensiveItem.price}</p>
-              </>
-            ) : (
-              <p>No item found</p>
-            )}
-          </div>
-        );
-      })}
+      <div className="">
+        <h2>Most Expensive Items</h2>
+        <div className="bg-blue-300 grid grid-cols-7">
+          {Object.entries(partCategories).map(([category, prefixes]) => {
+            const mostExpensiveItem = findMostExpensiveItem(prefixes);
+            return (
+              <div key={category} className="bg-blue-300 grid">
+                <div className="grid">
+                  <h3>{category}</h3>
+                  <img
+                    src={mostExpensiveItem.img}
+                    alt={mostExpensiveItem.title}
+                    className="w-60 max-h-60 p-2 z-1"
+                  />
+                  <p>Title: {mostExpensiveItem.title}</p>
+                  <p>Price: {mostExpensiveItem.price}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <h2>Cheapest Items</h2>
-      {Object.entries(partCategorie).map(([category, prefixes]) => {
-        const cheapestItem = findCheapestItem(prefixes);
-        return (
-          <div key={category}>
-            <h3>{category}</h3>
-            {cheapestItem ? (
-              <>
-                <img src={cheapestItem.img} alt={cheapestItem.title} className="w-80 h-auto p-2 z-1"/>
+      <div className="bg-blue-300 grid grid-cols-7">
+        {Object.entries(partCategorie).map(([category, prefixes]) => {
+          const cheapestItem = findCheapestItem(prefixes);
+          return (
+            <div key={category} className="bg-blue-300 grid">
+              <div className="grid">
+                <h3>{category}</h3>
+                <img
+                  src={cheapestItem.img}
+                  alt={cheapestItem.title}
+                  className="w-60 max-h-60 p-2 z-1"
+                />
                 <p>Title: {cheapestItem.title}</p>
                 <p>Price: {cheapestItem.price}</p>
-              </>
-            ) : (
-              <p>No item found</p>
-            )}
-          </div>
-        );
-      })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </main>
   );
 }
