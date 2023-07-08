@@ -59,6 +59,10 @@ function Cases() {
     setCaseParts(sortedCases);
   };
 
+  const test = () => {
+    console.log("button clicked");
+  };
+
   return (
     <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
@@ -66,39 +70,42 @@ function Cases() {
       </div>
       <div className="flex flex-col sm:flex-row ">
         <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
-          <p className="text-xxl text-left px-4 py-2">Sort By:</p>
+          <p className="text-xxl text-center px-4 py-2">Sort By:</p>
+          <p className="text-xxl text-left px-4">Price</p>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortMax}
           >
-            Price: Highest to Lowest
+            Highest
           </button>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortLeast}
           >
-            Price: Lowest to Highest
+            Lowest
           </button>
+          <p className="text-xxl text-left px-4">Alphabetical</p>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortAZ}
           >
             Sort: A - Z
           </button>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortZA}
           >
             Sort: Z - A
           </button>
+          <p className="text-xxl text-left px-4">Color</p>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortBlackFirst}
           >
             Color: Black
           </button>
           <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortWhiteFirst}
           >
             Color: White
@@ -123,6 +130,14 @@ function Cases() {
                           <p className="text-center">
                             Fans Included: {part.fans}
                           </p>
+                          <div className="text-center">
+                            <button
+                              className="text-center text-xl"
+                              onClick={test}
+                            >
+                              Add to Cart
+                            </button>
+                          </div>
                         </div>
                       </div>
                       <p>{part.price}</p>
