@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
-
+  
   useEffect(() => {
     fetch("/parts/")
       .then((res) => {
