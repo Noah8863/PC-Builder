@@ -28,6 +28,8 @@ function SignUp() {
     }
   }
 
+  // TODO: Create firebase database for firestore. 400 POST error code should go away after setting this up
+
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <AuthProvider>

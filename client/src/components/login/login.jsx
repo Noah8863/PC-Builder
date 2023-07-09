@@ -71,8 +71,7 @@ function Login() {
                 </div>
                 <a
                   href="/"
-                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500 text-white"
-                  // className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500 text-white"
+                  className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
                 </a>
