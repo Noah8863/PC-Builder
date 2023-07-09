@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../../context/AuthContext"
+import { AuthProvider } from "../../context/AuthContext";
 
 function SignUp() {
   const emailRef = useRef()
@@ -8,6 +9,7 @@ function SignUp() {
   const { signup } = useAuth()
 
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState('')
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -17,9 +19,12 @@ function SignUp() {
     }
 
     try {
+      setError('')
+      setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
     } catch {
       setError('Failed to create an account')
+      setLoading(true)
     }
 
     
@@ -27,6 +32,7 @@ function SignUp() {
 
   return (
       //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
+    <AuthProvider>
     <section className="bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <a
@@ -134,6 +140,7 @@ function SignUp() {
         </div>
       </div>
     </section>
+    </AuthProvider>
   );
 }
 
