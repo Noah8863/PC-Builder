@@ -5,6 +5,7 @@ function SignUp() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
+  const { signup } = useAuth()
   return (
       //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">

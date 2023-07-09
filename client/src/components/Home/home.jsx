@@ -85,7 +85,7 @@ function Home() {
 
   return (
     <main>
-      <div className="">
+      {/* <div className="">
         <h2>Most Expensive Items</h2>
         <div className="bg-blue-300 grid grid-cols-7">
           {Object.entries(partCategories).map(([category, prefixes]) => {
@@ -126,7 +126,7 @@ function Home() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </main>
   );
 }
