@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
+import { useAuth } from "../../context/AuthContext"
 
 function SignUp() {
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const confirmPasswordRef = useRef()
   return (
       //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
@@ -20,7 +24,7 @@ function SignUp() {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required ref={emailRef}
                 >
                   Your email
                 </label>
@@ -36,7 +40,7 @@ function SignUp() {
               <div>
                 <label
                   htmlFor="password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" required ref={passwordRef}
                 >
                   Password
                 </label>
@@ -52,7 +56,7 @@ function SignUp() {
               <div>
                 <label
                   htmlFor="confirm-password"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" ref={confirmPasswordRef}
                 >
                   Confirm password
                 </label>
