@@ -12,6 +12,7 @@ import PowerSupply from "./components/PowerSupply-Page/power.jsx";
 import Home from "./components/Home/home.jsx";
 import Login from "./components/login/login.jsx";
 import SignUp from "./components/signup/signup.jsx";
+import { AuthProvider } from "./context/AuthContext";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
+        
         <Route path="/" element={<Home />}></Route>
         <Route path="/motherboards" element={<Motherboards />} />
         <Route path="/CPU" element={<CPU />} />
@@ -29,6 +31,7 @@ function App() {
         <Route path="/PowerSupply" element={<PowerSupply />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
+        
       </Routes>
     </Router>
   );

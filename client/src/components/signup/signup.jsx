@@ -6,6 +6,25 @@ function SignUp() {
   const passwordRef = useRef()
   const confirmPasswordRef = useRef()
   const { signup } = useAuth()
+
+  const [error, setError] = useState('')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if(passwordRef.current.value !== confirmPasswordRef.current.value){
+      return setError('Passwords do not match')
+    }
+
+    try {
+      await signup(emailRef.current.value, passwordRef.current.value)
+    } catch {
+      setError('Failed to create an account')
+    }
+
+    
+  }
+
   return (
       //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
