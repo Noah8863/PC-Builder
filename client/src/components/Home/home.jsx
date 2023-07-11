@@ -10,19 +10,38 @@ import PCImage from "../../images/custom-PC.jpg";
 import PCImage2 from "../../images/custom-PC-2.webp";
 import PCImage3 from "../../images/custom-PC-3.jpg";
 import Slider from 'react-slick';
-
 import Product from "../Product-cards/product.jsx"
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
-
+  const blocks = ['A', 'B', 'C', 'D', 'E', 'F'];
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+    ],
   };
 
   useEffect(() => {
@@ -51,6 +70,8 @@ function Home() {
         console.log(error);
       });
   }, []);
+
+  
 
   const findMostExpensiveItem = (partCategory) => {
     const filteredParts = allParts.filter((part) =>
@@ -213,6 +234,7 @@ function Home() {
    <div>
     <Product />
    </div>
+  
   );
 }
 

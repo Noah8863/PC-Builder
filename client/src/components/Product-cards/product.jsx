@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PCImage3 from "../../images/custom-PC-3.jpg";
+import PCImage2 from "../../images/custom-PC-2.webp";
+import PCImage1 from "../../images/custom-PC.jpg";
+import "./styles.css";
+
 function Product() {
   const [allParts, setAllParts] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -106,42 +110,126 @@ function Product() {
       </div>
 
       {/* Hot deals section */}
-      <div className="container mx-auto py-16">
-        {/* Product cards section */}
-        <div className="container mx-auto py-16">
-          <h2 className="text-3xl font-bold mb-8">
-            Check out these hot deals!
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(partCategories).map(([category, prefixes]) => {
-              const mostExpensiveItem = findMostExpensiveItem(prefixes);
-              return (
-                <div key={category} className="bg-white rounded-lg shadow-lg">
-                  <img
-                    src={mostExpensiveItem.img}
-                    alt={mostExpensiveItem.title}
-                    className="w-5/6 object-cover rounded-t-lg"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-bold mb-2">
-                      {mostExpensiveItem.title}
-                    </h3>
-                    <p className="text-gray-600">{mostExpensiveItem.price}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <div className="carousel-container">
+  <h2>slider</h2>
+  <div className="carousel my-carousel carousel--translate">
+    <input
+      className="carousel__activator"
+      type="radio"
+      name="carousel"
+      id="F"
+      checked={true}
+    />
+    <input
+      className="carousel__activator"
+      type="radio"
+      name="carousel"
+      id="G"
+    />
+    <input
+      className="carousel__activator"
+      type="radio"
+      name="carousel"
+      id="H"
+    />
+    <input
+      className="carousel__activator"
+      type="radio"
+      name="carousel"
+      id="I"
+    />
+    <input
+      className="carousel__activator"
+      type="radio"
+      name="carousel"
+      id="J"
+    />
+    <div className="carousel__controls">
+      <label
+        className="carousel__control carousel__control--backward"
+        htmlFor="J"
+      ></label>
+      <label
+        className="carousel__control carousel__control--forward"
+        htmlFor="G"
+      ></label>
+    </div>
+    <div className="carousel__controls">
+      <label
+        className="carousel__control carousel__control--backward"
+        htmlFor="F"
+      ></label>
+      <label
+        className="carousel__control carousel__control--forward"
+        htmlFor="H"
+      ></label>
+    </div>
+    <div className="carousel__controls">
+      <label
+        className="carousel__control carousel__control--backward"
+        htmlFor="G"
+      ></label>
+      <label
+        className="carousel__control carousel__control--forward"
+        htmlFor="I"
+      ></label>
+    </div>
+    <div className="carousel__controls">
+      <label
+        className="carousel__control carousel__control--backward"
+        htmlFor="H"
+      ></label>
+      <label
+        className="carousel__control carousel__control--forward"
+        htmlFor="J"
+      ></label>
+    </div>
+    <div className="carousel__controls">
+      <label
+        className="carousel__control carousel__control--backward"
+        htmlFor="I"
+      ></label>
+      <label
+        className="carousel__control carousel__control--forward"
+        htmlFor="F"
+      ></label>
+    </div>
+    <div className="carousel__track">
+      <li className="carousel__slide">
+        <h1>F</h1>
+      </li>
+      <li className="carousel__slide">
+        <h1>G</h1>
+      </li>
+      <li className="carousel__slide">
+        <h1>H</h1>
+      </li>
+      <li className="carousel__slide">
+        <h1>I</h1>
+      </li>
+      <li className="carousel__slide">
+        <h1>J</h1>
+      </li>
+    </div>
+    <div className="carousel__indicators">
+      <label className="carousel__indicator" htmlFor="F"></label>
+      <label className="carousel__indicator" htmlFor="G"></label>
+      <label className="carousel__indicator" htmlFor="H"></label>
+      <label className="carousel__indicator" htmlFor="I"></label>
+      <label className="carousel__indicator" htmlFor="J"></label>
+    </div>
+  </div>
+</div>
+
       {/* Best of the best section */}
-      <div className="bg-gray-100 py-16">
+      {/* <div className="bg-gray-100 py-16">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold mb-8">
             You want the best of the best? We got it
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Product card 1 */}
+
+            
             <div className="bg-white rounded-lg shadow-lg">
               <img
                 src="/path/to/product4-image.jpg"
@@ -154,7 +242,7 @@ function Product() {
               </div>
             </div>
 
-            {/* Product card 2 */}
+            
             <div className="bg-white rounded-lg shadow-lg">
               <img
                 src="/path/to/product5-image.jpg"
@@ -167,7 +255,44 @@ function Product() {
               </div>
             </div>
 
-            {/* Product card 3 */}
+            
+            <div className="bg-white rounded-lg shadow-lg">
+              <img
+                src="/path/to/product6-image.jpg"
+                alt="Product 6"
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">Product 6</h3>
+                <p className="text-gray-600">$499.99</p>
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg">
+              <img
+                src="/path/to/product4-image.jpg"
+                alt="Product 4"
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">Product 4</h3>
+                <p className="text-gray-600">$299.99</p>
+              </div>
+            </div>
+
+            
+            <div className="bg-white rounded-lg shadow-lg">
+              <img
+                src="/path/to/product5-image.jpg"
+                alt="Product 5"
+                className="w-full h-48 object-cover rounded-t-lg"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">Product 5</h3>
+                <p className="text-gray-600">$399.99</p>
+              </div>
+            </div>
+
+            
             <div className="bg-white rounded-lg shadow-lg">
               <img
                 src="/path/to/product6-image.jpg"
@@ -181,7 +306,7 @@ function Product() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
