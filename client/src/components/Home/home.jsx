@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
+  const [dataLoaded, setDataLoaded] = useState(false);
   
   useEffect(() => {
     fetch("/parts/")
@@ -23,6 +24,7 @@ function Home() {
           ...jsonResult.powerSupply,
         ];
         setAllParts(partList);
+        setDataLoaded(true);
       })
       .catch((error) => {
         console.log(error);
@@ -83,9 +85,13 @@ function Home() {
     // Add more categories as needed
   };
 
+  if (!dataLoaded) {
+    return <div>Loading...</div>; // Render a loading message until data is loaded
+  }
+
   return (
     <main>
-      {/* <div className="">
+      <div className="">
         <h2>Most Expensive Items</h2>
         <div className="bg-blue-300 grid grid-cols-7">
           {Object.entries(partCategories).map(([category, prefixes]) => {
@@ -126,7 +132,7 @@ function Home() {
             </div>
           );
         })}
-      </div> */}
+      </div>
     </main>
   );
 }
