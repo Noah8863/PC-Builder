@@ -7,6 +7,7 @@ import "./styles.css";
 function Product() {
   const [allParts, setAllParts] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [carouselData, setCarouselData] = useState([]);
 
   useEffect(() => {
     fetch("/parts/")
@@ -27,7 +28,7 @@ function Product() {
           ...jsonResult.fans,
           ...jsonResult.powerSupply,
         ];
-        setAllParts(partList);
+        setCarouselData(partList);
         setDataLoaded(true);
       })
       .catch((error) => {
@@ -35,9 +36,9 @@ function Product() {
       });
   }, []);
 
-  const findMostExpensiveItem = (partCategory) => {
-    const filteredParts = allParts.filter((part) =>
-      partCategory.some((prefix) => part.id.startsWith(prefix))
+  const findMostExpensiveItem = (category) => {
+    const filteredParts = carouselData.filter((part) =>
+      part.id.startsWith(category)
     );
     if (filteredParts.length > 0) {
       const mostExpensiveItem = filteredParts.reduce(
@@ -111,115 +112,120 @@ function Product() {
 
       {/* Hot deals section */}
       <div className="carousel-container">
-  <h2>slider</h2>
-  <div className="carousel my-carousel carousel--translate">
-    <input
-      className="carousel__activator"
-      type="radio"
-      name="carousel"
-      id="F"
-      checked={true}
-    />
-    <input
-      className="carousel__activator"
-      type="radio"
-      name="carousel"
-      id="G"
-    />
-    <input
-      className="carousel__activator"
-      type="radio"
-      name="carousel"
-      id="H"
-    />
-    <input
-      className="carousel__activator"
-      type="radio"
-      name="carousel"
-      id="I"
-    />
-    <input
-      className="carousel__activator"
-      type="radio"
-      name="carousel"
-      id="J"
-    />
-    <div className="carousel__controls">
-      <label
-        className="carousel__control carousel__control--backward"
-        htmlFor="J"
-      ></label>
-      <label
-        className="carousel__control carousel__control--forward"
-        htmlFor="G"
-      ></label>
-    </div>
-    <div className="carousel__controls">
-      <label
-        className="carousel__control carousel__control--backward"
-        htmlFor="F"
-      ></label>
-      <label
-        className="carousel__control carousel__control--forward"
-        htmlFor="H"
-      ></label>
-    </div>
-    <div className="carousel__controls">
-      <label
-        className="carousel__control carousel__control--backward"
-        htmlFor="G"
-      ></label>
-      <label
-        className="carousel__control carousel__control--forward"
-        htmlFor="I"
-      ></label>
-    </div>
-    <div className="carousel__controls">
-      <label
-        className="carousel__control carousel__control--backward"
-        htmlFor="H"
-      ></label>
-      <label
-        className="carousel__control carousel__control--forward"
-        htmlFor="J"
-      ></label>
-    </div>
-    <div className="carousel__controls">
-      <label
-        className="carousel__control carousel__control--backward"
-        htmlFor="I"
-      ></label>
-      <label
-        className="carousel__control carousel__control--forward"
-        htmlFor="F"
-      ></label>
-    </div>
-    <div className="carousel__track">
-      <li className="carousel__slide">
-        <h1>F</h1>
-      </li>
-      <li className="carousel__slide">
-        <h1>G</h1>
-      </li>
-      <li className="carousel__slide">
-        <h1>H</h1>
-      </li>
-      <li className="carousel__slide">
-        <h1>I</h1>
-      </li>
-      <li className="carousel__slide">
-        <h1>J</h1>
-      </li>
-    </div>
-    <div className="carousel__indicators">
-      <label className="carousel__indicator" htmlFor="F"></label>
-      <label className="carousel__indicator" htmlFor="G"></label>
-      <label className="carousel__indicator" htmlFor="H"></label>
-      <label className="carousel__indicator" htmlFor="I"></label>
-      <label className="carousel__indicator" htmlFor="J"></label>
-    </div>
-  </div>
-</div>
+        <h2>slider</h2>
+        <div className="carousel my-carousel carousel--translate">
+          <input
+            className="carousel__activator"
+            type="radio"
+            name="carousel"
+            id="F"
+            defaultChecked
+          />
+          <input
+            className="carousel__activator"
+            type="radio"
+            name="carousel"
+            id="G"
+          />
+          <input
+            className="carousel__activator"
+            type="radio"
+            name="carousel"
+            id="H"
+          />
+          <input
+            className="carousel__activator"
+            type="radio"
+            name="carousel"
+            id="I"
+          />
+          <input
+            className="carousel__activator"
+            type="radio"
+            name="carousel"
+            id="J"
+          />
+          <div className="carousel__controls">
+            <label
+              className="carousel__control carousel__control--backward"
+              htmlFor="J"
+            ></label>
+            <label
+              className="carousel__control carousel__control--forward"
+              htmlFor="G"
+            ></label>
+          </div>
+          <div className="carousel__controls">
+            <label
+              className="carousel__control carousel__control--backward"
+              htmlFor="F"
+            ></label>
+            <label
+              className="carousel__control carousel__control--forward"
+              htmlFor="H"
+            ></label>
+          </div>
+          <div className="carousel__controls">
+            <label
+              className="carousel__control carousel__control--backward"
+              htmlFor="G"
+            ></label>
+            <label
+              className="carousel__control carousel__control--forward"
+              htmlFor="I"
+            ></label>
+          </div>
+          <div className="carousel__controls">
+            <label
+              className="carousel__control carousel__control--backward"
+              htmlFor="H"
+            ></label>
+            <label
+              className="carousel__control carousel__control--forward"
+              htmlFor="J"
+            ></label>
+          </div>
+          <div className="carousel__controls">
+            <label
+              className="carousel__control carousel__control--backward"
+              htmlFor="I"
+            ></label>
+            <label
+              className="carousel__control carousel__control--forward"
+              htmlFor="F"
+            ></label>
+          </div>
+          <div className="carousel__track">
+            {Object.entries(partCategories).map(([category, prefixes]) => {
+              const mostExpensiveItem = findMostExpensiveItem(category);
+              return (
+                <div key={category}>
+                  <div className="p-6 m-4 items-center text-center text-xl justify-center">
+                    <h3>{category}</h3>
+                    {mostExpensiveItem && (
+                      <>
+                        <img
+                          src={mostExpensiveItem.img}
+                          alt={mostExpensiveItem.title}
+                        />
+                        <p>Title: {mostExpensiveItem.title}</p>
+                        <p>Price: {mostExpensiveItem.price}</p>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="carousel__indicators">
+            <label className="carousel__indicator" htmlFor="F"></label>
+            <label className="carousel__indicator" htmlFor="G"></label>
+            <label className="carousel__indicator" htmlFor="H"></label>
+            <label className="carousel__indicator" htmlFor="I"></label>
+            <label className="carousel__indicator" htmlFor="J"></label>
+          </div>
+        </div>
+      </div>
 
       {/* Best of the best section */}
       {/* <div className="bg-gray-100 py-16">
