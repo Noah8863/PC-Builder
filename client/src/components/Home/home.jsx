@@ -9,40 +9,12 @@ import CaseImage from "../../images/case.jpg";
 import PCImage from "../../images/custom-PC.jpg";
 import PCImage2 from "../../images/custom-PC-2.webp";
 import PCImage3 from "../../images/custom-PC-3.jpg";
-import Slider from 'react-slick';
-import Product from "../Product-cards/product.jsx"
+
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
-  const blocks = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
-        breakpoint: 1280,
-        settings: {
-          slidesToShow: 3,
-        },
-      },
-    ],
-  };
+  
 
   useEffect(() => {
     fetch("/parts/")
@@ -115,6 +87,7 @@ function Home() {
     }
     return null;
   };
+  
 
   const partCategorie = {
     Motherboard: ["MB"],
@@ -136,105 +109,101 @@ function Home() {
   }
 
   return (
-    // <main className="w-5/6 m-auto justify-center bg-gray-500 h-contain">
-    //   <header>
-    //     <div classaName="flex">
-    //       <img className="w-4/6 flex m-auto p-4"src={PCImage3}></img>
-    //     </div>
-    //   </header>
-    // <div>
-    //   <p className="text-2xl">Most Expensive Items</p>
-    //   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-    //     {Object.entries(partCategories).map(([category, prefixes]) => {
-    //       const mostExpensiveItem = findMostExpensiveItem(prefixes);
-    //       return (
-    //         <div key={category} className="bg-blue-300 grid">
-    //           <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-    //             <h3>{category}</h3>
-    //             <img
-    //               src={mostExpensiveItem.img}
-    //               alt={mostExpensiveItem.title}
-    //               className="w-60 max-h-60 p-2 z-1"
-    //             />
-    //             <p>Title: {mostExpensiveItem.title}</p>
-    //             <p>Price: {mostExpensiveItem.price}</p>
-    //           </div>
-    //         </div>
-    //       );
-    //     })}
-    //   </div>
-    // </div>
-    //   <p className="text-2xl">Cheapest Items</p>
-    //   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-    //     {Object.entries(partCategorie).map(([category, prefixes]) => {
-    //       const cheapestItem = findCheapestItem(prefixes);
-    //       return (
-    //         <div
-    //           key={category}
-    //           className="grid p-6 bg-blue-300 m-4 items-center text-center text-xl justify-center rounded-lg"
-    //         >
-    //           <div className="grid bg-white">
-    //             <h3>{category}</h3>
-    //             <div className="p-4">
-    //               <img
-    //                 src={cheapestItem.img}
-    //                 alt={cheapestItem.title}
-    //                 className="max-w-60 max-h-60"
-    //               />
-    //             </div>
-    //             <p>Title: {cheapestItem.title}</p>
-    //             <p>Price: {cheapestItem.price}</p>
-    //           </div>
-    //         </div>
-    //       );
-    //     })}
-    //   </div>
-    //   <div>
-    //     <p className="text-xxl text-center">Shop by Category</p>
-    //     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/CPU"><img src={CPUImage} alt="CPU" className="max-w-40 max-h-40" /></a>
-    //         CPUs
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //       <a href="/GPU"><img src={GPUImage} alt="GPU" className="max-w-40 max-h-40" /></a>
-    //         GPUs
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/motherboards"><img
-    //           src={MotherboardImage}
-    //           alt="Motherboard"
-    //           className="max-w-40 max-h-40"
-    //         /></a>
-    //         Motherboards
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/RAM"><img src={RamImage} alt="RAM" className="max-w-40 max-h-40" /></a>
-    //         RAM
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/Fans"><img src={FanImage} alt="Fan" className="max-w-40 max-h-40" /></a>
-    //         Fans
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/PowerSupply"><img
-    //           src={PowerSupplyImage}
-    //           alt="Power Supply"
-    //           className="max-w-40 max-h-40"
-    //         /></a>
-    //         Power Supplies
-    //       </button>
-    //       <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-    //         <a href="/Cases"><img src={CaseImage} alt="Case" className="max-w-40 max-h-40" /></a>
-    //         Cases
-    //       </button>
-    //     </div>
-    //   </div>
-    // </main>
-   <div>
-    <Product />
-   </div>
-  
+    <main className="w-5/6 m-auto justify-center bg-gray-500 h-contain">
+      <header>
+        <div classaName="flex">
+          <img className="w-4/6 flex m-auto p-4"src={PCImage3}></img>
+        </div>
+      </header>
+    <div>
+      <p className="text-2xl">Most Expensive Items</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {Object.entries(partCategories).map(([category, prefixes]) => {
+          const mostExpensiveItem = findMostExpensiveItem(prefixes);
+          return (
+            <div key={category} className="bg-blue-300 grid">
+              <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
+                <h3>{category}</h3>
+                <img
+                  src={mostExpensiveItem.img}
+                  alt={mostExpensiveItem.title}
+                  className="w-60 max-h-60 p-2 z-1"
+                />
+                <p>Title: {mostExpensiveItem.title}</p>
+                <p>Price: {mostExpensiveItem.price}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+      <p className="text-2xl">Cheapest Items</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {Object.entries(partCategorie).map(([category, prefixes]) => {
+          const cheapestItem = findCheapestItem(prefixes);
+          return (
+            <div
+              key={category}
+              className="grid p-6 bg-blue-300 m-4 items-center text-center text-xl justify-center rounded-lg"
+            >
+              <div className="grid bg-white">
+                <h3>{category}</h3>
+                <div className="p-4">
+                  <img
+                    src={cheapestItem.img}
+                    alt={cheapestItem.title}
+                    className="max-w-60 max-h-60"
+                  />
+                </div>
+                <p>Title: {cheapestItem.title}</p>
+                <p>Price: {cheapestItem.price}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+        <p className="text-xxl text-center">Shop by Category</p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/CPU"><img src={CPUImage} alt="CPU" className="max-w-40 max-h-40" /></a>
+            CPUs
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+          <a href="/GPU"><img src={GPUImage} alt="GPU" className="max-w-40 max-h-40" /></a>
+            GPUs
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/motherboards"><img
+              src={MotherboardImage}
+              alt="Motherboard"
+              className="max-w-40 max-h-40"
+            /></a>
+            Motherboards
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/RAM"><img src={RamImage} alt="RAM" className="max-w-40 max-h-40" /></a>
+            RAM
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/Fans"><img src={FanImage} alt="Fan" className="max-w-40 max-h-40" /></a>
+            Fans
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/PowerSupply"><img
+              src={PowerSupplyImage}
+              alt="Power Supply"
+              className="max-w-40 max-h-40"
+            /></a>
+            Power Supplies
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/Cases"><img src={CaseImage} alt="Case" className="max-w-40 max-h-40" /></a>
+            Cases
+          </button>
+        </div>
+      </div>
+    </main>  
   );
 }
 
