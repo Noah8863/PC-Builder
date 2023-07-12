@@ -6,16 +6,12 @@ import PowerSupplyImage from "../../images/psu.jpg";
 import FanImage from "../../images/fans.jpg";
 import RamImage from "../../images/ram.jpg";
 import CaseImage from "../../images/case.jpg";
-import PCImage from "../../images/custom-PC.jpg";
-import PCImage2 from "../../images/custom-PC-2.webp";
 import PCImage3 from "../../images/custom-PC-3.jpg";
-
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
   
-
   useEffect(() => {
     fetch("/parts/")
       .then((res) => {
@@ -62,17 +58,6 @@ function Home() {
     return null;
   };
 
-  const partCategories = {
-    Motherboard: ["MB"],
-    CPU: ["CPU"],
-    GPU: ["GPU"],
-    RAM: ["RAM"],
-    FANS: ["FAN"],
-    CASES: ["CASE"],
-    POWERSUPPLY: ["POWER"],
-    // Add more categories as needed
-  };
-
   const findCheapestItem = (partCategory) => {
     const filteredParts = allParts.filter((part) =>
       partCategory.some((prefix) => part.id.startsWith(prefix))
@@ -87,7 +72,16 @@ function Home() {
     }
     return null;
   };
-  
+
+  const partCategories = {
+    Motherboard: ["MB"],
+    CPU: ["CPU"],
+    GPU: ["GPU"],
+    RAM: ["RAM"],
+    FANS: ["FAN"],
+    CASES: ["CASE"],
+    POWERSUPPLY: ["POWER"],
+  };
 
   const partCategorie = {
     Motherboard: ["MB"],
@@ -97,7 +91,6 @@ function Home() {
     FANS: ["FAN"],
     CASES: ["CASE"],
     POWERSUPPLY: ["POWER"],
-    // Add more categories as needed
   };
 
   if (!dataLoaded) {
@@ -115,53 +108,7 @@ function Home() {
           <img className="w-4/6 flex m-auto p-4"src={PCImage3}></img>
         </div>
       </header>
-    <div>
-      <p className="text-2xl">Most Expensive Items</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-        {Object.entries(partCategories).map(([category, prefixes]) => {
-          const mostExpensiveItem = findMostExpensiveItem(prefixes);
-          return (
-            <div key={category} className="bg-blue-300 grid">
-              <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                <h3>{category}</h3>
-                <img
-                  src={mostExpensiveItem.img}
-                  alt={mostExpensiveItem.title}
-                  className="w-60 max-h-60 p-2 z-1"
-                />
-                <p>Title: {mostExpensiveItem.title}</p>
-                <p>Price: {mostExpensiveItem.price}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-      <p className="text-2xl">Cheapest Items</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
-        {Object.entries(partCategorie).map(([category, prefixes]) => {
-          const cheapestItem = findCheapestItem(prefixes);
-          return (
-            <div
-              key={category}
-              className="grid p-6 bg-blue-300 m-4 items-center text-center text-xl justify-center rounded-lg"
-            >
-              <div className="grid bg-white">
-                <h3>{category}</h3>
-                <div className="p-4">
-                  <img
-                    src={cheapestItem.img}
-                    alt={cheapestItem.title}
-                    className="max-w-60 max-h-60"
-                  />
-                </div>
-                <p>Title: {cheapestItem.title}</p>
-                <p>Price: {cheapestItem.price}</p>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    
       <div>
         <p className="text-xxl text-center">Shop by Category</p>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
@@ -203,6 +150,55 @@ function Home() {
           </button>
         </div>
       </div>
+      
+      
+      <p className="text-2xl text-white text-center">Check out these hot deals across all categories!</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {Object.entries(partCategorie).map(([category, prefixes]) => {
+          const cheapestItem = findCheapestItem(prefixes);
+          return (
+            <div
+              key={category}
+              className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center"
+            >
+              <div className="grid bg-white">
+                <h3>{category}</h3>
+                <div className="p-4">
+                  <img
+                    src={cheapestItem.img}
+                    alt={cheapestItem.title}
+                    className="w-60 max-h-60 p-2 z-1"
+                  />
+                </div>
+                <p>Title: {cheapestItem.title}</p>
+                <p>Price: {cheapestItem.price}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <div>
+      <p className="text-2xl text-white text-center">Looking to maximize the preformance of your PC? We got you covered!</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        {Object.entries(partCategories).map(([category, prefixes]) => {
+          const mostExpensiveItem = findMostExpensiveItem(prefixes);
+          return (
+            <div key={category} className=" grid">
+              <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
+                <h3>{category}</h3>
+                <img
+                  src={mostExpensiveItem.img}
+                  alt={mostExpensiveItem.title}
+                  className="w-60 max-h-60 p-2 z-1"
+                />
+                <p>Title: {mostExpensiveItem.title}</p>
+                <p>Price: {mostExpensiveItem.price}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
     </main>  
   );
 }
