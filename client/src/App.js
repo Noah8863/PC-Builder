@@ -13,6 +13,7 @@ import PowerSupply from "./components/PowerSupply-Page/power.jsx";
 import Home from "./components/Home/home.jsx";
 import Login from "./components/login/login.jsx";
 import SignUp from "./components/signup/signup.jsx";
+import BlogPage from "./components/Blog-Page/blog.jsx";
 import { AuthProvider } from "./context/AuthContext";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/PowerSupply" element={<PowerSupply />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
+        <Route path="/Blog" element={<BlogPage />} />
       </Routes>
       <Footer />
     </Router>

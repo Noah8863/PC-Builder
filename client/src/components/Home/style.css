@@ -1,0 +1,6 @@
+.customBackground {
+    background-image: url("../../images/cool-background.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }

@@ -106,6 +106,7 @@ function NavBar() {
               </div>
             )}
           </div>
+          <a href="/Blog"><button className="px-4 py-2 text-white text-xl hover:underline">Blog</button></a>
          <a href="/Login"><button className="px-4 py-2 text-white text-xl hover:underline">Login</button></a>
         </div>
       </div>

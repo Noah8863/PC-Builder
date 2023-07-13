@@ -7,6 +7,7 @@ import FanImage from "../../images/fans.jpg";
 import RamImage from "../../images/ram.jpg";
 import CaseImage from "../../images/case.jpg";
 import PCImage3 from "../../images/custom-PC-3.jpg";
+import "./style.css"
 
 function Home() {
   const [allParts, setAllParts] = useState([]);
@@ -102,10 +103,11 @@ function Home() {
   }
 
   return (
-    <main className="w-5/6 m-auto justify-center bg-gray-500 h-contain">
-      <header>
-        <div classaName="flex">
-          <img className="w-4/6 flex m-auto p-4"src={PCImage3}></img>
+    <main className=" m-auto justify-center h-contain">
+      <header className="customBackground">
+        <div className="grid grid-cols-2 h-20">
+          <div>Something here</div>
+          <div>Another thing here</div>
         </div>
       </header>
     
