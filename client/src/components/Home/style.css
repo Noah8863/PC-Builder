@@ -4,3 +4,6 @@
     background-repeat: no-repeat;
     background-position: center center;
   }
+  .bg-customBlue {
+    background-color: rgb(199, 225, 243);
+  }

@@ -101,12 +101,13 @@ function Home() {
   }
 
   return (
-    <main className=" m-auto justify-center h-contain">
+    <main className=" m-auto justify-center h-full">
       {/* Section 1 */}
-      <header className="customBackground h-screen flex flex-col items-center justify-start pt-10">
+
+      <header className="customBackground h-screen flex flex-col items-center justify-center pt-10">
   <h1 className="text-5xl text-center mb-8">Welcome to the PC-Builder Community!</h1>
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-3/4 mt-10">
-    <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
+    <div className="bg-customBlue p-8 rounded-lg shadow-lg">
       <h2 className="text-3xl mb-6">Build Your Dream PC</h2>
       <p className="mb-4">
         Are you looking to build your own custom PC? Our PC-Builder project offers a wide range of high-quality PC components to help you create the perfect system tailored to your needs.
@@ -119,7 +120,7 @@ function Home() {
       </p>
       <a href="/signup" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block">Sign Up Now</a>
     </div>
-    <div className="bg-gray-200 p-8 rounded-lg shadow-lg mt-8 sm:mt-0">
+    <div className="bg-customBlue p-8 rounded-lg shadow-lg mt-8 sm:mt-0">
       <h2 className="text-3xl mb-6">Join the PC-Builder Community</h2>
       <p className="mb-4">
         Building a PC is not just about the hardware; it's also about the community. Join our PC-Builder community and connect with fellow PC enthusiasts from around the world.
@@ -137,7 +138,7 @@ function Home() {
 
 
       {/* Section 2 */}
-      <section className="w-5/6 justify-center m-auto">
+      <section className="w-5/6 justify-center mt-20 m-auto">
         <div>
           <p className="text-xxl text-center">Shop by Category</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
