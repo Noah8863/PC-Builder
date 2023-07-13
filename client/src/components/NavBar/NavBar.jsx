@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Icon from "../../images/pc-builder-icon.png"
 import "../../index.css";
 
 function NavBar() {
@@ -18,7 +19,7 @@ function NavBar() {
     <header className="bg-gray-800 z-3">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         <div>
-          <h1 className="text-white font-bold text-xxl">PC Builder</h1>
+          <a href="/"><img src={Icon} alt="pc-buildericon" className="w-40"></img></a>
         </div>
         <div>
           <a href="/"><button className="px-4 py-2 text-white text-xl hover:underline">Home</button></a>
