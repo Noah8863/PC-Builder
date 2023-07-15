@@ -8,7 +8,7 @@ const firebaseConfig = {
     projectId: 'pc-builder-dev',
     storageBucket: 'pc-builder-dev.appspot.com',
     messagingSenderId: '220933659112',
-    appId: 'web:b8415116fde3167e906c5d'
+    appId: '220933659112:web:b8415116fde3167e906c5d'
   };
   
   // Initialize Firebase

@@ -10,29 +10,29 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul>
               <li>
-                <a href="https://openai.com/blog/chatgpt">ChatGPT</a>
+                <a href="https://openai.com/blog/chatgpt" target="_blank" rel="noopener noreferrer">ChatGPT</a>
               </li>
               <li>
-                <a href="https://firebase.google.com/">Firebase</a>
+                <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer">Firebase</a>
               </li>
               <li>
-                <a href="https://react.dev/">React</a>
+                <a href="https://react.dev/" target="_blank" rel="noopener noreferrer">React</a>
               </li>
             </ul>
           </div>
 
           {/* Company */}
           <div className="text-white">
-            <h3 className="text-lg font-semibold mb-4">Company</h3>
+            <h3 className="text-lg font-semibold mb-4" >Company</h3>
             <ul>
               <li>
-                <a href="#">Link 1</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Link 1</a>
               </li>
               <li>
-                <a href="#">Link 2</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Link 2</a>
               </li>
               <li>
-                <a href="#">Link 3</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Link 3</a>
               </li>
             </ul>
           </div>
@@ -42,13 +42,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Social</h3>
             <ul>
               <li>
-                <a href="https://github.com/Noah8863">GitHub</a>
+                <a href="https://github.com/Noah8863" target="_blank" rel="noopener noreferrer">GitHub</a>
               </li>
               <li>
-                <a href="https://www.linkedin.com/in/noah-hoffman-9975a7121">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/noah-hoffman-9975a7121" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </li>
               <li>
-                <a href="https://github.com/Noah8863/PC-Builder">GitHub Repo</a>
+                <a href="https://github.com/Noah8863/PC-Builder" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
               </li>
             </ul>
           </div>
