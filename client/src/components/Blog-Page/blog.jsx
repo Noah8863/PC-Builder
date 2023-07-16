@@ -1,10 +1,24 @@
-import React, { useState } from "react";
-import {db} from "../../config/firebase"
+import React, { useState, useEffect } from "react";
+import {db} from "../../config/firebase";
+import {getDocs, collection} from "firebase/firestore";
 
 function BlogComponent() {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
   const [blogPosts, setBlogPosts] = useState([]);
+  const blogCollectionRef = collection(db, "blogPosts")
+
+  useEffect(() => {
+    const getBlogPost = async () => {
+        try {
+            const data = await getDocs(blogCollectionRef);
+            console.log(data)
+        } catch (err) {
+            console.error(err)
+        }
+        getBlogPost()
+    }
+  }, [])
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
