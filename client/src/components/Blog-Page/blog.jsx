@@ -1,24 +1,29 @@
 import React, { useState, useEffect } from "react";
-import {db} from "../../config/firebase";
-import {getDocs, collection} from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { getDocs, collection } from "firebase/firestore";
 
 function BlogComponent() {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
   const [blogPosts, setBlogPosts] = useState([]);
-  const blogCollectionRef = collection(db, "blogPosts")
+  const blogCollectionRef = collection(db, "blogPosts");
 
   useEffect(() => {
     const getBlogPost = async () => {
-        try {
-            const data = await getDocs(blogCollectionRef);
-            console.log(data)
-        } catch (err) {
-            console.error(err)
-        }
-        getBlogPost()
-    }
-  }, [])
+      try {
+        const data = await getDocs(blogCollectionRef);
+        const filteredData = data.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setBlogPosts(filteredData)
+        console.log(filteredData)
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    getBlogPost();
+  }, []);
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
@@ -88,6 +93,7 @@ function BlogComponent() {
           </div>
         ))}
       </section>
+      
     </div>
   );
 }
