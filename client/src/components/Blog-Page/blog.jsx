@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../config/firebase";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 
 function BlogComponent() {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
   const [blogPosts, setBlogPosts] = useState([]);
   const blogCollectionRef = collection(db, "blogPosts");
+
+  //New Blog States
+  const [newblog, setNewBlog] = useState("");
+  const [newBlogTitle, setNewBlogTitle] = useState("");
+  const [newBlogDate, setNewBlogDate] = useState(7162023);
 
   useEffect(() => {
     const getBlogPost = async () => {
@@ -16,8 +21,8 @@ function BlogComponent() {
           ...doc.data(),
           id: doc.id,
         }));
-        setBlogPosts(filteredData)
-        console.log(filteredData)
+        setBlogPosts(filteredData);
+        console.log(filteredData);
       } catch (err) {
         console.error(err);
       }
@@ -25,24 +30,16 @@ function BlogComponent() {
     getBlogPost();
   }, []);
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handlePostChange = (e) => {
-    setPost(e.target.value);
-  };
-
-  const handleCreatePost = () => {
-    const newPost = {
-      title: title,
-      post: post,
-      date: new Date().toLocaleString(),
-    };
-
-    setBlogPosts([...blogPosts, newPost]);
-    setTitle("");
-    setPost("");
+  const submitBlogPost = async () => {
+    try {
+      await addDoc(blogCollectionRef, {
+        title: newBlogTitle,
+        post: newblog,
+        date: newBlogDate,
+      });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -54,11 +51,11 @@ function BlogComponent() {
             Title:
           </label>
           <input
-            type="text"
-            id="title"
-            className="border border-gray-300 rounded-md p-2 w-full"
-            value={title}
-            onChange={handleTitleChange}
+           
+           
+            className="border border-gray-300 rounded-md p-2 w-full text-black"
+            
+            onChange={(e) => setNewBlogTitle(e.target.value)}
           />
         </div>
         <div className="mb-4">
@@ -66,14 +63,14 @@ function BlogComponent() {
             Post:
           </label>
           <textarea
-            id="post"
+           
             className="border border-gray-300 rounded-md p-2 w-full h-40"
-            value={post}
-            onChange={handlePostChange}
+            
+            onChange={(e) => setNewBlog(e.target.value)}
           ></textarea>
         </div>
         <button
-          onClick={handleCreatePost}
+          onClick={submitBlogPost}
           className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
         >
           Create Post
@@ -87,13 +84,12 @@ function BlogComponent() {
             key={index}
             className="bg-white border border-gray-300 rounded-md p-4 mb-4"
           >
+            <p className="text-gray-600">{post.date}</p>
             <h3 className="text-lg font-bold">{post.title}</h3>
             <p className="mb-2">{post.post}</p>
-            <p className="text-gray-600">{post.date}</p>
           </div>
         ))}
       </section>
-      
     </div>
   );
 }
