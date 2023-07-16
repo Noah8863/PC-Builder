@@ -2,7 +2,7 @@ import "./index.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar/NavBar.jsx";
-import Footer from "./components/Footer/footer.jsx"
+import Footer from "./components/Footer/footer.jsx";
 import Motherboards from "./components/Motherboard-Page/motherboard.jsx";
 import CPU from "./components/CPU-Page/cpu.jsx";
 import GPU from "./components/GPU-Page/gpu.jsx";
@@ -14,11 +14,9 @@ import Home from "./components/Home/home.jsx";
 import Login from "./components/login/login.jsx";
 import SignUp from "./components/signup/signup.jsx";
 import BlogPage from "./components/Blog-Page/blog.jsx";
-import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <AuthProvider>
     <Router>
       <NavBar />
       <Routes>
@@ -36,7 +34,6 @@ function App() {
       </Routes>
       <Footer />
     </Router>
-    </AuthProvider>
   );
 }
 
