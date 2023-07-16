@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { auth, googleProvider } from "../../config/firebase";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, googleProvider, gitHubProvider } from "../../config/firebase";
+import { createUserWithEmailAndPassword, signInWithPopup} from "firebase/auth";
 import googleIcon from "../../images/googleIcon.png";
+import GitHubIcon from "../../images/GitHubIcon.png";
 
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
 
   const signIn = async () => {
     try {
@@ -18,6 +20,14 @@ function SignUp() {
   const signInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const signInWithGitHub = async () => {
+    try {
+      await signInWithPopup(auth, gitHubProvider);
     } catch (err) {
       console.error(err);
     }
@@ -97,6 +107,14 @@ function SignUp() {
               >
                 <span>Sign In With Google</span>
                 <img className="w-6 ml-4" src={googleIcon} alt="Google Icon" />
+              </button>
+              <button
+                type="submit"
+                onClick={signInWithGitHub}
+                className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              >
+                <span>Sign In With GitHub</span>
+                <img className="w-6 ml-4" src={GitHubIcon} alt="Google Icon" />
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}

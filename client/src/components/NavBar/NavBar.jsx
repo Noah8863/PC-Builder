@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { auth } from "../../config/firebase";
+import { signOut } from "firebase/auth";
 import Icon from "../../images/pc-builder-icon.png"
 import "../../index.css";
 
@@ -14,6 +16,15 @@ function NavBar() {
     setSelectedOption(option);
     setIsOpen(false);
   };
+
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
 
   return (
     <header className="bg-gray-800 z-3">
@@ -108,6 +119,7 @@ function NavBar() {
           </div>
           <a href="/Blog"><button className="px-4 py-2 text-white text-xl hover:underline">Blog</button></a>
          <a href="/Login"><button className="px-4 py-2 text-white text-xl hover:underline">Login</button></a>
+         <button className="px-4 py-2 text-white text-xl hover:underline" onClick={logOut}>LogOut</button>
         </div>
       </div>
     </header>
