@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../config/firebase";
-import { getDocs, collection, addDoc, doc, updateDoc } from "firebase/firestore";
+import { db, auth, storage } from "../../config/firebase";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
+import { ref, uploadBytes } from "firebase/storage";
 
 function BlogComponent() {
-  const [title, setTitle] = useState("");
-  const [post, setPost] = useState("");
   const [blogPosts, setBlogPosts] = useState([]);
   const blogCollectionRef = collection(db, "blogPosts");
 
   //New Blog States
-  const [newblog, setNewBlog] = useState("");
+  const [newBlog, setNewBlog] = useState("");
   const [newBlogTitle, setNewBlogTitle] = useState("");
   const [newBlogDate, setNewBlogDate] = useState(7162023);
-  
+
   const [updatedTitle, setUpdatedTitle] = useState("");
-  
+
+  //File Upload State
+  const [fileUpload, setFileUpload] = useState(null);
 
   const getBlogPost = async () => {
     try {
@@ -35,22 +42,38 @@ function BlogComponent() {
   }, []);
 
   const submitBlogPost = async () => {
+    if (!auth.currentUser) {
+      alert("Please sign in");
+      return;
+    }
     try {
       await addDoc(blogCollectionRef, {
         title: newBlogTitle,
-        post: newblog,
+        post: newBlog,
         date: newBlogDate,
+        userId: auth?.currentUser?.uid,
       });
       getBlogPost();
     } catch (err) {
       console.error(err);
+      alert("There has been an issue, please try again");
     }
   };
 
-  const updateBlogTitle = async (id, ) => {
+  const updateBlogTitle = async (id) => {
     const postDoc = doc(db, "blogPosts", id);
-    await updateDoc(postDoc, {title: updatedTitle})
-  }
+    await updateDoc(postDoc, { title: updatedTitle });
+  };
+
+  const uploadFile = async () => {
+    if (!fileUpload) return;
+    const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
+    try {
+      await uploadBytes(filesFolderRef, fileUpload);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div className="container mx-auto p-4">
@@ -80,6 +103,8 @@ function BlogComponent() {
         >
           Create Post
         </button>
+        <input type="file" onChange={(e) => setFileUpload(e.target.files[0])} />
+        <button onClick={uploadFile}>Upload File</button>
       </section>
 
       <section className="mt-8">
@@ -92,12 +117,16 @@ function BlogComponent() {
             <p className="text-gray-600">{post.date}</p>
 
             <h3 className="text-xxl font-bold">{post.title}</h3>
-            <input className="text-lg" placeholder="Edit Title..." onChange={(e) => setUpdatedTitle(e.target.value)} />
-            <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button>
+            <input
+              className="text-lg"
+              placeholder="Edit Title..."
+              onChange={(e) => setUpdatedTitle(e.target.value)}
+            />
+            {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button> */}
 
             <p className="mb-2 text-xl">{post.post}</p>
-            <input className="text-lg" placeholder="Edit Post..."/>
-            <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Update Post</button>
+            <input className="text-lg" placeholder="Edit Post..." />
+            {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Update Post</button> */}
           </div>
         ))}
       </section>

@@ -14,6 +14,7 @@ import Home from "./components/Home/home.jsx";
 import Login from "./components/login/login.jsx";
 import SignUp from "./components/signup/signup.jsx";
 import BlogPage from "./components/Blog-Page/blog.jsx";
+import AccountPage from "./components/Account-page/account.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Blog" element={<BlogPage />} />
+        <Route path="/Account" element={<AccountPage />} />
       </Routes>
       <Footer />
     </Router>
