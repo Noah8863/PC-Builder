@@ -103,10 +103,10 @@ function Home() {
   return (
     <main className="m-auto justify-center h-full relative">
     {/* Section 1 */}
-    <header className="customBackground h-screen items-center justify-center pt-10 relative">
+    <header className="customBackground h-screen items-center justify-center pt-2 relative">
       <p className="text-2xl text-center">Welcome to the PC Builder community!</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-5/6 md:w-3/4 lg:w-1/2 max-h-2 mx-auto ">
-        <div className="bg-customBlue p-8 rounded-lg shadow-lg">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-5/6 md:w-3/4 max-h-2 mx-auto ">
+        <div className="bg-customBlue p-4 rounded-lg shadow-lg">
           <h2 className=" mb-2 md:text-3xl sm:text-2xl">Build Your Dream PC</h2>
           <p className="mb-4">
             Are you looking to build your own custom PC? Our PC-Builder project offers a wide range of high-quality PC components to help you create the perfect system tailored to your needs.
@@ -124,7 +124,7 @@ function Home() {
             Sign Up Now
           </a>
         </div>
-        <div className="bg-customBlue p-8 rounded-lg shadow-lg sm:mt-0 relative">
+        <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
           <p className="md:text-3xl sm:text-2xl mb-2">Join the PC-Builder Community</p>
           <p className="mb-2">
             Building a PC is not just about the hardware; it's also about the community. Join our PC-Builder community and connect with fellow PC enthusiasts from around the world.
