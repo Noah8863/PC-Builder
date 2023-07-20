@@ -204,10 +204,10 @@ function Home() {
         </div>
         {/* Section 3 */}
 
-        <p className="text-2xl text-white text-center">
+        <p className="text-2xl text-black text-center p-4">
           Check out these hot deals across all categories!
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue">
           {Object.entries(partCategorie).map(([category, prefixes]) => {
             const cheapestItem = findCheapestItem(prefixes);
             return (
@@ -221,7 +221,7 @@ function Home() {
                     <img
                       src={cheapestItem.img}
                       alt={cheapestItem.title}
-                      className="w-60 max-h-60 p-2 z-1"
+                      className="w-full z-1"
                     />
                   </div>
                   <p>Title: {cheapestItem.title}</p>
@@ -232,10 +232,10 @@ function Home() {
           })}
         </div>
         <div>
-          <p className="text-2xl text-white text-center">
+          <p className="text-2xl text-black text-center">
             Looking to maximize the preformance of your PC? We got you covered!
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-7 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
             {Object.entries(partCategories).map(([category, prefixes]) => {
               const mostExpensiveItem = findMostExpensiveItem(prefixes);
               return (
