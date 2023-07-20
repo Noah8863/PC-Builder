@@ -102,48 +102,63 @@ function Home() {
 
   return (
     <main className="m-auto justify-center h-full relative">
-    {/* Section 1 */}
-    <header className="customBackground h-screen items-center justify-center pt-2 relative">
-      <p className="text-2xl text-center">Welcome to the PC Builder community!</p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-5/6 md:w-3/4 max-h-2 mx-auto ">
-        <div className="bg-customBlue p-4 rounded-lg shadow-lg">
-          <h2 className=" mb-2 md:text-3xl sm:text-2xl">Build Your Dream PC</h2>
-          <p className="mb-4">
-            Are you looking to build your own custom PC? Our PC-Builder project offers a wide range of high-quality PC components to help you create the perfect system tailored to your needs.
-          </p>
-          <p className="mb-4">
-            From powerful CPUs and GPUs to reliable motherboards and memory modules, we have all the essential components you need to bring your dream PC to life.
-          </p>
-          <p className="mb-4">
-            Explore our extensive collection and start building your PC today!
-          </p>
-          <a
-            href="/signup"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
-          >
-            Sign Up Now
-          </a>
+      {/* Section 1 */}
+      <header className="customBackground h-screen items-center justify-center pt-2 relative">
+        <p className="text-2xl text-center">
+          Welcome to the PC Builder community!
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-5/6 md:w-3/4 max-h-2 mx-auto ">
+          <div className="bg-customBlue p-4 rounded-lg shadow-lg">
+            <h2 className=" mb-2 md:text-3xl sm:text-2xl">
+              Build Your Dream PC
+            </h2>
+            <p className="mb-4">
+              Are you looking to build your own custom PC? Our PC-Builder
+              project offers a wide range of high-quality PC components to help
+              you create the perfect system tailored to your needs.
+            </p>
+            <p className="mb-4">
+              From powerful CPUs and GPUs to reliable motherboards and memory
+              modules, we have all the essential components you need to bring
+              your dream PC to life.
+            </p>
+            <p className="mb-4">
+              Explore our extensive collection and start building your PC today!
+            </p>
+            <a
+              href="/signup"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
+            >
+              Sign Up Now
+            </a>
+          </div>
+          <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
+            <p className="md:text-3xl sm:text-2xl mb-2">
+              Join the PC-Builder Community
+            </p>
+            <p className="mb-2">
+              Building a PC is not just about the hardware; it's also about the
+              community. Join our PC-Builder community and connect with fellow
+              PC enthusiasts from around the world.
+            </p>
+            <p className="mb-2">
+              Share your experiences, ask questions, and learn from others. Our
+              community blog is the perfect place to discuss PC building tips,
+              troubleshoot issues, and stay up-to-date with the latest trends.
+            </p>
+            <p className="mb-2">
+              Whether you're a beginner or an experienced builder, our community
+              is here to support you throughout your PC-building journey.
+            </p>
+            <a
+              href="/signup"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
+            >
+              Join the Community
+            </a>
+          </div>
         </div>
-        <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
-          <p className="md:text-3xl sm:text-2xl mb-2">Join the PC-Builder Community</p>
-          <p className="mb-2">
-            Building a PC is not just about the hardware; it's also about the community. Join our PC-Builder community and connect with fellow PC enthusiasts from around the world.
-          </p>
-          <p className="mb-2">
-            Share your experiences, ask questions, and learn from others. Our community blog is the perfect place to discuss PC building tips, troubleshoot issues, and stay up-to-date with the latest trends.
-          </p>
-          <p className="mb-2">
-            Whether you're a beginner or an experienced builder, our community is here to support you throughout your PC-building journey.
-          </p>
-          <a
-            href="/signup"
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
-          >
-            Join the Community
-          </a>
-        </div>
-      </div>
-    </header>
+      </header>
 
       {/* Section 2 */}
       <section className="w-5/6 justify-center item-center m-auto relative ">
@@ -207,6 +222,7 @@ function Home() {
         <p className="text-2xl text-black text-center p-4">
           Check out these hot deals across all categories!
         </p>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue">
           {Object.entries(partCategorie).map(([category, prefixes]) => {
             const cheapestItem = findCheapestItem(prefixes);
