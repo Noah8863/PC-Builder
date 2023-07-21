@@ -48,7 +48,7 @@ const Footer = () => {
                 <a href="https://www.linkedin.com/in/noah-hoffman-9975a7121" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </li>
               <li>
-                <a href="https://github.com/Noah8863/PC-Builder" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
+                <a href="https://github.com/Noah8863/PC-Builder" target="_blank" rel="noopener noreferrer">Open Source Code</a>
               </li>
             </ul>
           </div>

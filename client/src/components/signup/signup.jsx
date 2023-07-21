@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import { auth, googleProvider, gitHubProvider } from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
+
 import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
 
 function SignUp() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const signIn = async () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      alert("Sign-up successful!"); // Display the alert
+      navigate("/Blog");
     } catch (err) {
       console.error(err);
     }
@@ -48,7 +53,7 @@ function SignUp() {
               Create an account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
-            <div>
+              <div>
                 <label
                   htmlFor="firstName"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -56,13 +61,12 @@ function SignUp() {
                   First Name
                 </label>
                 <input
-                  
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="John"
                   required=""
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="email"
@@ -77,7 +81,7 @@ function SignUp() {
                   required=""
                 />
               </div>
-              
+
               <div>
                 <label
                   htmlFor="password"
