@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { auth, googleProvider, gitHubProvider } from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import Alert from "../Alerts/alert.jsx";
 
 import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
@@ -10,12 +11,17 @@ function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const signIn = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Sign-up successful!"); // Display the alert
-      navigate("/Blog");
+      if (email && password) {
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Sign-up successful!"); // Display the alert
+        navigate("/Blog");
+      } else {
+        setShowAlert(true);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -40,6 +46,9 @@ function SignUp() {
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
+      {showAlert && (
+        <Alert type="blue" message="Please fill out both email and password fields." />
+      )}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <a
           href="/"
@@ -111,14 +120,14 @@ function SignUp() {
                 <span>Sign In With Google</span>
                 <img className="w-6 ml-4" src={googleIcon} alt="Google Icon" />
               </button>
-              <button
+              {/* <button
                 type="submit"
                 onClick={signInWithGitHub}
                 className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 <span>Sign In With GitHub</span>
                 <img className="w-6 ml-4" src={GitHubIcon} alt="Google Icon" />
-              </button>
+              </button> */}
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <a
