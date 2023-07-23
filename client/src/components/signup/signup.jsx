@@ -1,6 +1,12 @@
 import React, { useState } from "react";
-import { auth, googleProvider, gitHubProvider } from "../../config/firebase";
+import {
+  auth,
+  googleProvider,
+  gitHubProvider,
+  storage,
+} from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { ref, uploadBytes } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
 
@@ -8,12 +14,18 @@ import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
 
 function SignUp() {
+  //navigate to another page after login successful
   const navigate = useNavigate();
+
+  //New account data
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [reEnterPassword, setEnterPassword] = useState("");
+  const [fileUpload, setFileUpload] = useState(null);
+
+  //Alert and next questions states
   const [showAlert, setShowAlert] = useState(false);
   const [showAdditionalQuestions, setShowAdditionalQuestions] = useState(false);
 
@@ -47,9 +59,25 @@ function SignUp() {
     }
   };
 
+  //If all input fields are true, show next quetions
   const handleNext = () => {
     if (firstName && lastName && email) {
       setShowAdditionalQuestions(true);
+    }
+  };
+
+  const areFieldsFilled = () => {
+    return firstName && lastName && email && password;
+  };
+
+  //Upload profile image logic to firebase
+  const uploadFile = async () => {
+    if (!fileUpload) return;
+    const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
+    try {
+      await uploadBytes(filesFolderRef, fileUpload);
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -146,9 +174,9 @@ function SignUp() {
                       <input
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        type="password"
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      
                       />
                     </div>
                     <div>
@@ -160,13 +188,33 @@ function SignUp() {
                         Re-Enter Password
                       </label>
                       <input
-                        value={reEnterPassword}
-                        onChange={(e) => setPassword(e.target.value)}
+                        
+                        type="password"
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
-                    
+
+                    {/* Upload profile picture to firebase */}
+                    <div className="mt-4 mb-4">
+                    <label
+                        htmlFor="reEnterPassword"
+                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                        required=""
+                      >
+                        Profile Picture *optional
+                      </label>
+                      <input
+                        type="file"
+                        onChange={(e) => setFileUpload(e.target.files[0])}
+                      />
+                      <button
+                        className="w-full mt-4 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        onClick={uploadFile}
+                      >
+                        Upload Profile Picture
+                      </button>
+                    </div>
                   </div>
                 )}
 
@@ -175,6 +223,7 @@ function SignUp() {
                     type="submit"
                     onClick={signIn}
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                    disabled={!areFieldsFilled()}
                   >
                     Create an account
                   </button>
