@@ -1,5 +1,7 @@
 # PC Builder Project
 
+## Still under construction! 🔨
+
 Welcome to the PC Builder project! This is a web application that allows users to build and customize their own PC configurations.
 
 ## Table of Contents
