@@ -7,7 +7,7 @@ import {
 } from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { ref, uploadBytes } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
 
 import googleIcon from "../../images/googleIcon.png";
@@ -34,7 +34,13 @@ function SignUp() {
       if (email && password) {
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Sign-up successful!"); // Display the alert
-        navigate("/Blog");
+        const userData = {
+          firstName,
+          lastName,
+          email,
+          password,
+        }
+        navigate("/Account", { state: userData });
       } else {
         setShowAlert(true);
       }
@@ -188,7 +194,6 @@ function SignUp() {
                         Re-Enter Password
                       </label>
                       <input
-                        
                         type="password"
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
