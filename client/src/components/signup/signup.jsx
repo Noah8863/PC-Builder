@@ -4,7 +4,7 @@ import {
   googleProvider,
   gitHubProvider,
   storage,
-  db
+  db,
 } from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -30,6 +30,7 @@ function SignUp() {
   //Alert and next questions states
   const [showAlert, setShowAlert] = useState(false);
   const [showAdditionalQuestions, setShowAdditionalQuestions] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const signIn = async () => {
     try {
@@ -41,7 +42,7 @@ function SignUp() {
           lastName,
           email,
           password,
-        }
+        };
         navigate("/Account", { state: userData });
       } else {
         setShowAlert(true);
@@ -81,7 +82,10 @@ function SignUp() {
   //Upload profile image logic to firebase
   const uploadFile = async () => {
     if (!profilePicture) return;
-    const profileFolderRef = ref(storage, `profilePictureFiles/${profilePicture.name}`);
+    const profileFolderRef = ref(
+      storage,
+      `profilePictureFiles/${profilePicture.name}`
+    );
     try {
       await uploadBytes(profileFolderRef, profilePicture);
       const downloadURL = await getDownloadURL(profileFolderRef);
@@ -89,7 +93,7 @@ function SignUp() {
         firstName,
         lastName,
         email,
-        profilePictureURL: downloadURL
+        profilePictureURL: downloadURL,
       });
     } catch (err) {
       console.error(err);
@@ -189,7 +193,7 @@ function SignUp() {
                       <input
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        type="password"
+                        type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
@@ -203,15 +207,24 @@ function SignUp() {
                         Re-Enter Password
                       </label>
                       <input
-                        type="password"
+                        type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setShowPassword((prevShowPassword) => !prevShowPassword)
+                      }
+                      className="text-blue-600 hover:text-blue-800"
+                    >
+                      {showPassword ? "Hide Password" : "Show Password"}
+                    </button>
 
                     {/* Upload profile picture to firebase */}
                     <div className="mt-4 mb-4">
-                    <label
+                      <label
                         htmlFor="reEnterPassword"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         required=""
@@ -252,14 +265,14 @@ function SignUp() {
                 <span>Sign In With Google</span>
                 <img className="w-6 ml-4" src={googleIcon} alt="Google Icon" />
               </button>
-              {/* <button
+              <button
                 type="submit"
                 onClick={signInWithGitHub}
                 className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 <span>Sign In With GitHub</span>
                 <img className="w-6 ml-4" src={GitHubIcon} alt="Google Icon" />
-              </button> */}
+              </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <a
