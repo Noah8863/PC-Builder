@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import Alert from "../Alerts/alert.jsx";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -21,13 +23,18 @@ function Login() {
         setShowAlert(true); // Display the alert if email or password is missing
       }
     } catch (err) {
-      console.error(err); // Handle any login errors here
+      if (err.code === "auth/user-not-found") {
+        setLoginError("User not found. Please check your email or sign up.");
+      } else {
+        setLoginError("An unexpected error occurred. Please try again later.");
+      } // Handle any login errors here
     }
   };
 
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/login/ for more details
     <section className="bg-gray-900">
+      {showAlert && <Alert type="blue" message={loginError} />}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <a
           href="/"
@@ -40,7 +47,7 @@ function Login() {
             <h1 className="text-xl font-bold leading-tight tracking-tight text-black">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleLogin}>
               <div>
                 <label
                   htmlFor="email"
