@@ -4,10 +4,11 @@ import {
   googleProvider,
   gitHubProvider,
   storage,
+  db
 } from "../../config/firebase";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { ref, uploadBytes } from "firebase/storage";
-import { useNavigate, useLocation } from "react-router-dom";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
 
 import googleIcon from "../../images/googleIcon.png";
@@ -23,6 +24,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [reEnterPassword, setEnterPassword] = useState("");
+  const [profilePicture, setProfilePicture] = useState(null);
   const [fileUpload, setFileUpload] = useState(null);
 
   //Alert and next questions states
@@ -78,10 +80,17 @@ function SignUp() {
 
   //Upload profile image logic to firebase
   const uploadFile = async () => {
-    if (!fileUpload) return;
-    const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
+    if (!profilePicture) return;
+    const profileFolderRef = ref(storage, `profilePictureFiles/${profilePicture.name}`);
     try {
-      await uploadBytes(filesFolderRef, fileUpload);
+      await uploadBytes(profileFolderRef, profilePicture);
+      const downloadURL = await getDownloadURL(profileFolderRef);
+      await db.collection("users").add({
+        firstName,
+        lastName,
+        email,
+        profilePictureURL: downloadURL
+      });
     } catch (err) {
       console.error(err);
     }
