@@ -129,9 +129,9 @@ function Motherboards() {
                           </p>
                         </div>
                       </div>
-                      <p className="text-xl">{part.manufacturer}</p>
-                      <p className="text-xl">{part.price}</p>
-                      <p className="text-xl">{part.model}</p>
+                      <p>Price: ${part.price}</p>
+                      <p>Manufacture: {part.manufacturer}</p>
+                      <p>Model: {part.model}</p>
                     </div>
                   </div>
                 ))}

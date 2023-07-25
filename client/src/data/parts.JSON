@@ -451,14 +451,14 @@
       },
       {
         "id": "GPU6",
-        "title" : "ASUS ROG Strix NVIDIA GeForce RTX 3090",
-        "model": "Strix NVIDIA GeForce RTX 3090",
-        "manufacturer": "ASUS",
+        "title" : "Intel Arc A750",
+        "model": "Arc A750",
+        "manufacturer": "Intel",
         "size": "Dual Slot",
-        "color": "RGB/Black",
-        "vRam": "24 GB",
-        "price": 1154.99,
-        "img" : "https://m.media-amazon.com/images/I/71MCUHMviGL._AC_SX679_.jpg"
+        "color": "Black",
+        "vRam": "8 GB",
+        "price": 219.99,
+        "img" : "https://m.media-amazon.com/images/I/71xE1Rn+D1L._AC_SX679_.jpg"
       },
       {
         "id": "GPU7",
@@ -473,14 +473,14 @@
       },
       {
         "id": "GPU8",
-        "title" : "PowerColor Red Devil AMD Radeon RX 6750 XT",
-        "model": "Radeon RX 6750 XT",
-        "manufacturer": "PowerColor",
+        "title" : "Intel Arc A770",
+        "model": "Arc A770",
+        "manufacturer": "Intel",
         "size": "Dual Slot",
         "color": "Black",
-        "vRam": "12 GB",
+        "vRam": "16 GB",
         "price": 449.99,
-        "img" : "https://m.media-amazon.com/images/I/81Uh+dyZ-+L._AC_SX679_.jpg"
+        "img" : "https://m.media-amazon.com/images/I/71rzJRZ7lIL._AC_SX679_.jpg"
       },
       {
         "id": "GPU9",
@@ -547,6 +547,28 @@
         "vRam": "16 GB",
         "price": 629.99,
         "img" : "https://m.media-amazon.com/images/I/81FTVf0jQCL._AC_SX679_.jpg"
+      },
+      {
+        "id": "GPU15",
+        "title" : "ASUS ROG Strix NVIDIA GeForce RTX 3090",
+        "model": "Strix NVIDIA GeForce RTX 3090",
+        "manufacturer": "ASUS",
+        "size": "Dual Slot",
+        "color": "RGB/Black",
+        "vRam": "24 GB",
+        "price": 1154.99,
+        "img" : "https://m.media-amazon.com/images/I/71MCUHMviGL._AC_SX679_.jpg"
+      },
+      {
+        "id": "GPU16",
+        "title" : "PowerColor Red Devil AMD Radeon RX 6750 XT",
+        "model": "Radeon RX 6750 XT",
+        "manufacturer": "PowerColor",
+        "size": "Dual Slot",
+        "color": "Black",
+        "vRam": "12 GB",
+        "price": 449.99,
+        "img" : "https://m.media-amazon.com/images/I/81Uh+dyZ-+L._AC_SX679_.jpg"
       }
       
     ],

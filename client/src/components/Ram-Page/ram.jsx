@@ -128,9 +128,9 @@ function Ram() {
                           </p>
                         </div>
                       </div>
-                      <p>{part.price}</p>
-                      <p>{part.manufacturer}</p>
-                      <p>{part.model}</p>
+                      <p>Price: ${part.price}</p>
+                      <p>Manufacture: {part.manufacturer}</p>
+                      <p>Model: {part.model}</p>
                     </div>
                   </div>
                 ))}
