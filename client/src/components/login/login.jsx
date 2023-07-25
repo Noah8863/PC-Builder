@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { auth } from "../../config/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      if (email && password) {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Login successful!"); // Display the alert
+        // Navigate to the user's account page or any other desired page
+        navigate("/Account");
+      } else {
+        setShowAlert(true); // Display the alert if email or password is missing
+      }
+    } catch (err) {
+      console.error(err); // Handle any login errors here
+    }
+  };
+
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/login/ for more details
     <section className="bg-gray-900">
@@ -31,6 +55,8 @@ function Login() {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="name@company.com"
                   required=""
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
@@ -47,6 +73,8 @@ function Login() {
                   placeholder="••••••••"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="flex items-center justify-between">
