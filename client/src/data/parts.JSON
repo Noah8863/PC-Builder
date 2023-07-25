@@ -175,6 +175,28 @@
         "socket" : "LGA 1700",
         "price": "249.99", 
         "img" : "https://m.media-amazon.com/images/I/81QVTuKByvL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB17",
+        "title" : "SHANGZHAOYUAN B85M PRO",
+        "manufacturer": "SHANGZHAOYUAN",
+        "model": "B85M PRO",
+        "size": "Micro-ATX",
+        "color": "Black",
+        "socket" : "LGA 1150",
+        "price": "89.99", 
+        "img" : "https://m.media-amazon.com/images/I/81pUruahDLL._AC_SX679_.jpg"
+      },
+      {
+        "id": "MB18",
+        "title" : "MSI PRO Z790-A",
+        "manufacturer": "MSI",
+        "model": "PRO Z790-A",
+        "size": "ATX",
+        "color": "Black",
+        "socket" : "LGA 1700",
+        "price": "239.99", 
+        "img" : "https://m.media-amazon.com/images/I/91z3fqxkfvL._AC_SX679_.jpg"
       }
     ],
     "cpus": [
@@ -321,6 +343,54 @@
         "clockSpeed": "4.8 Ghz",
         "price": 199.99,
         "img" : "https://m.media-amazon.com/images/I/61NF-5FBukL._AC_SX679_.jpg"
+      },
+      {
+        "id": "CPU13",
+        "title" : "Intel Core i7 6700K",
+        "model": "Core i7 6700K",
+        "manufacturer": "Intel",
+        "socket": "LGA 1151",
+        "core": "4", 
+        "threads" : "8",
+        "clockSpeed": "4 Ghz",
+        "price": 174.99,
+        "img" : "https://m.media-amazon.com/images/I/81grWqOTnDL._AC_SX679_.jpg"
+      },
+      {
+        "id": "CPU14",
+        "title" : "Intel Core i7-7700K",
+        "model": "Core i7-7700K",
+        "manufacturer": "Intel",
+        "socket": "LGA 1151",
+        "core": "4", 
+        "threads" : "8",
+        "clockSpeed": "4.2 Ghz",
+        "price": 395.99,
+        "img" : "https://m.media-amazon.com/images/I/51+86rrKIwL._AC_SX679_.jpg"
+      },
+      {
+        "id": "CPU15",
+        "title" : "AMD Ryzen 5 3600",
+        "model": "Ryzen 5 3600",
+        "manufacturer": "AMD",
+        "socket": "AM4",
+        "core": "6", 
+        "threads" : "12",
+        "clockSpeed": "3.6 Ghz",
+        "price": 79.99,
+        "img" : "https://m.media-amazon.com/images/I/715pzPNvLJL._AC_SX466_.jpg"
+      },
+      {
+        "id": "CPU16",
+        "title" : "AMD Ryzen 9 7900X3D",
+        "model": "Ryzen 9 7900X3D",
+        "manufacturer": "AMD",
+        "socket": "AM4",
+        "core": "12", 
+        "threads" : "24",
+        "clockSpeed": "5.6 Ghz",
+        "price": 599.99,
+        "img" : "https://m.media-amazon.com/images/I/51XuxSMsrzL._AC_SX679_.jpg"
       }
     ],
     "gpus": [
