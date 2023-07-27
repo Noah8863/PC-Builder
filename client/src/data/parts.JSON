@@ -762,7 +762,7 @@
         "color": "White/RGB",
         "speed" : "5200Mhz",  
         "type" : "DDR4",
-        "price": 17.99, 
+        "price": 89.99, 
         "img" : "https://m.media-amazon.com/images/I/81JEfdUVCTL._AC_SY355_.jpg"
       }
     ],
@@ -1043,6 +1043,76 @@
         "color": "Tan/Brown",
         "price": 21.95, 
         "img" : "https://m.media-amazon.com/images/I/81nbpVQbdcL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+      },
+
+
+
+
+      {
+        "id": "FAN11",
+        "title" : "Antec",
+        "model": "F12 Series",
+        "manufacturer": "Antec",
+        "size": "120mm",
+        "quantity": "5",
+        "color": "White/Black",
+        "price": 19.99, 
+        "img" : "https://m.media-amazon.com/images/I/41EpbL61iRL._SY445_SX342_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "FAN12",
+        "title" : "Antec",
+        "model": "F12 Racing",
+        "manufacturer": "Antec",
+        "size": "120mm",
+        "quantity": "5",
+        "color": "Black with RGB",
+        "price": 49.99, 
+        "img" : "https://m.media-amazon.com/images/I/71x0vhzWcoL._SX522_.jpg"
+      },
+      {
+        "id": "FAN13",
+        "title" : "Conisy RGB LED Series 120mm Case Fan",
+        "model": "RGB LED Series",
+        "manufacturer": "Conisy",
+        "size": "120mm",
+        "quantity": "2",
+        "color": "Black with RGB",
+        "price": 15.99, 
+        "img" : "https://m.media-amazon.com/images/I/71VT3Cw6HlL._SX522_.jpg"
+      },
+      {
+        "id": "FAN14",
+        "title" : "Cooler Master MasterFan MF120 Halo Duo-Ring",
+        "model": "MF120 Halo Duo-Ring",
+        "manufacturer": "Cooler Master",
+        "size": "120mm",
+        "quantity": "1",
+        "color": "Tan/Brown",
+        "price": 19.99, 
+        "img" : "https://m.media-amazon.com/images/I/51jscz1F8ZL._SY445_SX342_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "FAN15",
+        "title" : "Antec RGB Fans 120mm RGB Fans",
+        "model": "Neon Series",
+        "manufacturer": "Antec",
+        "size": "120mm",
+        "quantity": "5",
+        "color": "Black with RGB",
+        "price": 39.99, 
+        "img" : "https://m.media-amazon.com/images/I/717csDYV2kL._SX522_.jpg"
+      },
+      {
+        "id": "FAN16",
+        "title" : "Noctua NF-A14 iPPC-2000 PWM",
+        "model": "NF-A14",
+        "manufacturer": "Noctua",
+        "size": "140mm",
+        "quantity": "1",
+        "color": "Black/Brown",
+        "price": 29.99, 
+        "img" : "https://m.media-amazon.com/images/I/81lN+WV9TrL._AC_SY300_SX300_.jpg"
       }
     ],
     "powerSupply": [
