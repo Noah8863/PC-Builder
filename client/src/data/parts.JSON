@@ -716,6 +716,54 @@
         "type" : "DDR4",
         "price": 17.99, 
         "img" : "https://m.media-amazon.com/images/I/61j3CTxnXVL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "RAM13",
+        "title" : "Asgard Valkyrie Series 16GB",
+        "model": "Valkyrie Series",
+        "manufacturer": "Asgard",
+        "size": "16GB (2 x 8GB)",
+        "color": "White/RGB",
+        "speed" : "3200Mhz",  
+        "type" : "DDR4",
+        "price": 54.99, 
+        "img" : "https://m.media-amazon.com/images/I/61wizAuwBhL._AC_SY355_PIbundle-2,TopRight,0,0_SH20_.jpg"
+      },
+      {
+        "id": "RAM14",
+        "title" : "TEAMGROUP T-Create Expert",
+        "model": "T-Create Expert",
+        "manufacturer": "TEAMGROUP",
+        "size": "16GB (2 x 8GB)",
+        "color": "Grey",
+        "speed" : "3200Mhz",  
+        "type" : "DDR4",
+        "price": 30.99, 
+        "img" : "https://m.media-amazon.com/images/I/71lBdR146xL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "RAM15",
+        "title" : "Silicon Power DDR4 16GB",
+        "model": "Power DDR4 16GB",
+        "manufacturer": "Silicon",
+        "size": "16GB (2 x 8GB)",
+        "color": "Grey/RGB",
+        "speed" : "3200Mhz",  
+        "type" : "DDR4",
+        "price": 39.99, 
+        "img" : "https://m.media-amazon.com/images/I/51QnJNdq-qL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "RAM16",
+        "title" : "TEAMGROUP T-Force Delta RGB DDR5",
+        "model": "T-Force Delta",
+        "manufacturer": "TEAMGROUP",
+        "size": "32GB (2 x 16GB)",
+        "color": "White/RGB",
+        "speed" : "5200Mhz",  
+        "type" : "DDR4",
+        "price": 17.99, 
+        "img" : "https://m.media-amazon.com/images/I/81JEfdUVCTL._AC_SY355_.jpg"
       }
     ],
     "cases": [
