@@ -7,7 +7,7 @@ import {
   doc,
   updateDoc,
 } from "firebase/firestore";
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 
 function BlogComponent() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -22,6 +22,7 @@ function BlogComponent() {
 
   //File Upload State
   const [fileUpload, setFileUpload] = useState(null);
+  const [imageURL, setImageURL] = useState("");
 
   const getBlogPost = async () => {
     try {
@@ -47,12 +48,24 @@ function BlogComponent() {
       return;
     }
     try {
+      if (fileUpload) {
+        const imageRef = ref(storage, `blogImages/${fileUpload.name}`);
+        await uploadBytes(imageRef, fileUpload);
+        const downloadURL = await getDownloadURL(imageRef);
+        setImageURL(downloadURL);
+      }
+
       await addDoc(blogCollectionRef, {
         title: newBlogTitle,
         post: newBlog,
         date: newBlogDate,
         userId: auth?.currentUser?.uid,
+        imageURL: imageURL,
       });
+      setNewBlog("");
+      setNewBlogTitle("");
+      setNewBlogDate(7162023);
+      setImageURL("");
       getBlogPost();
     } catch (err) {
       console.error(err);
@@ -123,6 +136,9 @@ function BlogComponent() {
               onChange={(e) => setUpdatedTitle(e.target.value)}
             />
             {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button> */}
+            {post.imageURL && (
+              <img src={post.imageURL} alt="Blog Post" className="my-4" />
+            )}
 
             <p className="mb-2 text-xl">{post.post}</p>
             <input className="text-lg" placeholder="Edit Post..." />
