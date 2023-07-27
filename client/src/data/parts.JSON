@@ -1235,6 +1235,82 @@
         "modular" : "Fully Modular",
         "color" : "White",
         "img" : "https://m.media-amazon.com/images/I/61DyiqlbzKL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+      },
+
+
+
+
+      {
+        "id": "POWER11",
+        "title" : "EVGA 600W 80 Plus Certified",
+        "model": "600W 80 Plus",
+        "manufacturer": "EVGA",
+        "watts": "600w",
+        "powerRating": "80 Plus Standard Certified",
+        "price": 699.99, 
+        "modular" : "Semi Modular",
+        "color" : "Black",
+        "img" : "https://m.media-amazon.com/images/I/71CjvqEOAsL._AC_SX466_.jpg"
+      },
+      {
+        "id": "POWER12",
+        "title" : "Thermaltake Toughpower GF1 750W ",
+        "model": "Toughpower GF1",
+        "manufacturer": "Thermaltake",
+        "watts": "750W",
+        "powerRating": "80 Plus Gold",
+        "price": 99.99, 
+        "modular" : "Fully Modular",
+        "color" : "White",
+        "img" : "https://m.media-amazon.com/images/I/61HrSILVZDL._AC_SX466_.jpg"
+      },
+      {
+        "id": "POWER13",
+        "title" : "Corsair RM1000e Fully Modular",
+        "model": "RM1000e",
+        "manufacturer": "Corsair",
+        "watts": "1000w",
+        "powerRating": "80 Plus Gold",
+        "price": 179.99, 
+        "modular" : "Fully Modular",
+        "color" : "Black",
+        "img" : "https://m.media-amazon.com/images/I/71G+PGgT1fL._AC_SX466_.jpg"
+      },
+      {
+        "id": "POWER14",
+        "title" : "GAMEMAX 850W Power Supply",
+        "model": "RGB-850 Pro",
+        "manufacturer": "GAMEMAX",
+        "watts": "850w",
+        "powerRating": "80 Plus Gold",
+        "price": 129.99, 
+        "modular" : "Fully Modular",
+        "color" : "Black with RGB",
+        "img" : "https://m.media-amazon.com/images/I/81RHP6I2iuL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
+      },
+      {
+        "id": "POWER15",
+        "title" : "EVGA SuperNOVA 1000 GT",
+        "model": "SuperNOVA 1000 GT",
+        "manufacturer": "EVGA",
+        "watts": "1000w",
+        "powerRating": "80 Plus Gold",
+        "price": 189.99, 
+        "modular" : "Fully Modular",
+        "color" : "Black",
+        "img" : "https://m.media-amazon.com/images/I/61eS1N0pzmL._AC_SX466_.jpg"
+      },
+      {
+        "id": "POWER16",
+        "title" : "EVGA Supernova 650 G7",
+        "model": "Supernova 650 G7",
+        "manufacturer": "EVGA",
+        "watts": "650w",
+        "powerRating": "80 Plus Gold",
+        "price": 149.99, 
+        "modular" : "Fully Modular",
+        "color" : "Black/Blue",
+        "img" : "https://m.media-amazon.com/images/I/71b8C44VDoL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
       }
     ]
 }
