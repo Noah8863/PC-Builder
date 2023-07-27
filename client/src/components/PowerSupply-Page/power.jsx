@@ -112,11 +112,11 @@ function PowerSuppply() {
               {powerParts.length > 0 &&
                 powerParts.map((part, index) => (
                   <div key={index} className="relative">
-                    <div className="flex flex-col items-center justify-cent z-1">
+                    <div className="flex flex-col items-center justify-cent z-1 w-full h-5/6">
                       <img
                         src={part.img}
                         alt={part.title}
-                        className="w-80 h-auto p-2 z-1"
+                        className="w-60 h-auto p-2 z-1"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
