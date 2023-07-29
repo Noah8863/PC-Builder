@@ -13,6 +13,7 @@ Welcome to the PC Builder project! This is a web application that allows users t
   - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
+- [WireFrame](#wire-frame)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -79,6 +80,20 @@ Compare product specifications and prices to make informed decisions.
 React.js
 Tailwind CSS
 Firebase (Authentication and Firestore)
+
+## Wire Frame
+
+### Home Page
+![Screenshot (112)](https://github.com/Noah8863/PC-Builder/assets/60634270/9bc533da-6331-4d50-a167-e44bf56205cc)
+
+### Build Page
+![Screenshot (113)](https://github.com/Noah8863/PC-Builder/assets/60634270/08abd1f0-2bcc-4371-8252-7f6ceb3f6595)
+
+### Part Page
+![Screenshot (115)](https://github.com/Noah8863/PC-Builder/assets/60634270/0a434af8-d433-4378-8293-86899226dd40)
+
+### Signup/Login 
+![Screenshot (114)](https://github.com/Noah8863/PC-Builder/assets/60634270/5174fd91-4ddc-4af7-aa16-ae135dce8e02)
 
 ## Contributing
 I welcome contributions from the community! If you find any issues or have ideas for improvements, please feel free to open an issue or submit a pull request.
