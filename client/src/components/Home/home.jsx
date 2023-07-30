@@ -229,24 +229,30 @@ function Home() {
             return (
               <div
                 key={category}
-                className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center"
+                className="grid  bg-white m-4 items-center text-center  justify-center max-h-fit"
+                style={{ gridTemplateRows: "auto 75% auto" }} // Set the grid template rows
               >
-                <div className="grid bg-white">
-                  <h3>{category}</h3>
-                  <div className="p-4">
-                    <img
-                      src={cheapestItem.img}
-                      alt={cheapestItem.title}
-                      className="lg:w-60 sm:w-full z-1"
-                    />
-                  </div>
-                  <p>Title: {cheapestItem.title}</p>
-                  <p>Price: {cheapestItem.price}</p>
+                <div>
+                  <h3 className=" w-full h-10 text-center text-large">
+                    {category}
+                  </h3>
+                </div>
+                <div className="justify-center flex ">
+                  <img
+                    src={cheapestItem.img}
+                    alt={cheapestItem.title}
+                    className="lg:w-60 sm:w-full z-1"
+                  />
+                </div>
+                <div className="text-small h-auto">
+                  <p className="text-sm underline">{cheapestItem.title}</p>
+                  <p className="text-lg">Price: {cheapestItem.price}</p>
                 </div>
               </div>
             );
           })}
         </div>
+
         <div>
           <p className="text-2xl text-black text-center">
             Looking to maximize the preformance of your PC? We got you covered!
@@ -257,14 +263,20 @@ function Home() {
               return (
                 <div key={category} className=" grid">
                   <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                    <h3>{category}</h3>
+                    <h3 className=" w-full h-10 text-center text-large">{category}</h3>
                     <img
                       src={mostExpensiveItem.img}
                       alt={mostExpensiveItem.title}
-                      className="lg:w-60 sm:w-full z-1"
+                      className="lg:w-60 sm:w-full z-1 justify-center flex"
                     />
-                    <p>Title: {mostExpensiveItem.title}</p>
-                    <p>Price: {mostExpensiveItem.price}</p>
+                    <div className=" text-small h-auto">
+                      <p className="text-sm underline">
+                        {mostExpensiveItem.title}
+                      </p>
+                      <p className="text-lg">
+                        Price: {mostExpensiveItem.price}
+                      </p>
+                    </div>
                   </div>
                 </div>
               );
