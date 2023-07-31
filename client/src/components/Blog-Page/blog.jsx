@@ -45,6 +45,7 @@ function BlogComponent() {
   const submitBlogPost = async () => {
     if (!auth.currentUser) {
       alert("Please sign in");
+      console.log("not logged in!")
       return;
     }
     try {
@@ -130,18 +131,18 @@ function BlogComponent() {
             <p className="text-gray-600">{post.date}</p>
 
             <h3 className="text-xxl font-bold">{post.title}</h3>
-            <input
+            {/* <input
               className="text-lg"
               placeholder="Edit Title..."
               onChange={(e) => setUpdatedTitle(e.target.value)}
-            />
+            /> */}
             {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button> */}
             {post.imageURL && (
-              <img src={post.imageURL} alt="Blog Post" className="my-4" />
+              <img src={post.imageURL} alt="Blog Post" className="my-4 bg-blue-400 w-10 h-20" />
             )}
 
             <p className="mb-2 text-xl">{post.post}</p>
-            <input className="text-lg" placeholder="Edit Post..." />
+            {/* <input className="text-lg" placeholder="Edit Post..." /> */}
             {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Update Post</button> */}
           </div>
         ))}
