@@ -11,7 +11,7 @@ function NavBar() {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
+ 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
@@ -118,8 +118,28 @@ function NavBar() {
             )}
           </div>
           <a href="/Blog"><button className="px-4 py-2 text-white text-xl hover:underline">Blog</button></a>
-         <a href="/Login"><button className="px-4 py-2 text-white text-xl hover:underline">Login</button></a>
-         <button className="px-4 py-2 text-white text-xl hover:underline" onClick={logOut}>LogOut</button>
+         {/* Conditionally render "Account" and "Logout" if the user is signed in */}
+         {auth.currentUser ? (
+            <>
+              <a href="/Account">
+                <button className="px-4 py-2 text-white text-xl hover:underline">
+                  Account
+                </button>
+              </a>
+              <button
+                className="px-4 py-2 text-white text-xl hover:underline"
+                onClick={logOut}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <a href="/Login">
+              <button className="px-4 py-2 text-white text-xl hover:underline">
+                SignIn
+              </button>
+            </a>
+          )}
         </div>
       </div>
     </header>
