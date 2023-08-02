@@ -37,6 +37,22 @@ function SignUp() {
       if (email && password) {
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Sign-up successful!"); // Display the alert
+        if (profilePicture) {
+          const profileFolderRef = ref(
+            storage,
+            `profilePictureFiles/${profilePicture.name}`
+          );
+          await uploadBytes(profileFolderRef, profilePicture);
+          const downloadURL = await getDownloadURL(profileFolderRef);
+  
+          // Add user data to Firestore
+          await db.collection("users").add({
+            firstName,
+            lastName,
+            email,
+            profilePictureURL: downloadURL,
+          });
+        }
         const userData = {
           firstName,
           lastName,

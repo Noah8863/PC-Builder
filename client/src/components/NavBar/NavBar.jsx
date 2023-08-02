@@ -170,7 +170,7 @@ function NavBar() {
           ) : (
             <a href="/Login">
               <button className="px-4 py-2 text-white text-xl hover:underline">
-                SignIn
+                Sign In
               </button>
             </a>
           )}
