@@ -230,11 +230,6 @@ function Home() {
                   key={category}
                   className="grid">
                   <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                    <h3 className=" w-full h-10 text-center text-large">
-                      {category}
-                    </h3>
-                  
-                  
                     <img
                       src={cheapestItem.img}
                       alt={cheapestItem.title}
@@ -262,9 +257,6 @@ function Home() {
               return (
                 <div key={category} className=" grid">
                   <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                    <h3 className=" w-full h-10 text-center text-large">
-                      {category}
-                    </h3>
                     <img
                       src={mostExpensiveItem.img}
                       alt={mostExpensiveItem.title}
