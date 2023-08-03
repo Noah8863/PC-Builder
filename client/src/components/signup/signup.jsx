@@ -29,6 +29,7 @@ function SignUp() {
 
   //Alert and next questions states
   const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [showAdditionalQuestions, setShowAdditionalQuestions] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,7 +45,7 @@ function SignUp() {
           );
           await uploadBytes(profileFolderRef, profilePicture);
           const downloadURL = await getDownloadURL(profileFolderRef);
-  
+
           // Add user data to Firestore
           await db.collection("users").add({
             firstName,
@@ -65,6 +66,13 @@ function SignUp() {
       }
     } catch (err) {
       console.error(err);
+      if (err.code === "auth/email-already-in-use") {
+        // Check for email-already-in-use error
+        setErrorMessage("The email address is already in use."); // Set the error message state
+      } else {
+        setErrorMessage("An error occurred. Please try again later.");
+      }
+      setShowAlert(true); // Show the alert with the error message
     }
   };
 
@@ -88,18 +96,14 @@ function SignUp() {
   const handleNext = () => {
     if (firstName && lastName && email) {
       setShowAdditionalQuestions(true);
-    }
-    else {
+    } else {
       setShowAlert(true);
     }
   };
 
-  
-
   const areFieldsFilled = () => {
     return firstName && lastName && email && password;
   };
-
   //Upload profile image logic to firebase
   const uploadFile = async () => {
     if (!profilePicture) return;
@@ -120,16 +124,10 @@ function SignUp() {
       console.error(err);
     }
   };
-
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
-      {showAlert && (
-        <Alert
-          type="blue"
-          message="Please fill out all input fields"
-        />
-      )}
+      {showAlert && <Alert type="blue" message={errorMessage} />}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <a
           href="/"
@@ -156,7 +154,7 @@ function SignUp() {
                       <input
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John"
                         required=""
                       />
@@ -171,7 +169,7 @@ function SignUp() {
                       <input
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Smith"
                         required=""
                       />
@@ -230,7 +228,7 @@ function SignUp() {
                       <input
                         type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
                     <button
@@ -271,7 +269,6 @@ function SignUp() {
                     type="submit"
                     onClick={signIn}
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                    
                     disabled={!areFieldsFilled()}
                   >
                     Create an account
