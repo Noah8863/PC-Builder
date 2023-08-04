@@ -217,7 +217,10 @@ function Home() {
             </button>
           </div>
         </div>
+        
+        
         {/* Section 3 */}
+
         <div className="flex bg-customLightBlue mb-10">
           <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
             <div className="col-span-2 p-6 bg-customLightBlue">
@@ -239,7 +242,10 @@ function Home() {
                     />
 
                     <div className="text-small h-auto">
+                      <a href={cheapestItem.category}>
                       <p className="text-sm underline">{cheapestItem.title}</p>
+                      
+                      </a>
                       <p className="text-lg">Price: {cheapestItem.price}</p>
                     </div>
                   </div>
@@ -248,6 +254,8 @@ function Home() {
             })}
           </div>
         </div>
+
+      {/* Section 4 */}
 
         <div className="flex bg-customLightBlue mb-10">
           <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
