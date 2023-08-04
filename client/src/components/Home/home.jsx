@@ -6,6 +6,7 @@ import PowerSupplyImage from "../../images/psu.jpg";
 import FanImage from "../../images/fans.jpg";
 import RamImage from "../../images/ram.jpg";
 import CaseImage from "../../images/case.jpg";
+import MonitorImage from "../../images/monitor.jpg";
 import PCImage3 from "../../images/custom-PC-3.jpg";
 import "./style.css";
 
@@ -31,6 +32,7 @@ function Home() {
           ...jsonResult.cases,
           ...jsonResult.fans,
           ...jsonResult.powerSupply,
+          ...jsonResult.monitor,
         ];
         setAllParts(partList);
         setDataLoaded(true);
@@ -80,6 +82,7 @@ function Home() {
     FANS: ["FAN"],
     CASES: ["CASE"],
     POWERSUPPLY: ["POWER"],
+    MONITOR: ["MONITOR"],
   };
 
   const partCategorie = {
@@ -90,6 +93,7 @@ function Home() {
     FANS: ["FAN"],
     CASES: ["CASE"],
     POWERSUPPLY: ["POWER"],
+    MONITOR: ["MONITOR"],
   };
 
   if (!dataLoaded) {
@@ -214,6 +218,12 @@ function Home() {
                 <img src={CaseImage} alt="Case" className="max-w-40 max-h-40" />
               </a>
               Cases
+            </button>
+            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+              <a href="/Monitor">
+                <img src={MonitorImage} alt="Monitor" className="max-w-40 max-h-40" />
+              </a>
+              Monitor
             </button>
           </div>
         </div>
