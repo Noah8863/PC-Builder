@@ -218,40 +218,47 @@ function Home() {
           </div>
         </div>
         {/* Section 3 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
-          <div className="col-span-2 p-6 bg-customLightBlue">
-            <p className="text-2xl text-black text-center">
-              Check out these hot deals across all categories!
-            </p>
+        <div className="flex bg-customLightBlue mb-10">
+          <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
+            <div className="col-span-2 p-6 bg-customLightBlue">
+              <p className="text-2xl text-black text-center">
+                Check out these hot deals across all categories!
+              </p>
+            </div>
           </div>
-          {Object.entries(partCategorie).map(([category, prefixes]) => {
-            const cheapestItem = findCheapestItem(prefixes);
-            return (
-              <div key={category} className="grid">
-                <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                  <img
-                    src={cheapestItem.img}
-                    alt={cheapestItem.title}
-                    className="lg:w-60 sm:w-full z-1 justify-center flex"
-                  />
+          <div className="w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
+            {Object.entries(partCategorie).map(([category, prefixes]) => {
+              const cheapestItem = findCheapestItem(prefixes);
+              return (
+                <div key={category} className="grid">
+                  <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
+                    <img
+                      src={cheapestItem.img}
+                      alt={cheapestItem.title}
+                      className="lg:w-60 sm:w-full z-1 justify-center flex"
+                    />
 
-                  <div className="text-small h-auto">
-                    <p className="text-sm underline">{cheapestItem.title}</p>
-                    <p className="text-lg">Price: {cheapestItem.price}</p>
+                    <div className="text-small h-auto">
+                      <p className="text-sm underline">{cheapestItem.title}</p>
+                      <p className="text-lg">Price: {cheapestItem.price}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
-          <div className="col-span-2 p-6 bg-customLightBlue">
-          <p className="text-2xl text-black text-center">
-            Looking to maximize the preformance of your PC? We got you covered!
-          </p>
+        <div className="flex bg-customLightBlue mb-10">
+          <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
+            <div className="col-span-2 p-6 bg-customLightBlue">
+              <p className="text-2xl text-black text-center">
+                Looking to maximize the preformance of your PC? We got you
+                covered!
+              </p>
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
+          <div className="w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
             {Object.entries(partCategories).map(([category, prefixes]) => {
               const mostExpensiveItem = findMostExpensiveItem(prefixes);
               return (
@@ -276,6 +283,7 @@ function Home() {
             })}
           </div>
         </div>
+
       </section>
     </main>
   );
