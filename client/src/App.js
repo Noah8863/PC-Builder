@@ -15,6 +15,7 @@ import Login from "./components/login/login.jsx";
 import SignUp from "./components/signup/signup.jsx";
 import BlogPage from "./components/Blog-Page/blog.jsx";
 import AccountPage from "./components/Account-page/account.jsx";
+import MonitorPage from "./components/Monitor-Page/monitor.jsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Blog" element={<BlogPage />} />
         <Route path="/Account" element={<AccountPage />} />
+        <Route path="/Monitor" element={<MonitorPage />} />
       </Routes>
       <Footer />
     </Router>

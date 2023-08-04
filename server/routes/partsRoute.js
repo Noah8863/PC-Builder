@@ -45,4 +45,9 @@ router.get("/PowerSupply", (req, res) => {
   res.json(ptSupply);
 });
 
+router.get("/Monitor", (req, res) => {
+  const monitor = data.monitor;
+  res.json(monitor);
+});
+
 module.exports = router;
