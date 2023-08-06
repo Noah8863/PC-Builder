@@ -1538,15 +1538,15 @@
     {
       "id": "MONITOR10",
       "part": "Monitor",
-      "title": "",
-      "model": "",
-      "manufacturer": "",
-      "size": "",
-      "hz": "",
-      "price": 1,
-      "response": "",
-      "resolution": "",
-      "img": ""
+      "title": "LG UHD 32-Inch Monitor",
+      "model": "32UP83A-W",
+      "manufacturer": "LG",
+      "size": "32inch",
+      "hz": "60hz",
+      "price": 399.99,
+      "response": "10ms",
+      "resolution": "2160p",
+      "img": "https://m.media-amazon.com/images/I/91j2x5NZBiL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
     },
     {
       "id": "MONITOR11",
@@ -1577,15 +1577,15 @@
     {
       "id": "MONITOR13",
       "part": "Monitor",
-      "title": "",
-      "model": "",
-      "manufacturer": "",
-      "size": "",
-      "hz": "",
-      "price": 1,
-      "response": "",
-      "resolution": "",
-      "img": ""
+      "title": "SAMSUNG Odyssey G7 Series 32-Inch",
+      "model": "Odyssey G7",
+      "manufacturer": "SAMSUNG",
+      "size": "32 inch",
+      "hz": "240hz",
+      "price": 599.99,
+      "response": "1ms",
+      "resolution": "1440p",
+      "img": "https://m.media-amazon.com/images/I/61r-XPKCzKL._AC_SX466_.jpg"
     },
     {
       "id": "MONITOR14",
