@@ -137,7 +137,7 @@ function SignUp() {
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl ">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl ">
               Create an account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
@@ -147,14 +147,14 @@ function SignUp() {
                     <div>
                       <label
                         htmlFor="firstName"
-                        className="block mb-2 text-sm font-medium text-black "
+                        className="block mb-2 text-sm font-medium text-white "
                       >
                         First Name
                       </label>
                       <input
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John"
                         required=""
                       />
@@ -162,14 +162,14 @@ function SignUp() {
                     <div>
                       <label
                         htmlFor="firstName"
-                        className="block mb-2 text-sm font-medium text-black  "
+                        className="block mb-2 text-sm font-medium text-white  "
                       >
                         Last Name
                       </label>
                       <input
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Smith"
                         required=""
                       />
@@ -177,14 +177,14 @@ function SignUp() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-black  "
+                        className="block mb-2 text-sm font-medium text-white  "
                       >
                         Email Address
                       </label>
                       <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="name@company.com"
                         required=""
                       />
@@ -204,7 +204,7 @@ function SignUp() {
                     <div>
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-black "
+                        className="block mb-2 text-sm font-medium text-white "
                         required=""
                       >
                         Password
@@ -214,13 +214,13 @@ function SignUp() {
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="reEnterPassword"
-                        className="block mb-2 text-sm font-medium text-black"
+                        className="block mb-2 text-sm font-medium text-white"
                         required=""
                       >
                         Re-Enter Password
@@ -228,7 +228,7 @@ function SignUp() {
                       <input
                         type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       />
                     </div>
                     <button
