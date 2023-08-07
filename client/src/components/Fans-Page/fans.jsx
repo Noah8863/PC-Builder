@@ -66,7 +66,8 @@ function Fans() {
       </div>
       <div className="flex flex-col sm:flex-row ">
         <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
-          <p className="text-xxl text-left px-4 py-2">Sort By:</p>
+          <p className="text-xxl text-center px-4 py-2">Sort By:</p>
+          <p className="text-xxl text-left px-4">Price</p>
           <button
             className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortMax}
@@ -79,6 +80,7 @@ function Fans() {
           >
             Price: Lowest to Highest
           </button>
+          <p className="text-xxl text-left px-4">Alphabetical</p>
           <button
             className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortAZ}
@@ -91,6 +93,7 @@ function Fans() {
           >
             Sort: Z - A
           </button>
+          <p className="text-xxl text-left px-4">Color</p>
           <button
             className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortBlackFirst}

@@ -47,25 +47,12 @@ function Monitor() {
         setMonitorParts(sortedParts);
       };
     
-      const sortBlackFirst = () => {
-        const sortedParts = [...monitorParts].sort((a, b) =>
-          a.color.localeCompare(b.color)
-        );
-        setMonitorParts(sortedParts);
-      };
-    
-      const sortWhiteFirst = () => {
-        const sortedParts = [...monitorParts].sort((a, b) =>
-          b.color.localeCompare(a.color)
-        );
-        setMonitorParts(sortedParts);
-      };
-
+      
 
     return (
         <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
-        Graphic Cards
+        Monitors
       </div>
       <div className="flex flex-col sm:flex-row ">
         <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
@@ -96,19 +83,8 @@ function Monitor() {
           >
             Sort: Z - A
           </button>
-          <p className="text-xxl text-left px-4">Color</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortBlackFirst}
-          >
-            Color: Black
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortWhiteFirst}
-          >
-            Color: White
-          </button>
+          
+          
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
