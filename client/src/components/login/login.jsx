@@ -8,6 +8,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
@@ -26,6 +27,7 @@ function Login() {
       if (err.code === "auth/user-not-found") {
         setLoginError("User not found. Please check your email or sign up.");
       } else {
+        console.error("Sign-in error:", err);
         setLoginError("An unexpected error occurred. Please try again later.");
       } // Handle any login errors here
     }
@@ -36,18 +38,19 @@ function Login() {
     <section className="bg-gray-900">
       {showAlert && <Alert type="blue" message={loginError} />}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
-        <a
-          href="/"
-          className="flex items-center mb-6 text-2xl text-center font-semibold text-white"
-        >
+        <p className="flex items-center mb-6 text-2xl text-center font-semibold text-white">
           Welcome Back!
-        </a>
+        </p>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-black">
               Sign in to your account
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#" onSubmit={handleLogin}>
+            <form
+              className="space-y-4 md:space-y-6"
+              action="#"
+              onSubmit={handleLogin}
+            >
               <div>
                 <label
                   htmlFor="email"
@@ -74,7 +77,7 @@ function Login() {
                   Password
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
                   placeholder="••••••••"
@@ -83,6 +86,15 @@ function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  type="button"
+                  onClick={() =>
+                    setShowPassword((prevShowPassword) => !prevShowPassword)
+                  }
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  {showPassword ? "Hide Password" : "Show Password"}
+                </button>
               </div>
               <div className="flex items-center justify-between">
                 <div className="flex items-start">
@@ -105,7 +117,7 @@ function Login() {
                   </div>
                 </div>
                 <a
-                  href="/"
+                  href="/Reset"
                   className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
                   Forgot password?
