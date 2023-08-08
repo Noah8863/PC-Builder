@@ -1,6 +1,19 @@
 import React from "react";
+import { sendPasswordResetEmail } from "firebase/auth";
+import { db } from "../../config/firebase";
 
 function Reset() {
+
+    const handleSubmit = async(e)=> {
+        e.preventDefault()
+        const emailVal = e.target.email.value;
+        sendPasswordResetEmail(db, emailVal).them(data=> {
+            alert("Check your email")
+        }).catch(err=> {
+            alert(err.code)
+        })
+    }
+
   return (
     <section className="bg-gray-900">
       {/* {showAlert && <Alert type="blue" message={loginError} />} */}
@@ -11,7 +24,7 @@ function Reset() {
               Reset Your Password
             </h1>
             <p className="font-medium">Enter in your email to reset your password</p>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" action="#" onSubmit={(e)=>handleSubmit(e)}>
               <div>
                 <label
                   htmlFor="email"
@@ -28,14 +41,15 @@ function Reset() {
                   required=""
                 />
               </div>
-
               <button
                 type="submit"
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Send Email
               </button>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              
+            </form>
+            <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
                 <a
                   href="/SignUp"
@@ -44,7 +58,6 @@ function Reset() {
                   Sign up
                 </a>
               </p>
-            </form>
           </div>
         </div>
       </div>
