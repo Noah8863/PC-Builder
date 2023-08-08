@@ -12,25 +12,17 @@ function Login() {
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  
+  const signIn = async (e) => {
     e.preventDefault();
-    try {
-      if (email && password) {
-        await signInWithEmailAndPassword(auth, email, password);
-        alert("Login successful!"); // Display the alert
-        // Navigate to the user's account page or any other desired page
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
         navigate("/Account");
-      } else {
-        setShowAlert(true); // Display the alert if email or password is missing
-      }
-    } catch (err) {
-      if (err.code === "auth/user-not-found") {
-        setLoginError("User not found. Please check your email or sign up.");
-      } else {
-        console.error("Sign-in error:", err);
-        setLoginError("An unexpected error occurred. Please try again later.");
-      } // Handle any login errors here
-    }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -43,18 +35,18 @@ function Login() {
         </p>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-xl xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-black">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-white">
               Sign in to your account
             </h1>
             <form
               className="space-y-4 md:space-y-6"
               action="#"
-              onSubmit={handleLogin}
+              onSubmit={signIn}
             >
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-black"
+                  className="block mb-2 text-sm font-medium text-white"
                 >
                   Your email
                 </label>
