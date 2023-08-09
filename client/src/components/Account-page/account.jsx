@@ -4,8 +4,9 @@ import { auth } from "../../config/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import TestImage from "../../images/custom-PC-3.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ConstructionIcon from '@mui/icons-material/Construction';
-import LogoutIcon from '@mui/icons-material/Logout';
+import ConstructionIcon from "@mui/icons-material/Construction";
+import LogoutIcon from "@mui/icons-material/Logout";
+import BuildImg from "../../images/custom-PC-3.jpg";
 
 function AccountComponent() {
   const location = useLocation();
@@ -28,13 +29,12 @@ function AccountComponent() {
     return () => unsubscribe();
   }, []);
 
- 
-  function ShowAccount (){
+  function ShowAccount() {
     setShowProfile(true);
     setShowBuilds(false);
   }
 
-  function ShowBuilds (){
+  function ShowBuilds() {
     setShowProfile(false);
     setShowBuilds(true);
   }
@@ -66,7 +66,9 @@ function AccountComponent() {
                   </span>
                 </button>
                 <button className="block w-full flex items-center justify-between">
-                  <span className="ml-2">Logout <LogoutIcon /> </span>
+                  <span className="ml-2">
+                    Logout <LogoutIcon />{" "}
+                  </span>
                 </button>
               </div>
             </div>
@@ -92,9 +94,29 @@ function AccountComponent() {
               </div>
             )}
             {showBuilds && (
-              <div>
-                {/* Display builds data here */}
-              </div>
+              <div className="grid grid-cols-2 gap-4">
+              <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                <a href="/PowerSupply">
+                  <img
+                    src={BuildImg}
+                    alt="Power Supply"
+                    className="max-w-30 max-h-40"
+                  />
+                </a>
+                Build 1
+              </button>
+              <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                <a href="/PowerSupply">
+                  <img
+                    src={BuildImg}
+                    alt="Power Supply"
+                    className="max-w-30 max-h-40"
+                  />
+                </a>
+                Build 2
+              </button>
+            </div>
+            
             )}
           </div>
         ) : (
