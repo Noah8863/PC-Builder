@@ -16,6 +16,7 @@ import SignUp from "./components/signup/signup.jsx";
 import BlogPage from "./components/Blog-Page/blog.jsx";
 import AccountPage from "./components/Account-page/account.jsx";
 import MonitorPage from "./components/Monitor-Page/monitor.jsx";
+import Reset from "./components/Reset/reset.jsx";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="/Blog" element={<BlogPage />} />
         <Route path="/Account" element={<AccountPage />} />
         <Route path="/Monitor" element={<MonitorPage />} />
+        <Route path="/Reset" element={<Reset />} />
       </Routes>
       <Footer />
     </Router>
