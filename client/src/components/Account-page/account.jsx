@@ -12,6 +12,8 @@ function AccountComponent() {
   const userData = location.state;
   const [showPassword, setShowPassword] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [showProfile, setShowProfile] = useState(false);
+  const [showBuilds, setShowBuilds] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,6 +28,17 @@ function AccountComponent() {
     return () => unsubscribe();
   }, []);
 
+ 
+  function ShowAccount (){
+    setShowProfile(true);
+    setShowBuilds(false);
+  }
+
+  function ShowBuilds (){
+    setShowProfile(false);
+    setShowBuilds(true);
+  }
+
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto bg-blue-400 p-8 m-4">
       <p className="text-2xl p-2 text-center">My Account</p>
@@ -36,14 +49,24 @@ function AccountComponent() {
             <div>
               <p className="text-xl p-4">Welcome, {currentUser.firstName}</p>
               <div className="space-y-2 bg-blue-400">
-                <button className="block w-full flex items-center justify-between">
-                  <span className="ml-2">Profile <AccountCircleIcon /> </span>
+                <button
+                  className="block w-full flex items-center justify-between"
+                  onClick={ShowAccount}
+                >
+                  <span className="ml-2">
+                    Profile <AccountCircleIcon />{" "}
+                  </span>
+                </button>
+                <button
+                  className="block w-full flex items-center justify-between"
+                  onClick={ShowBuilds}
+                >
+                  <span className="ml-2">
+                    Builds <ConstructionIcon />{" "}
+                  </span>
                 </button>
                 <button className="block w-full flex items-center justify-between">
-                  <span className="ml-2">Builds <ConstructionIcon /> </span>
-                </button>
-                <button className="block w-full flex items-center justify-between">
-                  <span className="ml-2">Builds <LogoutIcon /> </span>
+                  <span className="ml-2">Logout <LogoutIcon /> </span>
                 </button>
               </div>
             </div>
@@ -53,15 +76,26 @@ function AccountComponent() {
         </div>
         {currentUser ? (
           <div className="bg-pink-400 col-span-2 h-full p-4 m-4">
-            <p className="text-2xl py-2 text-left">{currentUser.displayName}</p>
-            <div className="border-t border-gray-500 py-2"></div>
-            <div className="text-blue-600 text-lg flex">
-              Email: <p className="text-black pl-2">{currentUser.email}</p>
-            </div>
-            {/* Display other user data here */}
-            <button onClick={() => setShowPassword(!showPassword)}>
-              {showPassword ? "Hide Password" : "Show Password"}
-            </button>
+            {showProfile && (
+              <div>
+                <p className="text-2xl py-2 text-left">
+                  {currentUser.displayName}
+                </p>
+                <div className="border-t border-gray-500 py-2"></div>
+                <div className="text-blue-600 text-lg flex">
+                  Email: <p className="text-black pl-2">{currentUser.email}</p>
+                </div>
+                {/* Display other user data here */}
+                <button onClick={() => setShowPassword(!showPassword)}>
+                  {showPassword ? "Hide Password" : "Show Password"}
+                </button>
+              </div>
+            )}
+            {showBuilds && (
+              <div>
+                {/* Display builds data here */}
+              </div>
+            )}
           </div>
         ) : (
           <div className="bg-pink-400 col-span-2 h-full p-4 m-4">
@@ -75,5 +109,4 @@ function AccountComponent() {
     </div>
   );
 }
-
 export default AccountComponent;
