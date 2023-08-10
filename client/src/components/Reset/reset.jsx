@@ -10,7 +10,7 @@ function Reset() {
         sendPasswordResetEmail(db, emailVal).them(data=> {
             alert("Check your email")
         }).catch(err=> {
-            alert(err.code)
+            console.err(err)
         })
     }
 

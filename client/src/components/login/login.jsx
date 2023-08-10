@@ -9,10 +9,9 @@ function Login() {
   const [password, setPassword] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [loginError, setLoginError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  
   const signIn = async (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -22,13 +21,24 @@ function Login() {
       })
       .catch((err) => {
         console.log(err);
+        if (err.code === "auth/user-not-found") {
+          setErrorMessage("The email address is not found"); 
+        }
+        if (err.code === "auth/wrong-password"){
+          setErrorMessage("Incorrect Password"); 
+        }
+        else {
+          setErrorMessage("An error occurred. Please try again later");
+        }
+        setShowAlert(true);
       });
   };
 
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/login/ for more details
     <section className="bg-gray-900">
-      {showAlert && <Alert type="blue" message={loginError} />}
+      
+      {showAlert && <Alert type="blue" message={errorMessage} />}
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
         <p className="flex items-center mb-6 text-2xl text-center font-semibold text-white">
           Welcome Back!
@@ -100,10 +110,7 @@ function Login() {
                     />
                   </div>
                   <div className="ml-3 text-sm">
-                    <label
-                      htmlFor="remember"
-                      className="text-gray-500 "
-                    >
+                    <label htmlFor="remember" className="text-gray-500 ">
                       Remember me
                     </label>
                   </div>
