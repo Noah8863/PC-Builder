@@ -13,19 +13,19 @@ function AccountComponent() {
   const userData = location.state;
   const [showPassword, setShowPassword] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
-  const [showProfile, setShowProfile] = useState(false);
+  const [showProfile, setShowProfile] = useState(true);
   const [showBuilds, setShowBuilds] = useState(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        console.log(user)
       } else {
         setCurrentUser(null);
       }
     });
 
-    // Cleanup the listener when the component unmounts
     return () => unsubscribe();
   }, []);
 
@@ -44,13 +44,14 @@ function AccountComponent() {
       <p className="text-2xl p-2 text-center">My Account</p>
       <div className="grid grid-cols-3 gap-6">
         <div className="bg-green-400 h-full grid col-span-1 justify-left p-4 m-4 ">
-          <img className="w-2/3" src={TestImage} alt="profilePicture"></img>
+          <img className="w-2/3" src={currentUser.photoURL} alt="profilePicture"></img>
+
           {currentUser ? (
             <div>
               <p className="text-xl p-4">Welcome, {currentUser.firstName}</p>
               <div className="space-y-2 bg-blue-400">
                 <button
-                  className="block w-full flex items-center justify-between"
+                  className="w-full flex items-center justify-between"
                   onClick={ShowAccount}
                 >
                   <span className="ml-2">
@@ -58,14 +59,14 @@ function AccountComponent() {
                   </span>
                 </button>
                 <button
-                  className="block w-full flex items-center justify-between"
+                  className=" w-full flex items-center justify-between"
                   onClick={ShowBuilds}
                 >
                   <span className="ml-2">
                     Builds <ConstructionIcon />{" "}
                   </span>
                 </button>
-                <button className="block w-full flex items-center justify-between">
+                <button className=" w-full flex items-center justify-between">
                   <span className="ml-2">
                     Logout <LogoutIcon />{" "}
                   </span>

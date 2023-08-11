@@ -62,6 +62,7 @@ function SignUp() {
           email,
           password,
         };
+
         navigate("/Account", { state: userData });
       } else {
         setShowAlert(true);
@@ -71,8 +72,12 @@ function SignUp() {
       if (err.code === "auth/email-already-in-use") {
         // Check for email-already-in-use error
         setErrorMessage("The email address is already in use."); // Set the error message state
-      } else {
-        setErrorMessage("An error occurred. Please try again later.");
+      }
+      if (err.code === "auth/weak-password") {
+        setErrorMessage("Password must be at least 6 characters")
+      }
+      else {
+        setErrorMessage("An error occurred. Please try again.");
       }
       setShowAlert(true); // Show the alert with the error message
     }
@@ -104,25 +109,25 @@ function SignUp() {
   };
 
   //Upload profile image logic to firebase
-  const uploadFile = async () => {
-    if (!profilePicture) return;
-    const profileFolderRef = ref(
-      storage,
-      `profilePictureFiles/${profilePicture.name}`
-    );
-    try {
-      await uploadBytes(profileFolderRef, profilePicture);
-      const downloadURL = await getDownloadURL(profileFolderRef);
-      await db.collection("users").add({
-        firstName,
-        lastName,
-        email,
-        profilePictureURL: downloadURL,
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // const uploadFile = async () => {
+  //   if (!profilePicture) return;
+  //   const profileFolderRef = ref(
+  //     storage,
+  //     `profilePictureFiles/${profilePicture.name}`
+  //   );
+  //   try {
+  //     await uploadBytes(profileFolderRef, profilePicture);
+  //     const downloadURL = await getDownloadURL(profileFolderRef);
+  //     await db.collection("users").add({
+  //       firstName,
+  //       lastName,
+  //       email,
+  //       profilePictureURL: downloadURL,
+  //     });
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
@@ -253,12 +258,12 @@ function SignUp() {
                         type="file"
                         onChange={(e) => setFileUpload(e.target.files[0])}
                       />
-                      <button
+                      {/* <button
                         className="w-full mt-4 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                         onClick={uploadFile}
                       >
                         Upload Profile Picture
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 )}
