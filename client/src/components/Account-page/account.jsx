@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { auth } from "../../config/firebase";
-import { onAuthStateChanged } from "firebase/auth";
-import TestImage from "../../images/custom-PC-3.jpg";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -39,12 +38,20 @@ function AccountComponent() {
     setShowBuilds(true);
   }
 
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto bg-blue-400 p-8 m-4">
       <p className="text-2xl p-2 text-center">My Account</p>
       <div className="grid grid-cols-3 gap-6">
         <div className="bg-green-400 h-full grid col-span-1 justify-left p-4 m-4 ">
-          <img className="w-2/3" src={currentUser.photoURL} alt="profilePicture"></img>
+          <img className="w-2/3" src={currentUser.photoURL ? currentUser.photoURL : BuildImg} alt="profilePicture"></img>
 
           {currentUser ? (
             <div>
@@ -66,7 +73,7 @@ function AccountComponent() {
                     Builds <ConstructionIcon />{" "}
                   </span>
                 </button>
-                <button className=" w-full flex items-center justify-between">
+                <button className=" w-full flex items-center justify-between" onClick={logOut}>
                   <span className="ml-2">
                     Logout <LogoutIcon />{" "}
                   </span>
