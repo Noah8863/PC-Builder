@@ -135,7 +135,7 @@ function AccountComponent() {
           </div>
         ) : (
           <div>
-            <div className="container">
+            <div className="errorContainer">
               <div className="compcontainer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -161,9 +161,8 @@ function AccountComponent() {
               </div>
               <h1 className="header">Account ERROR</h1>
               <div className="instructions">
-                <h2>
-                  Sorry, something went wrong on our end. We are currently
-                  trying to fix the problem.
+                <h2 className="mb-4">
+                  Sorry, something went wrong on our end. 
                 </h2>
                 <p>In the meantime, you can:</p>
                 <div className="step">

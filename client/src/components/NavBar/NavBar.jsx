@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 import Icon from "../../images/pc-builder-icon.png";
+import { useNavigate } from "react-router-dom";
 import "../../index.css";
 
 function NavBar() {
+
+  const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [user, setUser] = useState(null);
@@ -31,6 +35,7 @@ function NavBar() {
   const logOut = async () => {
     try {
       await signOut(auth);
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

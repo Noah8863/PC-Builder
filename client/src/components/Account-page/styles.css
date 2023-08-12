@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700");
-.container {
+.errorContainer {
   max-width: 80%;
   margin: 1.5rem auto;
   display: flex;
@@ -7,11 +7,11 @@
   align-items: center;
 }
 @media (max-width: 650px) {
-  .container {
+  .errorContainer {
     width: 85%;
   }
 }
-.container .header {
+.errorContainer .header {
   color: #fb3958;
   font-size: 5em;
   font-weight: 700;
@@ -19,7 +19,7 @@
   text-shadow: 2px 2px 5px #b1041f;
 }
 @media (max-width: 650px) {
-  .container .header {
+  .errorContainer .header {
     font-size: 3em;
   }
 }
@@ -41,11 +41,11 @@
 }
 
 .instructions {
-  background: #FEFEFE;
+  background: #fefefe;
   width: 80%;
   height: auto;
   padding: 1rem;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
   border-radius: 0.25rem;
 }
 @media (max-width: 650px) {
