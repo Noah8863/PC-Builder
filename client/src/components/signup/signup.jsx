@@ -23,7 +23,6 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [reEnterPassword, setEnterPassword] = useState("");
   const [profilePicture, setProfilePicture] = useState(null);
   const [fileUpload, setFileUpload] = useState(null);
 
@@ -284,7 +283,7 @@ function SignUp() {
                 onClick={signInWithGoogle}
                 className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                <span>Sign In With Google</span>
+                <span>Sign Up With Google</span>
                 <img className="w-6 ml-4" src={googleIcon} alt="Google Icon" />
               </button>
               <button
@@ -292,7 +291,7 @@ function SignUp() {
                 onClick={signInWithGitHub}
                 className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                <span>Sign In With GitHub</span>
+                <span>Sign Up With GitHub</span>
                 <img className="w-6 ml-4" src={GitHubIcon} alt="Google Icon" />
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
