@@ -60,14 +60,14 @@ function AccountComponent() {
 
   function formatDate(dateString) {
     const dateObject = new Date(dateString);
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const options = { year: "numeric", month: "long", day: "numeric" };
     return dateObject.toLocaleDateString(undefined, options);
   }
 
   return (
-    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto bg-blue-400 p-8 m-4">
+    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4">
       <div className="grid grid-cols-3 gap-6">
-        <div className=" h-full grid col-span-1 justify-left p-4 m-4 ">
+        <div className=" h-full grid col-span-1 justify-left p-4 m-4 bg-gray-400">
           {currentUser ? (
             <div>
               <p className="text-2xl p-2 text-left">Account</p>
@@ -110,44 +110,76 @@ function AccountComponent() {
         </div>
         {currentUser ? (
           <div className="bg-pink-400 col-span-2 h-full p-4 m-4">
+            {/* <p className="text-xxl text-center">Current Builds</p> */}
             {showProfile && (
               <div>
                 <p className="text-2xl py-2 text-left">
                   {currentUser.displayName}
                 </p>
-                <p>Member since: {formatDate(currentUser.metadata.creationTime)}</p>
+                <p>
+                  Member since: {formatDate(currentUser.metadata.creationTime)}
+                </p>
                 <div className="border-t border-gray-500 py-2"></div>
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
                 {/* Display other user data here */}
-                <button onClick={() => setShowPassword(!showPassword)}>
+                {/* <button onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? "Hide Password" : "Show Password"}
-                </button>
+                </button> */}
               </div>
             )}
             {showBuilds && (
               <div className="grid grid-cols-2 gap-4">
-                <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                  <a href="/PowerSupply">
-                    <img
-                      src={BuildImg}
-                      alt="Power Supply"
-                      className="max-w-30 max-h-40"
-                    />
-                  </a>
-                  Build 1
-                </button>
-                <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                  <a href="/PowerSupply">
-                    <img
-                      src={BuildImg}
-                      alt="Power Supply"
-                      className="max-w-30 max-h-40"
-                    />
-                  </a>
-                  Build 2
-                </button>
+                
+                <div>
+                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                    <a href="/PowerSupply">
+                      <img
+                        src={BuildImg}
+                        alt="Power Supply"
+                        className="max-w-30 max-h-40"
+                      />
+                    </a>
+                    Build 1
+                  </button>
+                </div>
+                <div>
+                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                    <a href="/PowerSupply">
+                      <img
+                        src={BuildImg}
+                        alt="Power Supply"
+                        className="max-w-30 max-h-40"
+                      />
+                    </a>
+                    Build 2
+                  </button>
+                </div>
+                <div>
+                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                    <a href="/PowerSupply">
+                      <img
+                        src={BuildImg}
+                        alt="Power Supply"
+                        className="max-w-30 max-h-40"
+                      />
+                    </a>
+                    Build 1
+                  </button>
+                </div>
+                <div>
+                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                    <a href="/PowerSupply">
+                      <img
+                        src={BuildImg}
+                        alt="Power Supply"
+                        className="max-w-30 max-h-40"
+                      />
+                    </a>
+                    Build 1
+                  </button>
+                </div>
               </div>
             )}
           </div>
