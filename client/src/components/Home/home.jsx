@@ -168,7 +168,7 @@ function Home() {
       <section className="w-5/6 justify-center item-center m-auto relative ">
         <div>
           <p className="text-xxl text-center lg:mt-28">Shop by Category</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 m-4 p-4">
             <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
               <a href="/CPU">
                 <img src={CPUImage} alt="CPU" className="max-w-42 max-h-40" />

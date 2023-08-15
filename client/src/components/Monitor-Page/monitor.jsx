@@ -47,6 +47,9 @@ function Monitor() {
         setMonitorParts(sortedParts);
       };
     
+      const addItemToList = (itemId) => {
+        console.log('Item ID:', itemId);
+      };
       
 
     return (
@@ -110,6 +113,7 @@ function Monitor() {
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
+                      <button className="bg-blue-400 px-4 my-2 rounded-md" onClick={() => addItemToList(part.id)}>Add to Cart</button>
                     </div>
                   </div>
                 ))}

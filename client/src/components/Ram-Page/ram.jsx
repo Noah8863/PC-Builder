@@ -59,6 +59,10 @@ function Ram() {
     setRamParts(sortedCases);
   };
 
+  const addItemToList = (itemId) => {
+    console.log('Item ID:', itemId);
+  };
+
   return (
     <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
@@ -131,6 +135,7 @@ function Ram() {
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
+                      <button className="bg-blue-400 px-4 my-2 rounded-md" onClick={() => addItemToList(part.id)}>Add to Cart</button>
                     </div>
                   </div>
                 ))}

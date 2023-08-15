@@ -48,6 +48,9 @@ function CPU() {
     setCpuParts(sortedParts);
   };
 
+  const addItemToList = (itemId) => {
+    console.log('Item ID:', itemId);
+  };
 
   return (
     <main className="z-1">
@@ -110,6 +113,7 @@ function CPU() {
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
+                      <button className="bg-blue-400 px-4 my-2 rounded-md" onClick={() => addItemToList(part.id)}>Add to Cart</button>
                     </div>
                   </div>
                 ))}
