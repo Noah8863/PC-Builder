@@ -1,28 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 function CPU() {
-
   const [cpuParts, setCpuParts] = useState([]);
+  const [popUpMenu, setPopUpMenu] = useState(false);
 
   useEffect(() => {
-    fetch('/CPU')
+    fetch("/CPU")
       .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error('Error fetching parts data');
+          throw new Error("Error fetching parts data");
         }
       })
       .then((jsonResult) => {
-        const cpus = jsonResult.cpus // Flatten the arrays of parts
+        const cpus = jsonResult.cpus; // Flatten the arrays of parts
         setCpuParts(cpus);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-
 
   const sortMax = () => {
     const sortedParts = [...cpuParts].sort((a, b) => b.price - a.price);
@@ -49,7 +47,8 @@ function CPU() {
   };
 
   const addItemToList = (itemId) => {
-    console.log('Item ID:', itemId);
+    setPopUpMenu(!popUpMenu);
+    console.log("Item ID:", itemId);
   };
 
   return (
@@ -84,18 +83,17 @@ function CPU() {
             className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortIntel}
           >
-           Intel processors
+            Intel processors
           </button>
-          
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
           <div className="bg-white">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 ">
               {cpuParts.length > 0 &&
                 cpuParts.map((part, index) => (
                   <div key={index} className="relative">
-                    <div className="flex flex-col items-center justify-cent z-1 w-full h-5/6">
+                    <div className="flex flex-col items-center justify-cent z-1 w-full h-5/6 ">
                       <img
                         src={part.img}
                         alt={part.title}
@@ -108,13 +106,40 @@ function CPU() {
                           <p className="text-center">
                             Socket Type: {part.socket}
                           </p>
+                          <button
+                            className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
+                            onClick={() => addItemToList(part.id)}
+                          >
+                            Add to Cart
+                          </button>
                         </div>
                       </div>
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
-                      <button className="bg-blue-400 px-4 my-2 rounded-md" onClick={() => addItemToList(part.id)}>Add to Cart</button>
                     </div>
+                    {popUpMenu && (
+                      <div className="absolute top-10 right-0 bg-white border border-gray-300 p-4 rounded shadow">
+                        <p className="mb-2">Select an option:</p>
+                        <ul className="space-y-2">
+                          <li>
+                            <button className="text-blue-500 hover:underline">
+                              Option 1
+                            </button>
+                          </li>
+                          <li>
+                            <button className="text-blue-500 hover:underline">
+                              Option 2
+                            </button>
+                          </li>
+                          <li>
+                            <button className="text-blue-500 hover:underline">
+                              Option 3
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 ))}
             </div>
@@ -123,7 +148,6 @@ function CPU() {
       </div>
     </main>
   );
-  
 }
 
 export default CPU;
