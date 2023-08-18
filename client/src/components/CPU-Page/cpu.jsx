@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 function CPU() {
   const [cpuParts, setCpuParts] = useState([]);
   const [popUpMenu, setPopUpMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     fetch("/CPU")
@@ -51,6 +53,13 @@ function CPU() {
     console.log("Item ID:", itemId);
   };
 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <main className="z-1">
@@ -121,12 +130,32 @@ function CPU() {
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
-                      <div className="bg-white p-6 rounded-lg shadow-lg">
-                        <h2 className="text-xl font-semibold mb-4">Select a build</h2>
-                        <p>This is the content of the full page popup.</p>
-                        <button onClick={addItemToList}>Close</button>
+                        <div className="bg-white p-6 rounded-lg shadow-lg lg:w-1/3 sm:w-2/3">
+                          <h2 className="text-xl font-semibold mb-4">
+                            Select a build
+                          </h2>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="buildOptions"
+                              className="block font-medium"
+                            >
+                              Current Builds:
+                            </label>
+                            <select
+                              id="buildOptions"
+                              className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                              value={selectedOption}
+                              onChange={handleOptionChange}
+                            >
+                             
+                              <option value="option1">Build option 1</option>
+                              <option value="option2">Build option 2</option>
+                              <option value="option3">Build option 3</option>
+                            </select>
+                          </div>
+                          <button className="mt-4"onClick={addItemToList}>Close</button>
+                        </div>
                       </div>
-                    </div>
                     )}
                   </div>
                 ))}
