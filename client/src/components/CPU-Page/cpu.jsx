@@ -53,9 +53,6 @@ function CPU() {
     console.log("Item ID:", itemId);
   };
 
-  const togglePopup = () => {
-    setIsOpen(!isOpen);
-  };
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -120,7 +117,7 @@ function CPU() {
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
                             onClick={() => addItemToList(part.id)}
                           >
-                            Add to Cart
+                            Add to a build
                           </button>
                         </div>
                       </div>

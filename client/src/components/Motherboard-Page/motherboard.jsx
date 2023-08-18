@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 
 function Motherboards() {
   const [parts, setParts] = useState([]);
-  
+  const [popUpMenu, setPopUpMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
+
   useEffect(() => {
     fetch("/motherboards")
       .then((res) => {
@@ -20,7 +23,6 @@ function Motherboards() {
         console.log(error);
       });
   }, []);
-
 
   const sortMax = () => {
     const sortedParts = [...parts].sort((a, b) => b.price - a.price);
@@ -61,7 +63,12 @@ function Motherboards() {
   };
 
   const addItemToList = (itemId) => {
-    console.log('Item ID:', itemId);
+    setPopUpMenu(!popUpMenu);
+    console.log("Item ID:", itemId);
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
@@ -83,7 +90,7 @@ function Motherboards() {
             className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sortLeast}
           >
-           Lowest
+            Lowest
           </button>
           <p className="text-xxl text-left px-4">Alphabetical</p>
           <button
@@ -131,13 +138,48 @@ function Motherboards() {
                           <p className="text-center">
                             Socket Type: {part.socket}
                           </p>
+                          <button
+                            className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
+                            onClick={() => addItemToList(part.id)}
+                          >
+                            Add to a build
+                          </button>
                         </div>
                       </div>
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
-                      <button className="bg-blue-400 px-4 my-2 rounded-md" onClick={() => addItemToList(part.id)}>Add to Cart</button>
                     </div>
+                    {popUpMenu && (
+                      <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
+                        <div className="bg-white p-6 rounded-lg shadow-lg lg:w-1/3 sm:w-2/3">
+                          <h2 className="text-xl font-semibold mb-4">
+                            Select a build
+                          </h2>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="buildOptions"
+                              className="block font-medium"
+                            >
+                              Current Builds:
+                            </label>
+                            <select
+                              id="buildOptions"
+                              className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                              value={selectedOption}
+                              onChange={handleOptionChange}
+                            >
+                              <option value="option1">Build option 1</option>
+                              <option value="option2">Build option 2</option>
+                              <option value="option3">Build option 3</option>
+                            </select>
+                          </div>
+                          <button className="mt-4" onClick={addItemToList}>
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
             </div>
