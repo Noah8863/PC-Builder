@@ -51,6 +51,7 @@ function CPU() {
     console.log("Item ID:", itemId);
   };
 
+
   return (
     <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
@@ -119,26 +120,13 @@ function CPU() {
                       <p>Model: {part.model}</p>
                     </div>
                     {popUpMenu && (
-                      <div className="absolute top-10 right-0 bg-white border border-gray-300 p-4 rounded shadow">
-                        <p className="mb-2">Select an option:</p>
-                        <ul className="space-y-2">
-                          <li>
-                            <button className="text-blue-500 hover:underline">
-                              Option 1
-                            </button>
-                          </li>
-                          <li>
-                            <button className="text-blue-500 hover:underline">
-                              Option 2
-                            </button>
-                          </li>
-                          <li>
-                            <button className="text-blue-500 hover:underline">
-                              Option 3
-                            </button>
-                          </li>
-                        </ul>
+                      <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
+                      <div className="bg-white p-6 rounded-lg shadow-lg">
+                        <h2 className="text-xl font-semibold mb-4">Select a build</h2>
+                        <p>This is the content of the full page popup.</p>
+                        <button onClick={addItemToList}>Close</button>
                       </div>
+                    </div>
                     )}
                   </div>
                 ))}
