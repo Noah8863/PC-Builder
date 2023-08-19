@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 
 function Cases() {
   const [caseParts, setCaseParts] = useState([]);
+  const [popUpMenu, setPopUpMenu] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
     fetch("/Cases")
@@ -59,8 +61,13 @@ function Cases() {
     setCaseParts(sortedCases);
   };
 
-  const test = () => {
-    console.log("button clicked");
+  const addItemToList = (itemId) => {
+    setPopUpMenu(!popUpMenu);
+    console.log("Item ID:", itemId);
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
   };
 
   return (
@@ -131,12 +138,12 @@ function Cases() {
                             Fans Included: {part.fans}
                           </p>
                           <div className="text-center">
-                            <button
-                              className="text-center text-xl"
-                              onClick={test}
-                            >
-                              Add to Cart
-                            </button>
+                          <button
+                            className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
+                            onClick={() => addItemToList(part.id)}
+                          >
+                            Add to a build
+                          </button>
                           </div>
                         </div>
                       </div>
@@ -144,6 +151,36 @@ function Cases() {
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
                     </div>
+                    {popUpMenu && (
+                      <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
+                        <div className="bg-white p-6 rounded-lg shadow-lg lg:w-1/3 sm:w-2/3">
+                          <h2 className="text-xl font-semibold mb-4">
+                            Select a build
+                          </h2>
+                          <div className="mt-4">
+                            <label
+                              htmlFor="buildOptions"
+                              className="block font-medium"
+                            >
+                              Current Builds:
+                            </label>
+                            <select
+                              id="buildOptions"
+                              className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                              value={selectedOption}
+                              onChange={handleOptionChange}
+                            >
+                              <option value="option1">Build option 1</option>
+                              <option value="option2">Build option 2</option>
+                              <option value="option3">Build option 3</option>
+                            </select>
+                          </div>
+                          <button className="mt-4" onClick={addItemToList}>
+                            Close
+                          </button>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 ))}
             </div>

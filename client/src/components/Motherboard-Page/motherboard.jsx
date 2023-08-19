@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 function Motherboards() {
   const [parts, setParts] = useState([]);
   const [popUpMenu, setPopUpMenu] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
