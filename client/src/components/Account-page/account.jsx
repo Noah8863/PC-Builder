@@ -4,6 +4,7 @@ import { auth } from "../../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
+import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
 import "./styles.css";
@@ -73,9 +74,9 @@ function AccountComponent() {
   }
 
   return (
-    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4">
+    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
       <div className="grid grid-cols-3 gap-6">
-        <div className=" h-full grid col-span-1 justify-left p-4 m-4 bg-gray-400">
+        <div className=" h-full grid col-span-1 justify-left p-4 m-4">
           {currentUser ? (
             <div>
               <p className="text-2xl p-2 text-left">Account</p>
@@ -85,7 +86,7 @@ function AccountComponent() {
                 alt="profilePicture"
               ></img>
               <p className="text-xl p-4">Welcome, {currentUser.displayName}</p>
-              <div className="space-y-2 bg-blue-400">
+              <div className="space-y-2">
                 <button
                   className="w-full flex items-center justify-between"
                   onClick={ShowAccount}
@@ -117,7 +118,7 @@ function AccountComponent() {
           )}
         </div>
         {currentUser ? (
-          <div className="bg-pink-400 col-span-2 h-full p-4 m-4">
+          <div className=" col-span-2 h-full p-4 m-4 ">
             {/* <p className="text-xxl text-center">Current Builds</p> */}
             {showProfile && (
               <div>
@@ -134,22 +135,30 @@ function AccountComponent() {
               </div>
             )}
             {showBuilds && (
-              <div className="">
-                <h1 className="text-center bg-blue-400 text-xl">
+              <div className="bg-blue-400">
+                <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
                   Work Station
                 </h1>
-                <div>
-                  <button onClick={openPopup}>Click Here to Add a Build</button>
+                <div className="bg-purple-400 border-4 p-4 justify-center text-center">
+                  <p className="p-4">
+                    It looks like you don't have a build yet, how about creating
+                    one?
+                  </p>
+                  <button onClick={openPopup} className="bg-blue-400">
+                    <span className="ml-2">
+                      Add a Build <ControlPointIcon />{" "}
+                    </span>
+                  </button>
                 </div>
                 {showPopup && (
                   <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                    <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
                       <h2 className="text-xl font-semibold mb-4">
                         Add a Build
                       </h2>
 
                       {/* Input fields */}
-                      <div className="mb-4">
+                      <div className="mb-4 w-1/3">
                         <label htmlFor="buildName">Build Name:</label>
                         <input
                           type="text"
@@ -158,7 +167,7 @@ function AccountComponent() {
                         />
                       </div>
 
-                      <div className="mb-4">
+                      <div className="mb-4 w-1/3">
                         <label htmlFor="buildDescription">
                           Build Description:
                         </label>
@@ -169,14 +178,16 @@ function AccountComponent() {
                       </div>
 
                       <div className="mb-4">
-                        <label htmlFor="buildType">Build Type:</label>
+                        <label htmlFor="buildType" className="mr-2">
+                          Build Type:
+                        </label>
                         <select
                           id="buildType"
-                          className="border rounded-md p-2"
+                          className="border rounded-md p-2 w-1/3 text-center"
                         >
-                          <option value="option1">Option 1</option>
-                          <option value="option2">Option 2</option>
-                          <option value="option3">Option 3</option>
+                          <option value="option1">Current Set Up</option>
+                          <option value="option2">Shopping List</option>
+                          <option value="option3">Wish List</option>
                         </select>
                       </div>
 
