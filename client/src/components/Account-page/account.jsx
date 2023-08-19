@@ -11,10 +11,10 @@ import "./styles.css";
 function AccountComponent() {
   const location = useLocation();
   const userData = location.state;
-  const [showPassword, setShowPassword] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [showProfile, setShowProfile] = useState(true);
   const [showBuilds, setShowBuilds] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -56,6 +56,14 @@ function AccountComponent() {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   function formatDate(dateString) {
@@ -123,63 +131,67 @@ function AccountComponent() {
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
-                {/* Display other user data here */}
-                {/* <button onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? "Hide Password" : "Show Password"}
-                </button> */}
               </div>
             )}
             {showBuilds && (
-              <div className="grid grid-cols-2 gap-4">
-                
+              <div className="">
+                <h1 className="text-center bg-blue-400 text-xl">
+                  Work Station
+                </h1>
                 <div>
-                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                    <a href="/PowerSupply">
-                      <img
-                        src={BuildImg}
-                        alt="Power Supply"
-                        className="max-w-30 max-h-40"
-                      />
-                    </a>
-                    Build 1
-                  </button>
+                  <button onClick={openPopup}>Click Here to Add a Build</button>
                 </div>
-                <div>
-                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                    <a href="/PowerSupply">
-                      <img
-                        src={BuildImg}
-                        alt="Power Supply"
-                        className="max-w-30 max-h-40"
-                      />
-                    </a>
-                    Build 2
-                  </button>
-                </div>
-                <div>
-                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                    <a href="/PowerSupply">
-                      <img
-                        src={BuildImg}
-                        alt="Power Supply"
-                        className="max-w-30 max-h-40"
-                      />
-                    </a>
-                    Build 1
-                  </button>
-                </div>
-                <div>
-                  <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                    <a href="/PowerSupply">
-                      <img
-                        src={BuildImg}
-                        alt="Power Supply"
-                        className="max-w-30 max-h-40"
-                      />
-                    </a>
-                    Build 1
-                  </button>
-                </div>
+                {showPopup && (
+                  <div className="fixed inset-0 flex items-center justify-center z-50">
+                    <div className="bg-white p-6 rounded-lg shadow-lg">
+                      <h2 className="text-xl font-semibold mb-4">
+                        Add a Build
+                      </h2>
+
+                      {/* Input fields */}
+                      <div className="mb-4">
+                        <label htmlFor="buildName">Build Name:</label>
+                        <input
+                          type="text"
+                          id="buildName"
+                          className="border rounded-md p-2"
+                        />
+                      </div>
+
+                      <div className="mb-4">
+                        <label htmlFor="buildDescription">
+                          Build Description:
+                        </label>
+                        <textarea
+                          id="buildDescription"
+                          className="border rounded-md p-2"
+                        ></textarea>
+                      </div>
+
+                      <div className="mb-4">
+                        <label htmlFor="buildType">Build Type:</label>
+                        <select
+                          id="buildType"
+                          className="border rounded-md p-2"
+                        >
+                          <option value="option1">Option 1</option>
+                          <option value="option2">Option 2</option>
+                          <option value="option3">Option 3</option>
+                        </select>
+                      </div>
+
+                      {/* Close button */}
+                      <div className="text-right">
+                        <button
+                          onClick={closePopup}
+                          className="bg-red-500 text-white p-2 rounded-md"
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
