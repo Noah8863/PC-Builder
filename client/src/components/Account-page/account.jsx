@@ -119,7 +119,6 @@ function AccountComponent() {
         </div>
         {currentUser ? (
           <div className=" col-span-2 h-full p-4 m-4 ">
-            {/* <p className="text-xxl text-center">Current Builds</p> */}
             {showProfile && (
               <div>
                 <p className="text-2xl py-2 text-left">
@@ -131,6 +130,25 @@ function AccountComponent() {
                 <div className="border-t border-gray-500 py-2"></div>
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
+                </div>
+                <div className="mt-8 h-max">
+                    <section className="mt-8">
+                      <h2 className="text-2xl text-center underline font-bold mb-4">
+                        Your Blog Posts
+                      </h2>
+                      <div className="bg-white border border-gray-300 rounded-md p-4 mb-4">
+                        <p className="text-gray-600">Post Date Here</p>
+                        <h3 className="text-xxl font-bold">Post Title</h3>
+                        {/* {post.imageURL && (
+                        <img
+                          src={post.imageURL}
+                          alt="Blog Post"
+                          className="my-4 bg-blue-400 w-10 h-20"
+                        />
+                      )} */}
+                        <p className="mb-2 text-xl">Post Description Here</p>
+                      </div>
+                    </section>
                 </div>
               </div>
             )}
