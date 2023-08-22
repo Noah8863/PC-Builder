@@ -6,12 +6,15 @@ import {
   addDoc,
   doc,
   updateDoc,
+  query,
+  where,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
 
-function BlogComponent() {
+function BlogComponent({ onBlogPostsLoaded }) {
   const [blogPosts, setBlogPosts] = useState([]);
   const blogCollectionRef = collection(db, "blogPosts");
+  
 
   //New Blog States
   const [newBlog, setNewBlog] = useState("");
@@ -24,15 +27,34 @@ function BlogComponent() {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageURL, setImageURL] = useState("");
 
+  // const getBlogPost = async () => {
+  //   try {
+  //     const data = await getDocs(blogCollectionRef);
+  //     const filteredData = data.docs.map((doc) => ({
+  //       ...doc.data(),
+  //       id: doc.id,
+  //     }));
+  //     setBlogPosts(filteredData);
+  //     console.log(filteredData);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
+
   const getBlogPost = async () => {
     try {
-      const data = await getDocs(blogCollectionRef);
+      const q = query(blogCollectionRef, where("userId", "==", auth?.currentUser?.uid)); // Filter by userId
+      const data = await getDocs(q);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setBlogPosts(filteredData);
-      console.log(filteredData);
+
+      // Pass the user's blog posts to the callback function
+      if (onBlogPostsLoaded) {
+        onBlogPostsLoaded(filteredData);
+      }
     } catch (err) {
       console.error(err);
     }

@@ -7,6 +7,7 @@ import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
+import BlogComponent from "../Blog-Page/blog.jsx";
 import "./styles.css";
 
 function AccountComponent() {
@@ -16,6 +17,7 @@ function AccountComponent() {
   const [showProfile, setShowProfile] = useState(true);
   const [showBuilds, setShowBuilds] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [userBlogPosts, setUserBlogPosts] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -40,6 +42,11 @@ function AccountComponent() {
 
     return () => unsubscribe();
   }, []);
+
+  // Callback function to receive the user's blog posts
+  const handleBlogPostsLoaded = (blogPosts) => {
+    setUserBlogPosts(blogPosts);
+  };
 
   function ShowAccount() {
     setShowProfile(true);
@@ -131,24 +138,36 @@ function AccountComponent() {
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
+                <BlogComponent onBlogPostsLoaded={handleBlogPostsLoaded} />
                 <div className="mt-8 h-max">
-                    <section className="mt-8">
-                      <h2 className="text-2xl text-center underline font-bold mb-4">
-                        Your Blog Posts
-                      </h2>
-                      <div className="bg-white border border-gray-300 rounded-md p-4 mb-4">
-                        <p className="text-gray-600">Post Date Here</p>
-                        <h3 className="text-xxl font-bold">Post Title</h3>
-                        {/* {post.imageURL && (
+                  <section className="mt-8">
+                    <h2 className="text-2xl text-center underline font-bold mb-4">
+                      Your Blog Posts
+                    </h2>
+                    <div className="bg-white border border-gray-300 rounded-md p-4 mb-4">
+                      <p className="text-gray-600">Post Date Here</p>
+                      <h3 className="text-xxl font-bold">Post Title</h3>
+                      {/* {post.imageURL && (
                         <img
                           src={post.imageURL}
                           alt="Blog Post"
                           className="my-4 bg-blue-400 w-10 h-20"
                         />
                       )} */}
-                        <p className="mb-2 text-xl">Post Description Here</p>
-                      </div>
-                    </section>
+                      <p className="mb-2 text-xl">Post Description Here</p>
+                    </div>
+                    <div>
+                      <h2>Your Blog Posts</h2>
+                      {userBlogPosts.map((post, index) => (
+                        <div key={index}>
+                          {/* Display user's blog post details */}
+                          <h3>{post.title}</h3>
+                          <p>{post.post}</p>
+                          {/* ... */}
+                        </div>
+                      ))}
+                    </div>
+                  </section>
                 </div>
               </div>
             )}
