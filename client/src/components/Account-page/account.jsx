@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import { getDocs, collection, query, where,deleteDoc, doc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
@@ -35,6 +35,7 @@ function AccountComponent() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        fetchUserBlogPosts();
       } else {
         setCurrentUser(null);
       }
@@ -64,18 +65,6 @@ function AccountComponent() {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
-        fetchUserBlogPosts(); // Call the function to fetch user's blog posts
-      } else {
-        setCurrentUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
 
   function ShowAccount() {
     setShowProfile(true);
@@ -107,6 +96,12 @@ function AccountComponent() {
     const dateObject = new Date(dateString);
     const options = { year: "numeric", month: "long", day: "numeric" };
     return dateObject.toLocaleDateString(undefined, options);
+  }
+
+  //Delete blog post
+  const deleteBlog = async (id) => {
+    const blogDoc = doc(db, "blogPosts", id)
+    await deleteDoc(blogDoc)
   }
 
   return (
@@ -181,6 +176,7 @@ function AccountComponent() {
                           >
                             <h3 className="text-xxl font-bold">{post.title}</h3>
                             <p className="mb-2 text-xl">{post.post}</p>
+                            <button onClick={() => deleteBlog(post.id)}>Delete Blog</button>
                           </div>
                         ))}
                       </section>
