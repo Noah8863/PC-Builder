@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { auth } from "../../config/firebase";
+import { auth, db } from "../../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
@@ -43,10 +43,38 @@ function AccountComponent() {
     return () => unsubscribe();
   }, []);
 
-  // Callback function to receive the user's blog posts
-  const handleBlogPostsLoaded = (blogPosts) => {
-    setUserBlogPosts(blogPosts);
+  const fetchUserBlogPosts = async () => {
+    try {
+      const userPostsRef = db
+        .collection("blogPosts")
+        .where("authorId", "==", currentUser.uid);
+      const snapshot = await userPostsRef.get();
+
+      const userPosts = [];
+      snapshot.forEach((doc) => {
+        userPosts.push({ id: doc.id, ...doc.data() });
+      });
+
+      // Update the state with the user's blog posts
+      setUserBlogPosts(userPosts);
+    } catch (error) {
+      console.error("Error fetching user's blog posts: ", error);
+    }
   };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+        fetchUserBlogPosts(); // Call the function to fetch user's blog posts
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
 
   function ShowAccount() {
     setShowProfile(true);
@@ -138,7 +166,7 @@ function AccountComponent() {
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
-                <BlogComponent onBlogPostsLoaded={handleBlogPostsLoaded} />
+                {/* <BlogComponent onBlogPostsLoaded={handleBlogPostsLoaded} /> */}
                 <div className="mt-8 h-max">
                   <section className="mt-8">
                     <h2 className="text-2xl text-center underline font-bold mb-4">
@@ -147,23 +175,16 @@ function AccountComponent() {
                     <div className="bg-white border border-gray-300 rounded-md p-4 mb-4">
                       <p className="text-gray-600">Post Date Here</p>
                       <h3 className="text-xxl font-bold">Post Title</h3>
-                      {/* {post.imageURL && (
-                        <img
-                          src={post.imageURL}
-                          alt="Blog Post"
-                          className="my-4 bg-blue-400 w-10 h-20"
-                        />
-                      )} */}
                       <p className="mb-2 text-xl">Post Description Here</p>
                     </div>
                     <div>
-                      <h2>Your Blog Posts</h2>
-                      {userBlogPosts.map((post, index) => (
-                        <div key={index}>
-                          {/* Display user's blog post details */}
+                      <h2>Your Personilzed Blogs Below:</h2>
+                      
+                      {userBlogPosts.map((post) => (
+                        <div key={post.id}>
                           <h3>{post.title}</h3>
-                          <p>{post.post}</p>
-                          {/* ... */}
+                          <p>{post.content}</p>
+                          {/* ...other post details */}
                         </div>
                       ))}
                     </div>
