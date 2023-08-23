@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
-import {
-  getDocs,
-  collection,
-  query, where,
-} from "firebase/firestore";
+import { getDocs, collection, query, where } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
@@ -24,7 +20,6 @@ function AccountComponent() {
   const [showPopup, setShowPopup] = useState(false);
   const [userBlogPosts, setUserBlogPosts] = useState([]);
 
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -40,7 +35,6 @@ function AccountComponent() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        console.log(user);
       } else {
         setCurrentUser(null);
       }
@@ -65,7 +59,6 @@ function AccountComponent() {
         id: doc.id,
       }));
       setUserBlogPosts(filteredData);
-      console.log(filteredData);
     } catch (err) {
       console.error(err);
     }
@@ -83,7 +76,6 @@ function AccountComponent() {
 
     return () => unsubscribe();
   }, []);
-
 
   function ShowAccount() {
     setShowProfile(true);
@@ -175,27 +167,23 @@ function AccountComponent() {
                 <div className="text-blue-600 text-lg flex">
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
-                {/* <BlogComponent onBlogPostsLoaded={handleBlogPostsLoaded} /> */}
                 <div className="mt-8 h-max">
                   <section className="mt-8">
                     <h2 className="text-2xl text-center underline font-bold mb-4">
                       Your Blog Posts
                     </h2>
-                    <div className="bg-white border border-gray-300 rounded-md p-4 mb-4">
-                      <p className="text-gray-600">Post Date Here</p>
-                      <h3 className="text-xxl font-bold">Post Title</h3>
-                      <p className="mb-2 text-xl">Post Description Here</p>
-                    </div>
                     <div>
-                      <h2>Your Personilzed Blogs Below:</h2>
-                      
-                      {userBlogPosts.map((post) => (
-                        <div key={post.id}>
-                          <h3>{post.title}</h3>
-                          <p>{post.content}</p>
-                          {/* ...other post details */}
-                        </div>
-                      ))}
+                      <section className="mt-8">
+                        {userBlogPosts.map((post) => (
+                          <div
+                            key={post.id}
+                            className="bg-white border border-gray-300 rounded-md p-4 mb-4"
+                          >
+                            <h3 className="text-xxl font-bold">{post.title}</h3>
+                            <p className="mb-2 text-xl">{post.post}</p>
+                          </div>
+                        ))}
+                      </section>
                     </div>
                   </section>
                 </div>

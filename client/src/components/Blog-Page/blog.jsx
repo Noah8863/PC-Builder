@@ -4,13 +4,10 @@ import {
   getDocs,
   collection,
   addDoc,
-  doc,
-  updateDoc,
-  query, where,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
-function BlogComponent({ onBlogPostsLoaded }) {
+function BlogComponent() {
   const [blogPosts, setBlogPosts] = useState([]);
   const blogCollectionRef = collection(db, "blogPosts");
 
@@ -18,8 +15,6 @@ function BlogComponent({ onBlogPostsLoaded }) {
   const [newBlog, setNewBlog] = useState("");
   const [newBlogTitle, setNewBlogTitle] = useState("");
   const [newBlogDate, setNewBlogDate] = useState(7162023);
-
-  const [updatedTitle, setUpdatedTitle] = useState("");
 
   //File Upload State
   const [fileUpload, setFileUpload] = useState(null);
@@ -74,11 +69,6 @@ function BlogComponent({ onBlogPostsLoaded }) {
       console.error(err);
       alert("There has been an issue, please try again");
     }
-  };
-
-  const updateBlogTitle = async (id) => {
-    const postDoc = doc(db, "blogPosts", id);
-    await updateDoc(postDoc, { title: updatedTitle });
   };
 
   const uploadFile = async () => {
