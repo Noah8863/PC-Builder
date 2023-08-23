@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { auth, db } from "../../config/firebase";
+import { db, auth } from "../../config/firebase";
+import {
+  getDocs,
+  collection,
+  query, where,
+} from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
-import BlogComponent from "../Blog-Page/blog.jsx";
+
 import "./styles.css";
 
 function AccountComponent() {
@@ -18,6 +23,7 @@ function AccountComponent() {
   const [showBuilds, setShowBuilds] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [userBlogPosts, setUserBlogPosts] = useState([]);
+
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -45,20 +51,23 @@ function AccountComponent() {
 
   const fetchUserBlogPosts = async () => {
     try {
-      const userPostsRef = db
-        .collection("blogPosts")
-        .where("authorId", "==", currentUser.uid);
-      const snapshot = await userPostsRef.get();
-
-      const userPosts = [];
-      snapshot.forEach((doc) => {
-        userPosts.push({ id: doc.id, ...doc.data() });
-      });
-
-      // Update the state with the user's blog posts
-      setUserBlogPosts(userPosts);
-    } catch (error) {
-      console.error("Error fetching user's blog posts: ", error);
+      const user = auth.currentUser; // Get the currently logged-in user
+      if (!user) {
+        console.log("No user logged in.");
+        return;
+      }
+      const blogCollectionRef = collection(db, "blogPosts"); // Assuming your collection is named "blogPosts"
+      // Create a query to filter by the user's UID
+      const q = query(blogCollectionRef, where("userId", "==", user.uid));
+      const data = await getDocs(q);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setUserBlogPosts(filteredData);
+      console.log(filteredData);
+    } catch (err) {
+      console.error(err);
     }
   };
 

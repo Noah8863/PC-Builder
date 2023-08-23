@@ -6,15 +6,13 @@ import {
   addDoc,
   doc,
   updateDoc,
-  query,
-  where,
+  query, where,
 } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL  } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function BlogComponent({ onBlogPostsLoaded }) {
   const [blogPosts, setBlogPosts] = useState([]);
   const blogCollectionRef = collection(db, "blogPosts");
-  
 
   //New Blog States
   const [newBlog, setNewBlog] = useState("");
@@ -27,38 +25,20 @@ function BlogComponent({ onBlogPostsLoaded }) {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageURL, setImageURL] = useState("");
 
-  // const getBlogPost = async () => {
-  //   try {
-  //     const data = await getDocs(blogCollectionRef);
-  //     const filteredData = data.docs.map((doc) => ({
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     }));
-  //     setBlogPosts(filteredData);
-  //     console.log(filteredData);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
-
   const getBlogPost = async () => {
     try {
-      const q = query(blogCollectionRef, where("userId", "==", auth?.currentUser?.uid)); // Filter by userId
-      const data = await getDocs(q);
+      const data = await getDocs(blogCollectionRef);
       const filteredData = data.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
       setBlogPosts(filteredData);
-
-      // Pass the user's blog posts to the callback function
-      if (onBlogPostsLoaded) {
-        onBlogPostsLoaded(filteredData);
-      }
+      console.log(filteredData);
     } catch (err) {
       console.error(err);
     }
   };
+
 
   useEffect(() => {
     getBlogPost();
@@ -67,7 +47,7 @@ function BlogComponent({ onBlogPostsLoaded }) {
   const submitBlogPost = async () => {
     if (!auth.currentUser) {
       alert("Please sign in");
-      console.log("not logged in!")
+      console.log("not logged in!");
       return;
     }
     try {
@@ -160,7 +140,11 @@ function BlogComponent({ onBlogPostsLoaded }) {
             /> */}
             {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button> */}
             {post.imageURL && (
-              <img src={post.imageURL} alt="Blog Post" className="my-4 bg-blue-400 w-10 h-20" />
+              <img
+                src={post.imageURL}
+                alt="Blog Post"
+                className="my-4 bg-blue-400 w-10 h-20"
+              />
             )}
 
             <p className="mb-2 text-xl">{post.post}</p>
