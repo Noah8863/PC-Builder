@@ -194,12 +194,12 @@ function AccountComponent() {
                 <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
                   Work Station
                 </h1>
-                <div className="bg-purple-400 border-4 p-4 justify-center text-center">
+                <div className="bg-gray-400 border-4 p-4 justify-center text-center">
                   <p className="p-4">
                     It looks like you don't have a build yet, how about creating
                     one?
                   </p>
-                  <button onClick={openPopup} className="bg-blue-400">
+                  <button onClick={openPopup} >
                     <span className="ml-2">
                       Add a Build <ControlPointIcon />{" "}
                     </span>
@@ -240,9 +240,9 @@ function AccountComponent() {
                           id="buildType"
                           className="border rounded-md p-2 w-1/3 text-center"
                         >
-                          <option value="option1">Current Set Up</option>
-                          <option value="option2">Shopping List</option>
-                          <option value="option3">Wish List</option>
+                          <option value="option1">Shopping List</option>
+                          <option value="option2">Wish List</option>
+                          <option value="option3">Current Set Up</option>
                         </select>
                       </div>
 

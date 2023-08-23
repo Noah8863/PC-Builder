@@ -123,12 +123,6 @@ function BlogComponent() {
             <p className="text-gray-600">{post.date}</p>
 
             <h3 className="text-xxl font-bold">{post.title}</h3>
-            {/* <input
-              className="text-lg"
-              placeholder="Edit Title..."
-              onChange={(e) => setUpdatedTitle(e.target.value)}
-            /> */}
-            {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={() => updateBlogTitle(post.id)}>Update Title</button> */}
             {post.imageURL && (
               <img
                 src={post.imageURL}
@@ -138,8 +132,6 @@ function BlogComponent() {
             )}
 
             <p className="mb-2 text-xl">{post.post}</p>
-            {/* <input className="text-lg" placeholder="Edit Post..." /> */}
-            {/* <button  className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Update Post</button> */}
           </div>
         ))}
       </section>

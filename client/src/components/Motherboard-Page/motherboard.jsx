@@ -168,12 +168,12 @@ function Motherboards() {
                               value={selectedOption}
                               onChange={handleOptionChange}
                             >
-                              <option value="option1">Build option 1</option>
-                              <option value="option2">Build option 2</option>
-                              <option value="option3">Build option 3</option>
+                              <option value="option1">Shopping List</option>
+                              <option value="option2">Wish List</option>
+                              <option value="option3">Current Set Up</option>
                             </select>
                           </div>
-                          <button className="mt-4" onClick={addItemToList}>
+                          <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
                             Close
                           </button>
                         </div>
