@@ -7,6 +7,7 @@ import {
   query,
   where,
   deleteDoc,
+  updateDoc,
   doc,
 } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -14,7 +15,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
 
@@ -32,6 +33,10 @@ function AccountComponent() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  //Update states;
+  const [updatedTitle, setUpdatedTitle] = useState("");
+  const [updatedDescription, setUpdatedDescription] = useState("");
 
   useEffect(() => {
     // Simulate loading and error for demonstration
@@ -121,6 +126,13 @@ function AccountComponent() {
     await deleteDoc(blogDoc);
   };
 
+  const updateBlogTitle = async (id) => {
+    const blogDoc = doc(db, "blogPosts", id);
+    await updateDoc(blogDoc, { title: updatedTitle });
+  };
+
+  
+
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
       <div className="grid grid-cols-3 gap-6">
@@ -200,7 +212,7 @@ function AccountComponent() {
                                 </span>
                               </button>
                               <button
-                                className="bg-red-500 p-1 mx-2"
+                                className="bg-red-500 text-white p-2 rounded-md"
                                 onClick={() => deleteBlog(post.id)}
                               >
                                 <span className="ml-2">
@@ -208,46 +220,60 @@ function AccountComponent() {
                                 </span>
                               </button>
                             </div>
+                            {showEditPopup && (
+                              <div className="fixed inset-0 flex items-center justify-center z-50">
+                                <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
+                                  <h2 className="text-xl font-semibold mb-4">
+                                    Edit your blog post
+                                  </h2>
+
+                                  {/* Input fields */}
+                                  <div className="mb-4 w-1/3">
+                                    <label htmlFor="buildName">
+                                      New Title:
+                                    </label>
+                                    <input
+                                      type="text"
+                                      id="buildName"
+                                      className="border rounded-md p-2"
+                                      onChange={(e) =>
+                                        setUpdatedTitle(e.target.value)
+                                      }
+                                    />
+                                    <button
+                                      className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                      onClick={() => updateBlogTitle(post.id)}
+                                    >
+                                      Edit Title
+                                    </button>
+                                  </div>
+
+                                  <div className="mb-4 w-1/3">
+                                    <label htmlFor="buildDescription">
+                                      New Description:
+                                    </label>
+                                    <textarea
+                                      id="buildDescription"
+                                      className="border rounded-md p-2"
+                                    ></textarea>
+                                    <button className="mt-2 px-2 rounded-md bg-blue-400 text-white">
+                                      Edit Blog
+                                    </button>
+                                  </div>
+                                  {/* Close button */}
+                                  <div className="text-right">
+                                    <button
+                                      onClick={closeEditPopup}
+                                      className="bg-red-500 text-white p-2 rounded-md"
+                                    >
+                                      Close
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
                           </div>
                         ))}
-                        {showEditPopup && (
-                          <div className="fixed inset-0 flex items-center justify-center z-50">
-                            <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
-                              <h2 className="text-xl font-semibold mb-4">
-                                Edit your blog post
-                              </h2>
-
-                              {/* Input fields */}
-                              <div className="mb-4 w-1/3">
-                                <label htmlFor="buildName">New Title:</label>
-                                <input
-                                  type="text"
-                                  id="buildName"
-                                  className="border rounded-md p-2"
-                                />
-                              </div>
-
-                              <div className="mb-4 w-1/3">
-                                <label htmlFor="buildDescription">
-                                  New Description:
-                                </label>
-                                <textarea
-                                  id="buildDescription"
-                                  className="border rounded-md p-2"
-                                ></textarea>
-                              </div>
-                              {/* Close button */}
-                              <div className="text-right">
-                                <button
-                                  onClick={closeEditPopup}
-                                  className="bg-red-500 text-white p-2 rounded-md"
-                                >
-                                  Close
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                       </section>
                     </div>
                   </section>
