@@ -127,10 +127,16 @@ function AccountComponent() {
   };
 
   const updateBlogTitle = async (id) => {
+    console.log('button clicked')
     const blogDoc = doc(db, "blogPosts", id);
     await updateDoc(blogDoc, { title: updatedTitle });
   };
 
+  const updateBlogDescription = async (id) => {
+    console.log('button clicked')
+    const blogDoc = doc(db, "blogPosts", id);
+    await updateDoc(blogDoc, { post: updatedDescription });
+  };
   
 
   return (
@@ -236,6 +242,7 @@ function AccountComponent() {
                                       type="text"
                                       id="buildName"
                                       className="border rounded-md p-2"
+                                      value={updatedTitle}
                                       onChange={(e) =>
                                         setUpdatedTitle(e.target.value)
                                       }
@@ -255,8 +262,13 @@ function AccountComponent() {
                                     <textarea
                                       id="buildDescription"
                                       className="border rounded-md p-2"
+                                      value={updatedDescription}
+                                      onChange={(e) =>
+                                        setUpdatedDescription(e.target.value)
+                                      }
                                     ></textarea>
-                                    <button className="mt-2 px-2 rounded-md bg-blue-400 text-white">
+                                    <button className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                      onClick={() => updateBlogDescription(post.id)}>
                                       Edit Blog
                                     </button>
                                   </div>
