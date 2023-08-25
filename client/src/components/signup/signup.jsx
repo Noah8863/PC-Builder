@@ -158,7 +158,7 @@ function SignUp() {
                       <input
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder="John"
                         required=""
                       />
@@ -173,7 +173,7 @@ function SignUp() {
                       <input
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                         placeholder="Smith"
                         required=""
                       />
@@ -188,7 +188,7 @@ function SignUp() {
                       <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 mb-2"
                         placeholder="name@company.com"
                         required=""
                       />
@@ -196,7 +196,7 @@ function SignUp() {
 
                     <button
                       onClick={handleNext}
-                      className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                      className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                     >
                       Next
                     </button>
@@ -218,7 +218,7 @@ function SignUp() {
                         onChange={(e) => setPassword(e.target.value)}
                         type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       />
                     </div>
                     <div>
@@ -232,7 +232,7 @@ function SignUp() {
                       <input
                         type={showPassword ? "text" : "password"} // Use "text" when showPassword is true, otherwise use "password"
                         placeholder="••••••••"
-                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        className="bg-gray-50 border border-gray-300 text-gray-700 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                       />
                     </div>
                     <button
@@ -287,14 +287,14 @@ function SignUp() {
                 <span>Sign Up With Google</span>
                 <img className="w-6 ml-4" src={googleIcon} alt="Google Icon" />
               </button>
-              <button
+              {/* <button
                 type="submit"
                 onClick={signInWithGitHub}
                 className="flex items-center justify-center w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 <span>Sign Up With GitHub</span>
                 <img className="w-6 ml-4" src={GitHubIcon} alt="Google Icon" />
-              </button>
+              </button> */}
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Already have an account?{" "}
                 <a
