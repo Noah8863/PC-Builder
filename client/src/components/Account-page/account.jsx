@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
-import { getDocs, collection, query, where } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  query,
+  where,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from '@mui/icons-material/Delete';
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
 
@@ -18,6 +27,7 @@ function AccountComponent() {
   const [showProfile, setShowProfile] = useState(true);
   const [showBuilds, setShowBuilds] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [showEditPopup, setShowEditPopup] = useState(false);
   const [userBlogPosts, setUserBlogPosts] = useState([]);
 
   const [loading, setLoading] = useState(true);
@@ -35,6 +45,7 @@ function AccountComponent() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        fetchUserBlogPosts();
       } else {
         setCurrentUser(null);
       }
@@ -64,19 +75,6 @@ function AccountComponent() {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user);
-        fetchUserBlogPosts(); // Call the function to fetch user's blog posts
-      } else {
-        setCurrentUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   function ShowAccount() {
     setShowProfile(true);
     setShowBuilds(false);
@@ -103,11 +101,25 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
+  const openEditPopup = () => {
+    setShowEditPopup(true);
+  };
+
+  const closeEditPopup = () => {
+    setShowEditPopup(false);
+  };
+
   function formatDate(dateString) {
     const dateObject = new Date(dateString);
     const options = { year: "numeric", month: "long", day: "numeric" };
     return dateObject.toLocaleDateString(undefined, options);
   }
+
+  //Delete blog post
+  const deleteBlog = async (id) => {
+    const blogDoc = doc(db, "blogPosts", id);
+    await deleteDoc(blogDoc);
+  };
 
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
@@ -181,8 +193,61 @@ function AccountComponent() {
                           >
                             <h3 className="text-xxl font-bold">{post.title}</h3>
                             <p className="mb-2 text-xl">{post.post}</p>
+                            <div className="flex justify-between items-center">
+                              <button onClick={openEditPopup}>
+                                <span className="ml-2">
+                                  Edit Post <EditIcon />{" "}
+                                </span>
+                              </button>
+                              <button
+                                className="bg-red-500 p-1 mx-2"
+                                onClick={() => deleteBlog(post.id)}
+                              >
+                                <span className="ml-2">
+                                  Delete Post <DeleteIcon />{" "}
+                                </span>
+                              </button>
+                            </div>
                           </div>
                         ))}
+                        {showEditPopup && (
+                          <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
+                              <h2 className="text-xl font-semibold mb-4">
+                                Edit your blog post
+                              </h2>
+
+                              {/* Input fields */}
+                              <div className="mb-4 w-1/3">
+                                <label htmlFor="buildName">New Title:</label>
+                                <input
+                                  type="text"
+                                  id="buildName"
+                                  className="border rounded-md p-2"
+                                />
+                              </div>
+
+                              <div className="mb-4 w-1/3">
+                                <label htmlFor="buildDescription">
+                                  New Description:
+                                </label>
+                                <textarea
+                                  id="buildDescription"
+                                  className="border rounded-md p-2"
+                                ></textarea>
+                              </div>
+                              {/* Close button */}
+                              <div className="text-right">
+                                <button
+                                  onClick={closeEditPopup}
+                                  className="bg-red-500 text-white p-2 rounded-md"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </section>
                     </div>
                   </section>
@@ -199,7 +264,7 @@ function AccountComponent() {
                     It looks like you don't have a build yet, how about creating
                     one?
                   </p>
-                  <button onClick={openPopup} >
+                  <button onClick={openPopup}>
                     <span className="ml-2">
                       Add a Build <ControlPointIcon />{" "}
                     </span>

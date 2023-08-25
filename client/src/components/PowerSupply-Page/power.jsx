@@ -14,7 +14,7 @@ function PowerSuppply() {
           throw new Error('Error fetching parts data');
         }
       })
-      .then((jsonResult) => {
+      .then((jsonResult) => { 
         const powerSupply = jsonResult.powerSupply // Flatten the arrays of parts
         setPowerParts(powerSupply);
       })
