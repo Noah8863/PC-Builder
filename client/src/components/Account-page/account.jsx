@@ -10,7 +10,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, reload, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
@@ -106,7 +106,9 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
-  const openEditPopup = () => {
+  const openEditPopup = (post) => {
+    setUpdatedTitle(post.title);
+    setUpdatedDescription(post.post);
     setShowEditPopup(true);
   };
 
@@ -127,17 +129,18 @@ function AccountComponent() {
   };
 
   const updateBlogTitle = async (id) => {
-    console.log('button clicked')
     const blogDoc = doc(db, "blogPosts", id);
     await updateDoc(blogDoc, { title: updatedTitle });
-  };
-
-  const updateBlogDescription = async (id) => {
-    console.log('button clicked')
-    const blogDoc = doc(db, "blogPosts", id);
-    await updateDoc(blogDoc, { post: updatedDescription });
+    setShowEditPopup(false);
   };
   
+  const updateBlogDescription = async (id) => {
+    const blogDoc = doc(db, "blogPosts", id);
+    await updateDoc(blogDoc, { post: updatedDescription });
+    setShowEditPopup(false);
+  };
+
+
 
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
@@ -212,7 +215,10 @@ function AccountComponent() {
                             <h3 className="text-xxl font-bold">{post.title}</h3>
                             <p className="mb-2 text-xl">{post.post}</p>
                             <div className="flex justify-between items-center">
-                              <button onClick={openEditPopup}>
+                              <button
+                                button
+                                onClick={() => openEditPopup(post)}
+                              >
                                 <span className="ml-2">
                                   Edit Post <EditIcon />{" "}
                                 </span>
@@ -253,6 +259,7 @@ function AccountComponent() {
                                     >
                                       Edit Title
                                     </button>
+                                   
                                   </div>
 
                                   <div className="mb-4 w-1/3">
@@ -267,8 +274,12 @@ function AccountComponent() {
                                         setUpdatedDescription(e.target.value)
                                       }
                                     ></textarea>
-                                    <button className="mt-2 px-2 rounded-md bg-blue-400 text-white"
-                                      onClick={() => updateBlogDescription(post.id)}>
+                                    <button
+                                      className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                      onClick={() =>
+                                        updateBlogDescription(post.id)
+                                      }
+                                    >
                                       Edit Blog
                                     </button>
                                   </div>
