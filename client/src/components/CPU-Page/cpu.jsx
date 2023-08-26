@@ -52,9 +52,12 @@ function CPU() {
     console.log("Item ID:", itemId);
   };
 
-
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+  };
+
+  const openListMenu = () => {
+    setPopUpMenu(!popUpMenu);
   };
 
   return (
@@ -114,7 +117,7 @@ function CPU() {
                           </p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
-                            onClick={() => addItemToList(part.id)}
+                            onClick={openListMenu}
                           >
                             Add to a build
                           </button>
@@ -147,6 +150,7 @@ function CPU() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
                           </div>
                           <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
                             Close

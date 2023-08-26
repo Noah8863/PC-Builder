@@ -70,6 +70,10 @@ function Cases() {
     setSelectedOption(event.target.value);
   };
 
+  const openListMenu = () => {
+    setPopUpMenu(!popUpMenu);
+  };
+
   return (
     <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
@@ -140,7 +144,7 @@ function Cases() {
                           <div className="text-center">
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
-                            onClick={() => addItemToList(part.id)}
+                            onClick={openListMenu}
                           >
                             Add to a build
                           </button>
@@ -174,6 +178,7 @@ function Cases() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
                           </div>
                           <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
                             Close

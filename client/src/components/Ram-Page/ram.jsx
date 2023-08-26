@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 function Ram() {
   const [ramParts, setRamParts] = useState([]);
@@ -6,16 +6,16 @@ function Ram() {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
-    fetch('/RAM')
+    fetch("/RAM")
       .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error('Error fetching parts data');
+          throw new Error("Error fetching parts data");
         }
       })
       .then((jsonResult) => {
-        const ram = jsonResult.ram // Flatten the arrays of parts
+        const ram = jsonResult.ram; // Flatten the arrays of parts
         setRamParts(ram);
       })
       .catch((error) => {
@@ -67,6 +67,10 @@ function Ram() {
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
+  };
+
+  const openListMenu = () => {
+    setPopUpMenu(!popUpMenu);
   };
 
   return (
@@ -132,13 +136,15 @@ function Ram() {
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                          <p className="text-center">Memory Configuration: {part.size}</p>
+                          <p className="text-center">
+                            Memory Configuration: {part.size}
+                          </p>
                           <p className="text-center">
                             Max Memory Speed: {part.speed}
                           </p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
-                            onClick={() => addItemToList(part.id)}
+                            onClick={openListMenu}
                           >
                             Add to a build
                           </button>
@@ -147,7 +153,6 @@ function Ram() {
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
-                      
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
@@ -172,8 +177,12 @@ function Ram() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
                           </div>
-                          <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
+                          <button
+                            className="mt-4 bg-red-500 text-white p-2 rounded-md"
+                            onClick={addItemToList}
+                          >
                             Close
                           </button>
                         </div>
@@ -187,7 +196,6 @@ function Ram() {
       </div>
     </main>
   );
-  
 }
 
 export default Ram;

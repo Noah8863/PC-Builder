@@ -1,65 +1,67 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 function Monitor() {
-    const [monitorParts, setMonitorParts] = useState([]);
-    const [popUpMenu, setPopUpMenu] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("");
+  const [monitorParts, setMonitorParts] = useState([]);
+  const [popUpMenu, setPopUpMenu] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("");
 
-    useEffect(() => {
-        fetch('/Monitor')
-          .then((res) => {
-            if (res.ok) {
-              return res.json();
-            } else {
-              throw new Error('Error fetching parts data');
-            }
-          })
-          .then((jsonResult) => {
-            const monitor = jsonResult.monitor // Flatten the arrays of parts
-            setMonitorParts(monitor);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }, []);
+  useEffect(() => {
+    fetch("/Monitor")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          throw new Error("Error fetching parts data");
+        }
+      })
+      .then((jsonResult) => {
+        const monitor = jsonResult.monitor; // Flatten the arrays of parts
+        setMonitorParts(monitor);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
+  const sortMax = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => b.price - a.price);
+    setMonitorParts(sortedParts);
+  };
 
-      const sortMax = () => {
-        const sortedParts = [...monitorParts].sort((a, b) => b.price - a.price);
-        setMonitorParts(sortedParts);
-      };
-    
-      const sortLeast = () => {
-        const sortedParts = [...monitorParts].sort((a, b) => a.price - b.price);
-        setMonitorParts(sortedParts);
-      };
-    
-      const sortAZ = () => {
-        const sortedParts = [...monitorParts].sort((a, b) =>
-          a.manufacturer.localeCompare(b.manufacturer)
-        );
-        setMonitorParts(sortedParts);
-      };
-    
-      const sortZA = () => {
-        const sortedParts = [...monitorParts].sort((a, b) =>
-          b.manufacturer.localeCompare(a.manufacturer)
-        );
-        setMonitorParts(sortedParts);
-      };
-    
-      const addItemToList = (itemId) => {
-        setPopUpMenu(!popUpMenu);
-        console.log("Item ID:", itemId);
-      };
-    
-      const handleOptionChange = (event) => {
-        setSelectedOption(event.target.value);
-      };
-      
+  const sortLeast = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => a.price - b.price);
+    setMonitorParts(sortedParts);
+  };
 
-    return (
-        <main className="z-1">
+  const sortAZ = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      a.manufacturer.localeCompare(b.manufacturer)
+    );
+    setMonitorParts(sortedParts);
+  };
+
+  const sortZA = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      b.manufacturer.localeCompare(a.manufacturer)
+    );
+    setMonitorParts(sortedParts);
+  };
+
+  const addItemToList = (itemId) => {
+    setPopUpMenu(!popUpMenu);
+    console.log("Item ID:", itemId);
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const openListMenu = () => {
+    setPopUpMenu(!popUpMenu);
+  };
+
+  return (
+    <main className="z-1">
       <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
         Monitors
       </div>
@@ -92,8 +94,6 @@ function Monitor() {
           >
             Sort: Z - A
           </button>
-          
-          
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -116,7 +116,7 @@ function Monitor() {
                           </p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
-                            onClick={() => addItemToList(part.id)}
+                            onClick={openListMenu}
                           >
                             Add to a build
                           </button>
@@ -125,7 +125,6 @@ function Monitor() {
                       <p>Price: ${part.price}</p>
                       <p>Manufacture: {part.manufacturer}</p>
                       <p>Model: {part.model}</p>
-                      
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
@@ -150,8 +149,12 @@ function Monitor() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
                           </div>
-                          <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
+                          <button
+                            className="mt-4 bg-red-500 text-white p-2 rounded-md"
+                            onClick={addItemToList}
+                          >
                             Close
                           </button>
                         </div>
@@ -164,7 +167,7 @@ function Monitor() {
         </div>
       </div>
     </main>
-    )
+  );
 }
 
 export default Monitor;
