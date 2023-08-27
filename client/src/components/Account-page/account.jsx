@@ -7,6 +7,7 @@ import {
   query,
   where,
   deleteDoc,
+  updateDoc,
   doc,
 } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -32,6 +33,10 @@ function AccountComponent() {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  //Update Blog States
+  const [updatedTitle, setUpdatedTitle] = useState("")
+  const [updateDescription, setUpdateDescription] = useState("")
 
   useEffect(() => {
     // Simulate loading and error for demonstration
@@ -119,6 +124,11 @@ function AccountComponent() {
   const deleteBlog = async (id) => {
     const blogDoc = doc(db, "blogPosts", id);
     await deleteDoc(blogDoc);
+  };
+
+  const updateBlogTitle = async (id) => {
+    const blogDoc = doc(db, "blogPosts", id);
+    await updateDoc(blogDoc, {title: updateBlogTitle });
   };
 
   return (
@@ -224,7 +234,9 @@ function AccountComponent() {
                                   type="text"
                                   id="buildName"
                                   className="border rounded-md p-2"
+                                  onChange={(e) => setUpdatedTitle(e.target.value)}
                                 />
+                                <button className="underline mt-2" onClick={() => updateBlogTitle(post.id)}>Update Title</button>
                               </div>
 
                               <div className="mb-4 w-1/3">
