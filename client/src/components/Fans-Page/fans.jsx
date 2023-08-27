@@ -171,6 +171,7 @@ function Fans() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white">Add to List</button>
                           </div>
                           <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
                             Close
