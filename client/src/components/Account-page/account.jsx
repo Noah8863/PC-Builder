@@ -106,6 +106,10 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
+  const createBuild = () => {
+    setShowPopup(false);
+  };
+
   const openEditPopup = (post) => {
     setUpdatedTitle(post.title);
     setUpdatedDescription(post.post);
@@ -133,14 +137,12 @@ function AccountComponent() {
     await updateDoc(blogDoc, { title: updatedTitle });
     setShowEditPopup(false);
   };
-  
+
   const updateBlogDescription = async (id) => {
     const blogDoc = doc(db, "blogPosts", id);
     await updateDoc(blogDoc, { post: updatedDescription });
     setShowEditPopup(false);
   };
-
-
 
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
@@ -259,7 +261,6 @@ function AccountComponent() {
                                     >
                                       Edit Title
                                     </button>
-                                   
                                   </div>
 
                                   <div className="mb-4 w-1/3">
@@ -297,46 +298,6 @@ function AccountComponent() {
                             )}
                           </div>
                         ))}
-                        {showEditPopup && (
-                          <div className="fixed inset-0 flex items-center justify-center z-50">
-                            <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
-                              <h2 className="text-xl font-semibold mb-4">
-                                Edit your blog post
-                              </h2>
-
-                              {/* Input fields */}
-                              <div className="mb-4 w-1/3">
-                                <label htmlFor="buildName">New Title:</label>
-                                <input
-                                  type="text"
-                                  id="buildName"
-                                  className="border rounded-md p-2"
-                                  onChange={(e) => setUpdatedTitle(e.target.value)}
-                                />
-                                <button className="underline mt-2" onClick={() => updateBlogTitle(post.id)}>Update Title</button>
-                              </div>
-
-                              <div className="mb-4 w-1/3">
-                                <label htmlFor="buildDescription">
-                                  New Description:
-                                </label>
-                                <textarea
-                                  id="buildDescription"
-                                  className="border rounded-md p-2"
-                                ></textarea>
-                              </div>
-                              {/* Close button */}
-                              <div className="text-right">
-                                <button
-                                  onClick={closeEditPopup}
-                                  className="bg-red-500 text-white p-2 rounded-md"
-                                >
-                                  Close
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        )}
                       </section>
                     </div>
                   </section>
@@ -372,7 +333,7 @@ function AccountComponent() {
                         <input
                           type="text"
                           id="buildName"
-                          className="border rounded-md p-2"
+                          className="border rounded-md p-2 mt-2"
                         />
                       </div>
 
@@ -382,14 +343,12 @@ function AccountComponent() {
                         </label>
                         <textarea
                           id="buildDescription"
-                          className="border rounded-md p-2"
+                          className="border rounded-md p-2 mt-2"
                         ></textarea>
                       </div>
 
-                      <div className="mb-4">
-                        <label htmlFor="buildType" className="mr-2">
-                          Build Type:
-                        </label>
+                      <label htmlFor="buildType">Build Type:</label>
+                      <div className="mt-2 mb-4">
                         <select
                           id="buildType"
                           className="border rounded-md p-2 w-1/3 text-center"
@@ -401,7 +360,10 @@ function AccountComponent() {
                       </div>
 
                       {/* Close button */}
-                      <div className="text-right">
+                      <div className="flex justify-between">
+                        <button onClick={createBuild} className=" px-2 rounded-md bg-blue-400 text-white">
+                          Create Build
+                        </button>
                         <button
                           onClick={closePopup}
                           className="bg-red-500 text-white p-2 rounded-md"
