@@ -75,16 +75,20 @@ function AccountComponent() {
         ...doc.data(),
         id: doc.id,
       }));
-      setUserBlogPosts(filteredData);
-      if (response.data && response.data.length > 0) {
+  
+      // Update the blogPosts state based on whether there are blog posts or not
+      if (filteredData.length > 0) {
         setBlogPosts(true); // User has blog posts, set to true
       } else {
         setBlogPosts(false); // User doesn't have any blog posts, set to false
       }
+  
+      setUserBlogPosts(filteredData);
     } catch (err) {
       console.error(err);
     }
   };
+  
 
   function ShowAccount() {
     setShowProfile(true);
@@ -310,9 +314,9 @@ function AccountComponent() {
                         </section>
                       </section>
                     ) : (
-                      <div>
-                        <p>Looks like you haven't created any Blog Posts yet. Care to start today?</p>
-                        <button>Blog Page</button>
+                      <div className="text-center">
+                        <p className="py-4">Looks like you haven't created any Blog Posts yet. Care to start today?</p>
+                        <a href="/Blog"><div className="rounded-md bg-blue-400 text-white">Blog Page</div></a>
                       </div>
                     )}
                   </div>
