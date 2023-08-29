@@ -33,10 +33,8 @@ function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
 
   const signIn = async () => {
-    
     try {
       if (email && password) {
-        
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Sign-up successful!"); // Display the alert
         if (profilePicture) {
@@ -61,7 +59,6 @@ function SignUp() {
           email,
           password,
         };
-
         navigate("/Account", { state: userData });
       } else {
         setShowAlert(true);

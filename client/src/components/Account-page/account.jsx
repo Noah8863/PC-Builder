@@ -10,7 +10,7 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
-import { onAuthStateChanged, reload, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ConstructionIcon from "@mui/icons-material/Construction";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
@@ -25,6 +25,7 @@ function AccountComponent() {
   const location = useLocation();
   const userData = location.state;
   const [currentUser, setCurrentUser] = useState(null);
+  const [blogPosts, setBlogPosts] = useState(false);
   const [showProfile, setShowProfile] = useState(true);
   const [showBuilds, setShowBuilds] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
@@ -75,6 +76,11 @@ function AccountComponent() {
         id: doc.id,
       }));
       setUserBlogPosts(filteredData);
+      if (response.data && response.data.length > 0) {
+        setBlogPosts(true); // User has blog posts, set to true
+      } else {
+        setBlogPosts(false); // User doesn't have any blog posts, set to false
+      }
     } catch (err) {
       console.error(err);
     }
@@ -147,7 +153,7 @@ function AccountComponent() {
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
       <div className="grid grid-cols-3 gap-6">
-        <div className=" h-full grid col-span-1 justify-left p-4 m-4">
+        <div className="h-full grid col-span-1 justify-left p-4 m-4">
           {currentUser ? (
             <div>
               <p className="text-2xl p-2 text-left">Account</p>
@@ -167,7 +173,7 @@ function AccountComponent() {
                   </span>
                 </button>
                 <button
-                  className=" w-full flex items-center justify-between"
+                  className="w-full flex items-center justify-between"
                   onClick={ShowBuilds}
                 >
                   <span className="ml-2">
@@ -175,7 +181,7 @@ function AccountComponent() {
                   </span>
                 </button>
                 <button
-                  className=" w-full flex items-center justify-between"
+                  className="w-full flex items-center justify-between"
                   onClick={logOut}
                 >
                   <span className="ml-2">
@@ -189,7 +195,7 @@ function AccountComponent() {
           )}
         </div>
         {currentUser ? (
-          <div className=" col-span-2 h-full p-4 m-4 ">
+          <div className="col-span-2 h-full p-4 m-4">
             {showProfile && (
               <div>
                 <p className="text-2xl py-2 text-left">
@@ -203,104 +209,113 @@ function AccountComponent() {
                   Email: <p className="text-black pl-2">{currentUser.email}</p>
                 </div>
                 <div className="mt-8 h-max">
-                  <section className="mt-8">
-                    <h2 className="text-2xl text-center underline font-bold mb-4">
-                      Your Blog Posts
-                    </h2>
-                    <div>
+                  <h2 className="text-2xl text-center underline font-bold mb-4">
+                    Your Blog Posts
+                  </h2>
+                  <div>
+                    {blogPosts ? (
                       <section className="mt-8">
-                        {userBlogPosts.map((post) => (
-                          <div
-                            key={post.id}
-                            className="bg-white border border-gray-300 rounded-md p-4 mb-4"
-                          >
-                            <h3 className="text-xxl font-bold">{post.title}</h3>
-                            <p className="mb-2 text-xl">{post.post}</p>
-                            <div className="flex justify-between items-center">
-                              <button
-                                button
-                                onClick={() => openEditPopup(post)}
-                              >
-                                <span className="ml-2">
-                                  Edit Post <EditIcon />{" "}
-                                </span>
-                              </button>
-                              <button
-                                className="bg-red-500 text-white p-2 rounded-md"
-                                onClick={() => deleteBlog(post.id)}
-                              >
-                                <span className="ml-2">
-                                  Delete Post <DeleteIcon />{" "}
-                                </span>
-                              </button>
-                            </div>
-                            {showEditPopup && (
-                              <div className="fixed inset-0 flex items-center justify-center z-50">
-                                <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
-                                  <h2 className="text-xl font-semibold mb-4">
-                                    Edit your blog post
-                                  </h2>
+                        <section className="mt-8">
+                          {userBlogPosts.map((post) => (
+                            <div
+                              key={post.id}
+                              className="bg-white border border-gray-300 rounded-md p-4 mb-4"
+                            >
+                              <h3 className="text-xxl font-bold">
+                                {post.title}
+                              </h3>
+                              <p className="mb-2 text-xl">{post.post}</p>
+                              <div className="flex justify-between items-center">
+                                <button
+                                  button
+                                  onClick={() => openEditPopup(post)}
+                                >
+                                  <span className="ml-2">
+                                    Edit Post <EditIcon />{" "}
+                                  </span>
+                                </button>
+                                <button
+                                  className="bg-red-500 text-white p-2 rounded-md"
+                                  onClick={() => deleteBlog(post.id)}
+                                >
+                                  <span className="ml-2">
+                                    Delete Post <DeleteIcon />{" "}
+                                  </span>
+                                </button>
+                              </div>
+                              {showEditPopup && (
+                                <div className="fixed inset-0 flex items-center justify-center z-50">
+                                  <div className="p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
+                                    <h2 className="text-xl font-semibold mb-4">
+                                      Edit your blog post
+                                    </h2>
 
-                                  {/* Input fields */}
-                                  <div className="mb-4 w-1/3">
-                                    <label htmlFor="buildName">
-                                      New Title:
-                                    </label>
-                                    <input
-                                      type="text"
-                                      id="buildName"
-                                      className="border rounded-md p-2"
-                                      value={updatedTitle}
-                                      onChange={(e) =>
-                                        setUpdatedTitle(e.target.value)
-                                      }
-                                    />
-                                    <button
-                                      className="mt-2 px-2 rounded-md bg-blue-400 text-white"
-                                      onClick={() => updateBlogTitle(post.id)}
-                                    >
-                                      Edit Title
-                                    </button>
-                                  </div>
+                                    {/* Input fields */}
+                                    <div className="mb-4 w-1/3">
+                                      <label htmlFor="buildName">
+                                        New Title:
+                                      </label>
+                                      <input
+                                        type="text"
+                                        id="buildName"
+                                        className="border rounded-md p-2"
+                                        value={updatedTitle}
+                                        onChange={(e) =>
+                                          setUpdatedTitle(e.target.value)
+                                        }
+                                      />
+                                      <button
+                                        className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                        onClick={() => updateBlogTitle(post.id)}
+                                      >
+                                        Edit Title
+                                      </button>
+                                    </div>
 
-                                  <div className="mb-4 w-1/3">
-                                    <label htmlFor="buildDescription">
-                                      New Description:
-                                    </label>
-                                    <textarea
-                                      id="buildDescription"
-                                      className="border rounded-md p-2"
-                                      value={updatedDescription}
-                                      onChange={(e) =>
-                                        setUpdatedDescription(e.target.value)
-                                      }
-                                    ></textarea>
-                                    <button
-                                      className="mt-2 px-2 rounded-md bg-blue-400 text-white"
-                                      onClick={() =>
-                                        updateBlogDescription(post.id)
-                                      }
-                                    >
-                                      Edit Blog
-                                    </button>
-                                  </div>
-                                  {/* Close button */}
-                                  <div className="text-right">
-                                    <button
-                                      onClick={closeEditPopup}
-                                      className="bg-red-500 text-white p-2 rounded-md"
-                                    >
-                                      Close
-                                    </button>
+                                    <div className="mb-4 w-1/3">
+                                      <label htmlFor="buildDescription">
+                                        New Description:
+                                      </label>
+                                      <textarea
+                                        id="buildDescription"
+                                        className="border rounded-md p-2"
+                                        value={updatedDescription}
+                                        onChange={(e) =>
+                                          setUpdatedDescription(e.target.value)
+                                        }
+                                      ></textarea>
+                                      <button
+                                        className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                        onClick={() =>
+                                          updateBlogDescription(post.id)
+                                        }
+                                      >
+                                        Edit Blog
+                                      </button>
+                                    </div>
+                                    {/* Close button */}
+                                    <div className="text-right">
+                                      <button
+                                        onClick={closeEditPopup}
+                                        className="bg-red-500 text-white p-2 rounded-md"
+                                      >
+                                        Close
+                                      </button>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
-                            )}
-                          </div>
-                        ))}
+                              )}
+                            </div>
+                          ))}
+                        </section>
                       </section>
-                    </div>
-                  </section>
+                    ) : (
+                      <div>
+                        <p>Looks like you haven't created any Blog Posts yet. Care to start today?</p>
+                        <button>Blog Page</button>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}
@@ -361,7 +376,10 @@ function AccountComponent() {
 
                       {/* Close button */}
                       <div className="flex justify-between">
-                        <button onClick={createBuild} className=" px-2 rounded-md bg-blue-400 text-white">
+                        <button
+                          onClick={createBuild}
+                          className="px-2 rounded-md bg-blue-400 text-white"
+                        >
                           Create Build
                         </button>
                         <button
@@ -415,8 +433,8 @@ function AccountComponent() {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 489.711 489.711"
                   >
-                    <path d="M112.156,97.111c72.3-65.4,180.5-66.4,253.8-6.7l-58.1,2.2c-7.5,0.3-13.3,6.5-13,14c0.3,7.3,6.3,13,13.5,13    c0.2,0,0.3,0,0.5,0l89.2-3.3c7.3-0.3,13-6.2,13-13.5v-1c0-0.2,0-0.3,0-0.5v-0.1l0,0l-3.3-88.2c-0.3-7.5-6.6-13.3-14-13    c-7.5,0.3-13.3,6.5-13,14l2.1,55.3c-36.3-29.7-81-46.9-128.8-49.3c-59.2-3-116.1,17.3-160,57.1c-60.4,54.7-86,137.9-66.8,217.1    c1.5,6.2,7,10.3,13.1,10.3c1.1,0,2.1-0.1,3.2-0.4c7.2-1.8,11.7-9.1,9.9-16.3C36.656,218.211,59.056,145.111,112.156,97.111z"></path>
-                    <path d="M462.456,195.511c-1.8-7.2-9.1-11.7-16.3-9.9c-7.2,1.8-11.7,9.1-9.9,16.3c16.9,69.6-5.6,142.7-58.7,190.7    c-37.3,33.7-84.1,50.3-130.7,50.3c-44.5,0-88.9-15.1-124.7-44.9l58.8-5.3c7.4-0.7,12.9-7.2,12.2-14.7s-7.2-12.9-14.7-12.2l-88.9,8    c-7.4,0.7-12.9,7.2-12.2,14.7l8,88.9c0.6,7,6.5,12.3,13.4,12.3c0.4,0,0.8,0,1.2-0.1c7.4-0.7,12.9-7.2,12.2-14.7l-4.8-54.1    c36.3,29.4,80.8,46.5,128.3,48.9c3.8,0.2,7.6,0.3,11.3,0.3c55.1,0,107.5-20.2,148.7-57.4    C456.056,357.911,481.656,274.811,462.456,195.511z"></path>
+                    <path d="M112.156,97.111c72.3-65.4,180.5-66.4,253.8-6.7l-58.1,2.2c-7.5,0.3-13.3,6.5-13,14c0.3,7.3,6.3,13,13.5,13    c0.2,0,0.3,0,0.5,0l89.2-3.3c7.3-0.3,13-6.2,13-13.5v-1c0-0.2,0-0.3,0-0.5v-0.1l0,0l-3.3-88.2c-0.3-7.5-6.6-13.3-14-13    c-7.5,0.3-13.3,6.5-13,14l2.1,55.3c-36.3-29.7-81-46.9-128.8-49.3c-59.2-3-116.1,17.3-160-57.1c-60.4,54.7-86,137.9-66.8,217.1    c1.5,6.2,7,10.3,13.1,10.3c1.1,0,2.1-0.1,3.2-0.4c7.2-1.8,11.7-9.1,9.9-16.3C36.656,218.211,59.056,145.111,112.156,97.111z"></path>
+                    <path d="M462.456,195.511c-1.8-7.2-9.1-11.7-16.3-9.9c-7.2,1.8-11.7,9.1-9.9,16.3c16.9,69.6-5.6,142.7-58.7,190.7    c-37.3,33.7-84.1,50.3-130.7,50.3c-44.5,0-88.9-15.1-124.7-44.9l58.8-5.3c7.4-0.7,12.9-7.2,12.2-14.7s-7.2-12.9-14.7-12.2l-88.9,8    c-7.4,0.7-12.9-7.2-12.2-14.7l8-88.9c0.6,7,6.5,12.3,13.4,12.3c0.4,0,0.8,0,1.2-0.1c7.4-0.7,12.9-7.2,12.2-14.7l-4.8-54.1    c36.3,29.4,80.8,46.5,128.3,48.9c3.8,0.2,7.6,0.3,11.3,0.3c55.1,0,107.5-20.2,148.7-57.4    C456.056,357.911,481.656,274.811,462.456,195.511z"></path>
                   </svg>
                   <p>Refresh the page</p>
                 </div>
@@ -439,4 +457,5 @@ function AccountComponent() {
     </div>
   );
 }
+
 export default AccountComponent;
