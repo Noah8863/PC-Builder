@@ -108,26 +108,26 @@ function SignUp() {
     }
   };
 
-  //Upload profile image logic to firebase
-  // const uploadFile = async () => {
-  //   if (!profilePicture) return;
-  //   const profileFolderRef = ref(
-  //     storage,
-  //     `profilePictureFiles/${profilePicture.name}`
-  //   );
-  //   try {
-  //     await uploadBytes(profileFolderRef, profilePicture);
-  //     const downloadURL = await getDownloadURL(profileFolderRef);
-  //     await db.collection("users").add({
-  //       firstName,
-  //       lastName,
-  //       email,
-  //       profilePictureURL: downloadURL,
-  //     });
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  // Upload profile image logic to firebase
+  const uploadFile = async () => {
+    if (!profilePicture) return;
+    const profileFolderRef = ref(
+      storage,
+      `profilePictureFiles/${profilePicture.name}`
+    );
+    try {
+      await uploadBytes(profileFolderRef, profilePicture);
+      const downloadURL = await getDownloadURL(profileFolderRef);
+      await db.collection("users").add({
+        firstName,
+        lastName,
+        email,
+        profilePictureURL: downloadURL,
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
@@ -258,16 +258,16 @@ function SignUp() {
                         type="file"
                         onChange={(e) => setFileUpload(e.target.files[0])}
                       />
-                      {/* <button
+                      <button
                         className="w-full mt-4 text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                         onClick={uploadFile}
                       >
                         Upload Profile Picture
-                      </button> */}
+                      </button>
                     </div>
                   </div>
                 )}
-
+                <div className="border-2 mb-6"></div>
                 {showAdditionalQuestions && (
                   <button
                     type="submit"
@@ -278,7 +278,7 @@ function SignUp() {
                   </button>
                 )}
               </div>
-
+              
               <button
                 type="submit"
                 onClick={signInWithGoogle}
