@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   auth,
   googleProvider,
@@ -11,6 +11,8 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
 import { useAnimation, motion } from "framer-motion";
+
+import "./signup.css"
 
 import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
@@ -71,9 +73,8 @@ function SignUp() {
         setErrorMessage("The email address is already in use."); // Set the error message state
       }
       if (err.code === "auth/weak-password") {
-        setErrorMessage("Password must be at least 6 characters")
-      }
-      else {
+        setErrorMessage("Password must be at least 6 characters");
+      } else {
         setErrorMessage("An error occurred. Please try again.");
       }
       setShowAlert(true); // Show the alert with the error message
@@ -81,9 +82,6 @@ function SignUp() {
   };
 
 
-  const TestAnimation = async () => {
-    alert("Sign-up successful!");
-  }
 
   const signInWithGoogle = async () => {
     try {
@@ -131,6 +129,42 @@ function SignUp() {
       console.error(err);
     }
   };
+
+  const AlertModel = useAnimation();
+
+  async function Alert() {
+    await AlertModel.start({ x: "20vw" });
+  }
+
+  const TestAnimation = async () => {
+    alert("Sign-up successful!");
+    leftSequence();
+  };
+
+  const leftContainer = useAnimation();
+
+  const leftContainerStart = {
+    hidden: {
+      x: "100vw",
+    },
+  };
+
+  async function leftSequence() {
+    await leftContainer.start({ x: "100vw" });
+    await leftContainer.start({
+      x: "30vw",
+      transition: { type: "spring", stiffness: 30 },
+    });
+    await leftContainer.start({
+      x: "5vw",
+      transition: { delay: 1.8, duration: 1.5 },
+    });
+  }
+
+  useEffect(() => {
+    leftSequence();
+  }, []);
+
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
     <section className="bg-gray-900">
@@ -268,6 +302,9 @@ function SignUp() {
                         Upload Profile Picture
                       </button>
                     </div>
+                    <motion.h1 initial="hidden" animate={AlertModel}>
+                      <p className="AlertContainer">Something here</p>
+                    </motion.h1>
                   </div>
                 )}
                 <div className="border-2 mb-6"></div>
@@ -282,7 +319,7 @@ function SignUp() {
                   </button>
                 )}
               </div>
-              
+
               <button
                 type="submit"
                 onClick={signInWithGoogle}
