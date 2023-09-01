@@ -140,18 +140,21 @@ function AccountComponent() {
   const deleteBlog = async (id) => {
     const blogDoc = doc(db, "blogPosts", id);
     await deleteDoc(blogDoc);
+    window.location.reload(false);
   };
 
   const updateBlogTitle = async (id) => {
     const blogDoc = doc(db, "blogPosts", id);
     await updateDoc(blogDoc, { title: updatedTitle });
     setShowEditPopup(false);
+    window.location.reload(false);
   };
 
   const updateBlogDescription = async (id) => {
     const blogDoc = doc(db, "blogPosts", id);
     await updateDoc(blogDoc, { post: updatedDescription });
     setShowEditPopup(false);
+    window.location.reload(false);
   };
 
   return (

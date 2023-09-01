@@ -33,8 +33,6 @@ function BlogComponent() {
       console.error(err);
     }
   };
-
-
   useEffect(() => {
     getBlogPost();
   }, []);
@@ -65,6 +63,7 @@ function BlogComponent() {
       setNewBlogDate(7162023);
       setImageURL("");
       getBlogPost();
+      window.location.reload(false);
     } catch (err) {
       console.error(err);
       alert("There has been an issue, please try again");

@@ -10,6 +10,7 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
+import { useAnimation, motion } from "framer-motion";
 
 import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
@@ -78,6 +79,11 @@ function SignUp() {
       setShowAlert(true); // Show the alert with the error message
     }
   };
+
+
+  const TestAnimation = async () => {
+    alert("Sign-up successful!");
+  }
 
   const signInWithGoogle = async () => {
     try {
@@ -268,7 +274,8 @@ function SignUp() {
                 {showAdditionalQuestions && (
                   <button
                     type="submit"
-                    onClick={signIn}
+                    // onClick={signIn}
+                    onClick={TestAnimation}
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Create an account
