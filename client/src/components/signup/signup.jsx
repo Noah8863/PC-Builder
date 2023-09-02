@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import "./signup.css"
 import {
   auth,
   googleProvider,
@@ -10,9 +11,7 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import Alert from "../Alerts/alert.jsx";
-import { useAnimation, motion } from "framer-motion";
-
-import "./signup.css"
+import Modal from "../Modal/index.jsx";
 
 import googleIcon from "../../images/googleIcon.png";
 import GitHubIcon from "../../images/GitHubIcon.png";
@@ -34,6 +33,12 @@ function SignUp() {
   const [errorMessage, setErrorMessage] = useState("");
   const [showAdditionalQuestions, setShowAdditionalQuestions] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  //State for Modal dropdown
+  const [modalOpen, setModalOpen] = useState(false)
+
+  const close = () => setModalOpen(false);
+  const open = () => setModalOpen(true)
 
   const signIn = async () => {
     try {
@@ -130,40 +135,7 @@ function SignUp() {
     }
   };
 
-  const AlertModel = useAnimation();
-
-  async function Alert() {
-    await AlertModel.start({ x: "20vw" });
-  }
-
-  const TestAnimation = async () => {
-    alert("Sign-up successful!");
-    leftSequence();
-  };
-
-  const leftContainer = useAnimation();
-
-  const leftContainerStart = {
-    hidden: {
-      x: "100vw",
-    },
-  };
-
-  async function leftSequence() {
-    await leftContainer.start({ x: "100vw" });
-    await leftContainer.start({
-      x: "30vw",
-      transition: { type: "spring", stiffness: 30 },
-    });
-    await leftContainer.start({
-      x: "5vw",
-      transition: { delay: 1.8, duration: 1.5 },
-    });
-  }
-
-  useEffect(() => {
-    leftSequence();
-  }, []);
+  
 
   return (
     //Component below belongs to flowbite code snippet. See https://flowbite.com/blocks/marketing/register/ for more details
@@ -302,21 +274,21 @@ function SignUp() {
                         Upload Profile Picture
                       </button>
                     </div>
-                    <motion.h1 initial="hidden" animate={AlertModel}>
-                      <p className="AlertContainer">Something here</p>
-                    </motion.h1>
                   </div>
                 )}
                 <div className="border-2 mb-6"></div>
                 {showAdditionalQuestions && (
+                  <div>
                   <button
                     type="submit"
                     // onClick={signIn}
-                    onClick={TestAnimation}
+                    onClick={() => (modalOpen ? close() : open())}
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Create an account
                   </button>
+                  {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+                  </div>
                 )}
               </div>
 

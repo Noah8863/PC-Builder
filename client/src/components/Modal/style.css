@@ -1,0 +1,11 @@
+.modal {
+    /* Clamp: Set the widthto 700px, but set the width to 90% if the screen is too small or 50% if the scren is too big.  */
+    width: clamp(50%, 700px, 90%);
+    height: min(50%, 300px);
+    margin: auto;
+    padding: 0 2rem;
+    border-radius: 12px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
