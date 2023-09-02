@@ -37,14 +37,17 @@ function SignUp() {
   //State for Modal dropdown
   const [modalOpen, setModalOpen] = useState(false)
 
-  const close = () => setModalOpen(false);
+  const close = () => 
+  {
+    setModalOpen(false)
+    signIn();
+  };
   const open = () => setModalOpen(true)
 
   const signIn = async () => {
     try {
       if (email && password) {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert("Sign-up successful!"); // Display the alert
         if (profilePicture) {
           const profileFolderRef = ref(
             storage,
@@ -282,12 +285,12 @@ function SignUp() {
                   <button
                     type="submit"
                     // onClick={signIn}
-                    onClick={() => (modalOpen ? close() : open())}
+                    onClick={() => (modalOpen ? close() : open()) }
                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
                     Create an account
                   </button>
-                  {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+                  {modalOpen && <Modal text={'Welcome to the PC Builder Community! Take a look around and feel free to make blog posts, create builds and shop for parts'}  modalOpen={modalOpen} handleClose={close}/>}
                   </div>
                 )}
               </div>

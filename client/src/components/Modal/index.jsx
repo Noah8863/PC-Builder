@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Backdrop from "../Backdrop";
 import "./style.css";
+import Icon from "../../images/pc-builder-icon.png";
 
 const dropIn = {
     hidden: {
@@ -13,8 +14,8 @@ const dropIn = {
         transition: {
             duration: 0.1, 
             type: "spring", 
-            damping: 100, 
-            stiffness: 50, 
+            damping: 5, 
+            stiffness: 15, 
         }
     },
     exit: {
@@ -28,14 +29,15 @@ const Modal = ({ handleClose, text }) => {
     return (
         <Backdrop onClick={handleClose}>
             <motion.div onClick={(e) => e.stopPropagation()}
-            className="modal bg-orange-400"
+            className="modal bg-primary-600"
             variants={dropIn}
             initial="hidden"
             animate="visible"
             exit="exit"
             >
-            <p>{text}</p>
-            <button onClick={handleClose}>Close</button>
+            <img src={Icon} className="w-80 mt-4"></img>
+            <p className="p-4 top-5 relative text-xl text-center text-white">{text}</p>
+            <button className="p-4 top-10 relative text-xl text-center text-white" onClick={handleClose}>Close</button>
             </motion.div>
         </Backdrop>
     )
