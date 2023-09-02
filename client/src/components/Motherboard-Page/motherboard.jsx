@@ -61,6 +61,21 @@ function Motherboards() {
     setParts(sortedParts);
   };
 
+  const sortATXFirst = () => {
+    const sortedParts = [...parts].sort((a, b) =>
+      a.size.localeCompare(b.size)
+    );
+    setParts(sortedParts);
+  };
+
+  const sortMiniATXFirst = () => {
+    const sortedParts = [...parts].sort((a, b) =>
+      b.size.localeCompare(a.size)
+    );
+    setParts(sortedParts);
+  };
+  
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -120,6 +135,19 @@ function Motherboards() {
             onClick={sortWhiteFirst}
           >
             Color: White
+          </button>
+          <p className="text-xxl text-left px-4">Size</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortATXFirst}
+          >
+            ATX
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMiniATXFirst}
+          >
+            Mini-ATX
           </button>
         </div>
 

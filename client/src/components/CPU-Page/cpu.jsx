@@ -47,6 +47,13 @@ function CPU() {
     setCpuParts(sortedParts);
   };
 
+  const sortAM4 = () => {
+    const sortedParts = [...cpuParts].sort((a, b) =>
+      a.socket.localeCompare(b.socket)
+    );
+    setCpuParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -93,6 +100,13 @@ function CPU() {
             onClick={sortIntel}
           >
             Intel processors
+          </button>
+          <p className="text-xxl text-left px-4">Socket</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortAM4}
+          >
+            AM4 Socket
           </button>
         </div>
 

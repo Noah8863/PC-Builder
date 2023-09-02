@@ -125,7 +125,7 @@
       "part": "motherboards",
       "title": "MSI AM1I Mini-ITX AMD Motherboard",
       "manufacturer": "MSI",
-      "model": "AM1I",
+      "model": "AM1i",
       "size": "Mini-ITX",
       "color": "Black",
       "socket": "AM1",
@@ -226,7 +226,7 @@
       "manufacturer": "AMD",
       "socket": "AM4",
       "core": "8 cores",
-      "threads": "16 Threads",
+      "threads": "16",
       "clockSpeed": "4.6 Ghz",
       "price": 189.99,
       "img": "https://m.media-amazon.com/images/I/51D3DrDmwkL._AC_SX679_.jpg"
