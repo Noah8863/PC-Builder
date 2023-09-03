@@ -630,7 +630,7 @@
       "manufacturer": "Corsair",
       "size": "32GB (2X16GB)",
       "color": "Black",
-      "speed": "3200 MHz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 64.99,
       "img": "https://m.media-amazon.com/images/I/518T3hrUY4L._AC_SX679_.jpg"
@@ -643,7 +643,7 @@
       "manufacturer": "Silicon Power",
       "size": "16GB (2x8GB)",
       "color": "Silver",
-      "speed": "3200MHz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 29.99,
       "img": "https://m.media-amazon.com/images/I/71hqLlS98ZL._AC_SX679_PIbundle-2,TopRight,0,0_SH20_.jpg"
@@ -656,7 +656,7 @@
       "manufacturer": "Corsair",
       "size": "32GB (2x16GB)",
       "color": "RGB Black",
-      "speed": "3200MHz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 79.99,
       "img": "https://m.media-amazon.com/images/I/71e6YWJio-L._AC_SX679_.jpg"
@@ -669,7 +669,7 @@
       "manufacturer": "CORSAIR",
       "size": "32GB (2x16GB)",
       "color": "Black RGB",
-      "speed": "5600MHz",
+      "speed": 5600,
       "type": "DDR5",
       "price": 169.99,
       "img": "https://m.media-amazon.com/images/I/71G0QXj9T+L._AC_SX679_.jpg"
@@ -682,7 +682,7 @@
       "manufacturer": "CORSAIR",
       "size": "32GB (2x16GB)",
       "color": "Black",
-      "speed": "5600MHz",
+      "speed": 5600,
       "type": "DDR5",
       "price": 94.99,
       "img": "https://m.media-amazon.com/images/I/71W0l9URZOL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
@@ -695,7 +695,7 @@
       "manufacturer": "G.Skill",
       "size": "32GB (2 x 16GB)",
       "color": "Black RGB",
-      "speed": "3200Mhz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 79.99,
       "img": "https://m.media-amazon.com/images/I/61l4EStxhnL._AC_SX450_.jpg"
@@ -708,7 +708,7 @@
       "manufacturer": "G.Skill",
       "size": "32GB (2 x 16GB)",
       "color": "Black RGB",
-      "speed": "6000Mhz",
+      "speed": 6000,
       "type": "DDR5",
       "price": 100.99,
       "img": "https://m.media-amazon.com/images/I/51c+p6RY+AL._AC_SX300_SY300_.jpg"
@@ -721,7 +721,7 @@
       "manufacturer": "G.Skill",
       "size": "32GB (2 x 16GB)",
       "color": "Siver RGB",
-      "speed": "3600Mhz",
+      "speed": 3600,
       "type": "DDR4",
       "price": 94.99,
       "img": "https://m.media-amazon.com/images/I/61eWHqJJX2L._AC_SY450_PIbundle-2,TopRight,0,0_SH20_.jpg"
@@ -734,7 +734,7 @@
       "manufacturer": "Corsair",
       "size": "64GB (2 x 32GB)",
       "color": "Black",
-      "speed": "3200MHz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 129.99,
       "img": "https://m.media-amazon.com/images/I/51gLnYN1W7L.__AC_SY300_SX300_QL70_FMwebp_.jpg"
@@ -747,7 +747,7 @@
       "manufacturer": "CORSAIR",
       "size": "64GB (2x32GB)",
       "color": "Black RGB",
-      "speed": "6400MHz",
+      "speed": 6400,
       "type": "DDR5",
       "price": 239.99,
       "img": "https://m.media-amazon.com/images/I/61XsKRKsGoL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
@@ -760,7 +760,7 @@
       "manufacturer": "G.Skill",
       "size": "32GB (2 x 16GB)",
       "color": "Black",
-      "speed": "6000Mhz",
+      "speed": 6000,
       "type": "DDR5",
       "price": 99.99,
       "img": "https://m.media-amazon.com/images/I/61fsoD+5vhL._AC_SX300_SY300_.jpg"
@@ -773,7 +773,7 @@
       "manufacturer": "Crucial",
       "size": "8GB (1 x 8GB)",
       "color": "Default/Green",
-      "speed": "2933Mhz",
+      "speed": 2933,
       "type": "DDR4",
       "price": 17.99,
       "img": "https://m.media-amazon.com/images/I/61j3CTxnXVL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
@@ -786,7 +786,7 @@
       "manufacturer": "Asgard",
       "size": "16GB (2 x 8GB)",
       "color": "White/RGB",
-      "speed": "3200Mhz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 54.99,
       "img": "https://m.media-amazon.com/images/I/61wizAuwBhL._AC_SY355_PIbundle-2,TopRight,0,0_SH20_.jpg"
@@ -799,7 +799,7 @@
       "manufacturer": "TEAMGROUP",
       "size": "16GB (2 x 8GB)",
       "color": "Grey",
-      "speed": "3200Mhz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 30.99,
       "img": "https://m.media-amazon.com/images/I/71lBdR146xL.__AC_SX300_SY300_QL70_FMwebp_.jpg"
@@ -812,7 +812,7 @@
       "manufacturer": "Silicon",
       "size": "16GB (2 x 8GB)",
       "color": "Grey/RGB",
-      "speed": "3200Mhz",
+      "speed": 3200,
       "type": "DDR4",
       "price": 39.99,
       "img": "https://m.media-amazon.com/images/I/51QnJNdq-qL.__AC_SY300_SX300_QL70_FMwebp_.jpg"
@@ -825,7 +825,7 @@
       "manufacturer": "TEAMGROUP",
       "size": "32GB (2 x 16GB)",
       "color": "White/RGB",
-      "speed": "5200Mhz",
+      "speed": 5200,
       "type": "DDR4",
       "price": 89.99,
       "img": "https://m.media-amazon.com/images/I/81JEfdUVCTL._AC_SY355_.jpg"

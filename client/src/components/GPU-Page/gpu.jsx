@@ -62,7 +62,6 @@ function GPU() {
     setGpuParts(sortedParts);
   };
 
-
   const sortVRam = () => {
     const sortedParts = [...gpuParts].sort((a, b) => b.vRam - a.vRam);
     setGpuParts(sortedParts);

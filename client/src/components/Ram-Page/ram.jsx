@@ -60,6 +60,16 @@ function Ram() {
     setRamParts(sortedCases);
   };
 
+  const sortSlowest = () => {
+    const sortedCases = [...ramParts].sort((a, b) => a.speed - b.speed);
+    setRamParts(sortedCases);
+  };
+
+  const sortFastest = () => {
+    const sortedCases = [...ramParts].sort((a, b) => b.speed - a.speed);
+    setRamParts(sortedCases);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -119,6 +129,19 @@ function Ram() {
             onClick={sortWhiteFirst}
           >
             Color: White
+          </button>
+          <p className="text-xxl text-left px-4">Sort by Mhz</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortSlowest}
+          >
+            Slower Mhz
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortFastest}
+          >
+            Faster Mhz
           </button>
         </div>
 
