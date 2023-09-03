@@ -436,7 +436,7 @@
       "manufacturer": "MSI",
       "size": "Single Slot",
       "color": "Black",
-      "vRam": "2 GB",
+      "vRam": 2,
       "price": 65.65,
       "img": "https://m.media-amazon.com/images/I/71dKdhygnqL._AC_SX679_.jpg"
     },
@@ -448,7 +448,7 @@
       "manufacturer": "ZOTAC",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "12 GB",
+      "vRam": 12,
       "price": 289.99,
       "img": "https://m.media-amazon.com/images/I/7156DLyUsYL._AC_SX679_.jpg"
     },
@@ -460,7 +460,7 @@
       "manufacturer": "MSI",
       "size": "Dual Slot",
       "color": "Silver/Black",
-      "vRam": "12 Gb",
+      "vRam": 12,
       "price": 369.99,
       "img": "https://m.media-amazon.com/images/I/519qL7KKgfL._AC_SX679_.jpg"
     },
@@ -472,7 +472,7 @@
       "manufacturer": "MSI",
       "size": "Dula Slot",
       "color": "Silver",
-      "vRam": "6 GB",
+      "vRam": 6,
       "price": 239.99,
       "img": "https://m.media-amazon.com/images/I/61WLhQGyMIL._AC_SX679_.jpg"
     },
@@ -484,7 +484,7 @@
       "manufacturer": "MSI",
       "size": "Dual slot",
       "color": "Silver",
-      "vRam": "8 GB",
+      "vRam": 8,
       "price": 264.99,
       "img": "https://m.media-amazon.com/images/I/811J2PwncGL._AC_SX679_.jpg"
     },
@@ -496,7 +496,7 @@
       "manufacturer": "Intel",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "8 GB",
+      "vRam": 8,
       "price": 219.99,
       "img": "https://m.media-amazon.com/images/I/71xE1Rn+D1L._AC_SX679_.jpg"
     },
@@ -508,7 +508,7 @@
       "manufacturer": "ASUS",
       "size": "Dual Slot",
       "color": "Black/RGB",
-      "vRam": "12 GB",
+      "vRam": 12,
       "price": 989.99,
       "img": "https://m.media-amazon.com/images/I/71MCoiRtMwL._AC_SX679_.jpg"
     },
@@ -520,7 +520,7 @@
       "manufacturer": "Intel",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "16 GB",
+      "vRam": 16,
       "price": 449.99,
       "img": "https://m.media-amazon.com/images/I/71rzJRZ7lIL._AC_SX679_.jpg"
     },
@@ -532,7 +532,7 @@
       "manufacturer": "ZOTAC",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "12 GB",
+      "vRam": 12,
       "price": 289.99,
       "img": "https://m.media-amazon.com/images/I/7156DLyUsYL._AC_SX679_.jpg"
     },
@@ -544,7 +544,7 @@
       "manufacturer": "GIGABYTE",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "8 GB",
+      "vRam": 8,
       "price": 499.99,
       "img": "https://m.media-amazon.com/images/I/71XcVOdHX+S._AC_SX679_.jpg"
     },
@@ -556,7 +556,7 @@
       "manufacturer": "ASUS",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "8 GB",
+      "vRam": 8,
       "price": 599.99,
       "img": "https://m.media-amazon.com/images/I/613n8brVISL._AC_SX679_.jpg"
     },
@@ -568,7 +568,7 @@
       "manufacturer": "MSI",
       "size": "Dual Slot",
       "color": "Silver",
-      "vRam": "12 GB",
+      "vRam": 12,
       "price": 949.99,
       "img": "https://m.media-amazon.com/images/I/71vVK55rfFL._AC_SX679_.jpg"
     },
@@ -580,7 +580,7 @@
       "manufacturer": "ASUS",
       "size": "Tripple slot",
       "color": "Black",
-      "vRam": "16 GB",
+      "vRam": 16,
       "price": 1399.99,
       "img": "https://m.media-amazon.com/images/I/71vQnBuZ3yL._AC_SX679_.jpg"
     },
@@ -592,7 +592,7 @@
       "manufacturer": "PowerColor",
       "size": "Tripple slot",
       "color": "Black",
-      "vRam": "16 GB",
+      "vRam": 16,
       "price": 629.99,
       "img": "https://m.media-amazon.com/images/I/81FTVf0jQCL._AC_SX679_.jpg"
     },
@@ -604,7 +604,7 @@
       "manufacturer": "ASUS",
       "size": "Dual Slot",
       "color": "RGB/Black",
-      "vRam": "24 GB",
+      "vRam": 24,
       "price": 1154.99,
       "img": "https://m.media-amazon.com/images/I/71MCUHMviGL._AC_SX679_.jpg"
     },
@@ -616,7 +616,7 @@
       "manufacturer": "PowerColor",
       "size": "Dual Slot",
       "color": "Black",
-      "vRam": "12 GB",
+      "vRam": 12,
       "price": 449.99,
       "img": "https://m.media-amazon.com/images/I/81Uh+dyZ-+L._AC_SX679_.jpg"
     }

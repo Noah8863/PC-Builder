@@ -62,6 +62,17 @@ function GPU() {
     setGpuParts(sortedParts);
   };
 
+
+  const sortVRam = () => {
+    const sortedParts = [...gpuParts].sort((a, b) => b.vRam - a.vRam);
+    setGpuParts(sortedParts);
+  };
+  
+  const sortLowestVRam = () => {
+    const sortedParts = [...gpuParts].sort((a, b) => a.vRam - b.vRam);
+    setGpuParts(sortedParts);
+  };
+  
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -122,6 +133,19 @@ function GPU() {
           >
             Color: White
           </button>
+          <p className="text-xxl text-left px-4">V-Ram</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortVRam}
+          >
+            Highest V-Ram Cards
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortLowestVRam}
+          >
+            Lowest V-Ram Cards
+          </button>
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -140,7 +164,7 @@ function GPU() {
                         <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                           <p className="text-center">Slots: {part.size}</p>
                           <p className="text-center">
-                            V RAM: {part.vRam}
+                            V RAM: {part.vRam} GB
                           </p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
