@@ -47,6 +47,34 @@ function Monitor() {
     setMonitorParts(sortedParts);
   };
 
+  const sortLargestSize = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      parseInt(b.size) - parseInt(a.size)
+    );
+    setMonitorParts(sortedParts);
+  };
+
+  const sortSmallestSize = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      parseInt(a.size) - parseInt(b.size)
+    );
+    setMonitorParts(sortedParts);
+  };
+
+  const sortHighestRefresh = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      parseInt(b.hz) - parseInt(a.hz)
+    );
+    setMonitorParts(sortedParts);
+  };
+
+  const sortLowestRefresh = () => {
+    const sortedParts = [...monitorParts].sort((a, b) =>
+      parseInt(a.hz) - parseInt(b.hz)
+    );
+    setMonitorParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -93,6 +121,32 @@ function Monitor() {
             onClick={sortZA}
           >
             Sort: Z - A
+          </button>
+          <p className="text-xxl text-left px-4">Size</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortSmallestSize}
+          >
+            Smallest Screen Size
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortLargestSize}
+          >
+            Largest Screen Size
+          </button>
+          <p className="text-xxl text-left px-4">Refresh Rate</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortHighestRefresh}
+          >
+            Highest Refresh Rate
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortLowestRefresh}
+          >
+            Lowest Refresh Rate
           </button>
         </div>
 
