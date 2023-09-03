@@ -61,6 +61,20 @@ function PowerSuppply() {
     setPowerParts(sortedParts);
   };
 
+  const sortLeastPower = () => {
+    const sortedParts = [...powerParts].sort((a, b) =>
+      parseInt(a.watts) - parseInt(b.watts)
+    );
+    setPowerParts(sortedParts);
+  };
+
+  const sortMaxPower = () => {
+    const sortedParts = [...powerParts].sort((a, b) =>
+      parseInt(b.watts) - parseInt(a.watts)
+    );
+    setPowerParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -121,6 +135,19 @@ function PowerSuppply() {
             onClick={sortWhiteFirst}
           >
             Color: White
+          </button>
+          <p className="text-xxl text-left px-4">Wattage</p>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMaxPower}
+          >
+            Highest Wattage
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortLeastPower}
+          >
+            Lowest Wattage
           </button>
         </div>
 

@@ -22,6 +22,7 @@ function Fans() {
         console.log(error);
       });
   }, []);
+
   const sortMax = () => {
     const sortedParts = [...fanParts].sort((a, b) => b.price - a.price);
     setFanParts(sortedParts);
@@ -56,6 +57,20 @@ function Fans() {
   const sortWhiteFirst = () => {
     const sortedParts = [...fanParts].sort((a, b) =>
       b.color.localeCompare(a.color)
+    );
+    setFanParts(sortedParts);
+  };
+
+  const sort120 = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      a.size.localeCompare(b.size)
+    );
+    setFanParts(sortedParts);
+  };
+
+  const sort140 = () => {
+    const sortedParts = [...fanParts].sort((a, b) =>
+      b.size.localeCompare(a.size)
     );
     setFanParts(sortedParts);
   };
@@ -115,6 +130,19 @@ function Fans() {
             onClick={sortWhiteFirst}
           >
             Color: White
+          </button>
+          <p className="text-xxl text-left px-4">By Size</p>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort120}
+          >
+            120mm
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort140}
+          >
+            140mm
           </button>
         </div>
 
