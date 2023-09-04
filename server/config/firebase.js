@@ -3,7 +3,12 @@ const serviceAccount = require("./serviceAccountKey.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "pc-builder-a804d.firebaseapp.com", // Replace with your Firebase project URL
+  databaseURL: "pc-builder-a804d.firebaseapp.com", 
 });
 
-const db = admin.firestore(); // Initialize Firestore database
+const db = admin.firestore();
+
+module.exports = {
+    admin,
+    db,
+  };

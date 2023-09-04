@@ -75,20 +75,19 @@ function AccountComponent() {
         ...doc.data(),
         id: doc.id,
       }));
-  
+
       // Update the blogPosts state based on whether there are blog posts or not
       if (filteredData.length > 0) {
         setBlogPosts(true); // User has blog posts, set to true
       } else {
         setBlogPosts(false); // User doesn't have any blog posts, set to false
       }
-  
+
       setUserBlogPosts(filteredData);
     } catch (err) {
       console.error(err);
     }
   };
-  
 
   function ShowAccount() {
     setShowProfile(true);
@@ -116,7 +115,36 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
-  const createBuild = () => {
+  const createBuild = async () => {
+    
+    const buildData = {
+      name: "Build Name",
+      description: "Build Description",
+      type: "Build Type",
+    };
+
+    try {
+      const response = await fetch("/api/builds", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(buildData),
+        
+      });
+
+      if (response.status === 201) {
+        const data = await response.json();
+        console.log("Build created with ID:", data.id);
+        // Handle success, e.g., close the build creation popup
+      } else {
+        console.error("Error creating build:", response.statusText);
+        // Handle error, e.g., show an error message to the user
+      }
+    } catch (error) {
+      console.error("Error creating build:", error);
+      // Handle error, e.g., show an error message to the user
+    }
     setShowPopup(false);
   };
 
@@ -318,8 +346,15 @@ function AccountComponent() {
                       </section>
                     ) : (
                       <div className="text-center">
-                        <p className="py-4">Looks like you haven't created any Blog Posts yet. Care to start today?</p>
-                        <a href="/Blog"><div className="rounded-md bg-blue-400 text-white">Blog Page</div></a>
+                        <p className="py-4">
+                          Looks like you haven't created any Blog Posts yet.
+                          Care to start today?
+                        </p>
+                        <a href="/Blog">
+                          <div className="rounded-md bg-blue-400 text-white">
+                            Blog Page
+                          </div>
+                        </a>
                       </div>
                     )}
                   </div>
