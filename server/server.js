@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require('path');
-const { admin, db } = require("./config/firebase");
+// const { admin, db } = require("./config/firebase");
 
 app.use("/parts/", require("./routes/partsRoute"))
 app.use("/motherboards/", require("./routes/partsRoute"))

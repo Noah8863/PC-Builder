@@ -225,7 +225,7 @@
       "model": "Ryzen 7 5700G",
       "manufacturer": "AMD",
       "socket": "AM4",
-      "core": "8 cores",
+      "core": "8",
       "threads": "16",
       "clockSpeed": "4.6 Ghz",
       "price": 189.99,

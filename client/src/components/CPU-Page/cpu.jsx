@@ -54,6 +54,26 @@ function CPU() {
     setCpuParts(sortedParts);
   };
 
+  const sortMaxThreads = () => {
+    const sortedParts = [...cpuParts].sort((a, b) => b.threads - a.threads);
+    setCpuParts(sortedParts);
+  };
+
+  const sortMinimalThreads = () => {
+    const sortedParts = [...cpuParts].sort((a, b) => a.threads - b.threads);
+    setCpuParts(sortedParts);
+  };
+
+  const sortMaxCores = () => {
+    const sortedParts = [...cpuParts].sort((a, b) => b.core - a.core);
+    setCpuParts(sortedParts);
+  };
+
+  const sortMinimalCores = () => {
+    const sortedParts = [...cpuParts].sort((a, b) => a.core - b.core);
+    setCpuParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -107,6 +127,32 @@ function CPU() {
             onClick={sortAM4}
           >
             AM4 Socket
+          </button>
+          <p className="text-xxl text-left px-4">Threads</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMaxThreads}
+          >
+            Max Threads
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMinimalThreads}
+          >
+            Minimal Threads
+          </button>
+          <p className="text-xxl text-left px-4">Cores</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMaxCores}
+          >
+            Max Cores
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortMinimalCores}
+          >
+            Minimal Cores
           </button>
         </div>
 
