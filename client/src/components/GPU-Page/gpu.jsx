@@ -72,6 +72,45 @@ function GPU() {
     setGpuParts(sortedParts);
   };
   
+  const sortSingle = () => {
+    const sortedParts = [...gpuParts].sort((a, b) => {
+      if (a.size === 'Single Slot' && b.size !== 'Single Slot') {
+        return -1; 
+      } else if (a.size !== 'Single Slot' && b.size === 'Single Slot') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setGpuParts(sortedParts);
+  };
+
+  const sortDouble = () => {
+    const sortedParts = [...gpuParts].sort((a, b) => {
+      if (a.size === 'Dual Slot' && b.size !== 'Dual Slot') {
+        return -1; 
+      } else if (a.size !== 'Dual Slot' && b.size === 'Dual Slot') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setGpuParts(sortedParts);
+  };
+
+  const sortTriple = () => {
+    const sortedParts = [...gpuParts].sort((a, b) => {
+      if (a.size === 'Triple Slot' && b.size !== 'Triple Slot') {
+        return -1; 
+      } else if (a.size !== 'Triple Slot' && b.size === 'Triple Slot') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setGpuParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -144,6 +183,25 @@ function GPU() {
             onClick={sortLowestVRam}
           >
             Lowest V-Ram Cards
+          </button>
+          <p className="text-xxl text-left px-4">Sort by Size</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortSingle}
+          >
+            Single Slot
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortDouble}
+          >
+            Dual Slot
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortTriple}
+          >
+            Triple Slot
           </button>
         </div>
 
