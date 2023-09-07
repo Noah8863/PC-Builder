@@ -218,7 +218,7 @@ function GPU() {
                         className="w-80 h-auto p-2 z-1"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute bg-gray-800 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <div className="absolute bg-gray-600 w-2/3 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                           <p className="text-center">Slots: {part.size}</p>
                           <p className="text-center">
                             V RAM: {part.vRam} GB
