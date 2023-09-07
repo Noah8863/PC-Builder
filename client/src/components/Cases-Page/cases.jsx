@@ -66,6 +66,46 @@ function Cases() {
     console.log("Item ID:", itemId);
   };
 
+  const sortATXMid = () => {
+    const sortedCases = [...caseParts].sort((a, b) => {
+      if (a.size === 'ATX Mid Tower' && b.size !== 'ATX Mid Tower') {
+        return -1; 
+      } else if (a.size !== 'ATX Mid Tower' && b.size === 'ATX Mid Tower') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setCaseParts(sortedCases);
+  };
+
+  const sortATXMini = () => {
+    const sortedCases = [...caseParts].sort((a, b) => {
+      if (a.size === 'Mini Tower' && b.size !== 'Mini Tower') {
+        return -1; 
+      } else if (a.size !== 'Mini Tower' && b.size === 'Mini Tower') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setCaseParts(sortedCases);
+  };
+  const sortATXFull = () => {
+    const sortedCases = [...caseParts].sort((a, b) => {
+      if (a.size === 'ATX Full Tower' && b.size !== 'ATX Full Tower') {
+        return -1; 
+      } else if (a.size !== 'ATX Full Tower' && b.size === 'ATX Full Tower') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setCaseParts(sortedCases);
+  };
+
+  
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -120,6 +160,25 @@ function Cases() {
             onClick={sortWhiteFirst}
           >
             Color: White
+          </button>
+          <p className="text-xxl text-left px-4">Size</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortATXMid}
+          >
+            ATX Mid Tower
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortATXMini}
+          >
+            ATX Mini Tower
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortATXFull}
+          >
+            ATX Full Tower
           </button>
         </div>
 

@@ -70,6 +70,32 @@ function Ram() {
     setRamParts(sortedCases);
   };
 
+  const sortDDR4 = () => {
+    const sortedRam = [...ramParts].sort((a, b) => {
+      if (a.type === 'DDR4' && b.type !== 'DDR4') {
+        return -1; 
+      } else if (a.type !== 'DDR4' && b.type === 'DDR4') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setRamParts(sortedRam);
+  };
+
+  const sortDDR5 = () => {
+    const sortedRam = [...ramParts].sort((a, b) => {
+      if (a.type === 'DDR5' && b.type !== 'DDR5') {
+        return -1; 
+      } else if (a.type !== 'DDR5' && b.type === 'DDR5') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setRamParts(sortedRam);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -142,6 +168,19 @@ function Ram() {
             onClick={sortFastest}
           >
             Faster Mhz
+          </button>
+          <p className="text-xxl text-left px-4">Sort by Type</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortDDR4}
+          >
+            DDR4
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortDDR5}
+          >
+            DDR5
           </button>
         </div>
 
