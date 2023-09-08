@@ -75,6 +75,58 @@ function PowerSuppply() {
     setPowerParts(sortedParts);
   };
 
+  const sortBronze = () => {
+    const sortedParts = [...powerParts].sort((a, b) => {
+      if (a.powerRating === '80 Plus Bronze' && b.powerRating !== '80 Plus Bronze') {
+        return -1; 
+      } else if (a.powerRating !== '80 Plus Bronze' && b.powerRating === '80 Plus Bronze') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setPowerParts(sortedParts);
+  };
+
+  const sortSilver = () => {
+    const sortedParts = [...powerParts].sort((a, b) => {
+      if (a.powerRating === '80 Plus Silver' && b.powerRating !== '80 Plus Silver') {
+        return -1; 
+      } else if (a.powerRating !== '80 Plus Silver' && b.powerRating === '80 Plus Silver') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setPowerParts(sortedParts);
+  };
+
+  const sortGold = () => {
+    const sortedParts = [...powerParts].sort((a, b) => {
+      if (a.powerRating === '80 Plus Gold' && b.powerRating !== '80 Plus Gold') {
+        return -1; 
+      } else if (a.powerRating !== '80 Plus Gold' && b.powerRating === '80 Plus Gold') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setPowerParts(sortedParts);
+  };
+
+  const sortPlat = () => {
+    const sortedParts = [...powerParts].sort((a, b) => {
+      if (a.powerRating === '80 Plus Platinum' && b.powerRating !== '80 Plus Platinum') {
+        return -1; 
+      } else if (a.powerRating !== '80 Plus Platinum' && b.powerRating === '80 Plus Platinum') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setPowerParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -149,6 +201,31 @@ function PowerSuppply() {
           >
             Lowest Wattage
           </button>
+          <p className="text-xxl text-left px-4">Power Rating</p>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortBronze}
+          >
+            80+ Bronze
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortSilver}
+          >
+            80+ Silver
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortGold}
+          >
+            80+ Gold
+          </button>
+          <button
+            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sortPlat}
+          >
+            80+ Platinum
+          </button>
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -170,7 +247,7 @@ function PowerSuppply() {
                             Total Watts: {part.watts}
                           </p>
                           <p className="text-center">
-                            Type of Modularity: {part.modular}
+                            Modularity: {part.modular}
                           </p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
