@@ -88,19 +88,6 @@ function PowerSuppply() {
     setPowerParts(sortedParts);
   };
 
-  const sortSilver = () => {
-    const sortedParts = [...powerParts].sort((a, b) => {
-      if (a.powerRating === '80 Plus Silver' && b.powerRating !== '80 Plus Silver') {
-        return -1; 
-      } else if (a.powerRating !== '80 Plus Silver' && b.powerRating === '80 Plus Silver') {
-        return 1; 
-      } else {
-        return 0; 
-      }
-    });
-    setPowerParts(sortedParts);
-  };
-
   const sortGold = () => {
     const sortedParts = [...powerParts].sort((a, b) => {
       if (a.powerRating === '80 Plus Gold' && b.powerRating !== '80 Plus Gold') {
@@ -207,12 +194,6 @@ function PowerSuppply() {
             onClick={sortBronze}
           >
             80+ Bronze
-          </button>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortSilver}
-          >
-            80+ Silver
           </button>
           <button
             className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
