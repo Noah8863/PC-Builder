@@ -75,6 +75,19 @@ function Monitor() {
     setMonitorParts(sortedParts);
   };
 
+  const sort144 = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => {
+      if (a.hz === '144hz' && b.hz !== '144hz') {
+        return -1; 
+      } else if (a.hz !== '144hz' && b.hz === '144hz') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setMonitorParts(sortedParts);
+  };
+
   const addItemToList = (itemId) => {
     setPopUpMenu(!popUpMenu);
     console.log("Item ID:", itemId);
@@ -147,6 +160,13 @@ function Monitor() {
             onClick={sortLowestRefresh}
           >
             Lowest Refresh Rate
+          </button>
+          <p className="text-xxl text-left px-4">Refresh Rate</p>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort144}
+          >
+            144hz
           </button>
         </div>
 

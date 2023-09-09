@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
+//TODO: Figure out master function?? Pass in children for the sorting alg
+
 function PowerSuppply() {
   const [powerParts, setPowerParts] = useState([]);
   const [popUpMenu, setPopUpMenu] = useState(false);
@@ -30,7 +32,7 @@ function PowerSuppply() {
 
   const sortLeast = () => {
     const sortedParts = [...powerParts].sort((a, b) => a.price - b.price);
-    setPowerParts(sortedParts);
+    setPowerParts(sortedParts);    
   };
 
   const sortAZ = () => {
