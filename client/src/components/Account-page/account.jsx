@@ -31,6 +31,7 @@ function AccountComponent() {
   const [showPopup, setShowPopup] = useState(false);
   const [showEditPopup, setShowEditPopup] = useState(false);
   const [userBlogPosts, setUserBlogPosts] = useState([]);
+  const [buildContainers, setBuildContainers] = useState([]);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -116,35 +117,28 @@ function AccountComponent() {
   };
 
   const createBuild = async () => {
-    
-    const buildData = {
-      name: "Build Name",
-      description: "Build Description",
-      type: "Build Type",
+    const buildName = document.getElementById("buildName").value;
+    const buildDescription = document.getElementById("buildDescription").value;
+    const buildType = document.getElementById("buildType").value;
+
+    // Generate a unique ID (e.g., using current timestamp)
+    const uniqueID = Date.now();
+
+    // Create a new build container object
+    const newBuildContainer = {
+      id: uniqueID,
+      name: buildName,
+      description: buildDescription,
+      type: buildType,
     };
 
-    try {
-      const response = await fetch("/api/builds", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(buildData),
-        
-      });
+    // Add the new build container to the state
+    setBuildContainers((prevContainers) => [
+      ...prevContainers,
+      newBuildContainer,
+    ]);
 
-      if (response.status === 201) {
-        const data = await response.json();
-        console.log("Build created with ID:", data.id);
-        // Handle success, e.g., close the build creation popup
-      } else {
-        console.error("Error creating build:", response.statusText);
-        // Handle error, e.g., show an error message to the user
-      }
-    } catch (error) {
-      console.error("Error creating build:", error);
-      // Handle error, e.g., show an error message to the user
-    }
+    // Close the popup
     setShowPopup(false);
   };
 
@@ -186,7 +180,7 @@ function AccountComponent() {
   };
 
   return (
-    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200">
+    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200 h-screen">
       <div className="grid grid-cols-3 gap-6">
         <div className="h-full grid col-span-1 justify-left p-4 m-4">
           {currentUser ? (
@@ -436,6 +430,14 @@ function AccountComponent() {
                 )}
               </div>
             )}
+            {buildContainers.map((container) => (
+              <div key={container.id}>
+                <h2>{container.name}</h2>
+                <p>{container.description}</p>
+                <p>{container.type}</p>
+                {/* Add any other components or actions related to the build container */}
+              </div>
+            ))}
           </div>
         ) : (
           <div>
