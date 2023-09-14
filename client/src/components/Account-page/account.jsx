@@ -18,6 +18,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
+import BuildImgage from "../../images/pc-building.jpg"
 
 import "./styles.css";
 
@@ -404,9 +405,9 @@ function AccountComponent() {
                           id="buildType"
                           className="border rounded-md p-2 w-1/3 text-center"
                         >
-                          <option value="option1">Shopping List</option>
-                          <option value="option2">Wish List</option>
-                          <option value="option3">Current Set Up</option>
+                          <option value="Shopping List">Shopping List</option>
+                          <option value="Wish List">Wish List</option>
+                          <option value="Current Set Up">Current Set Up</option>
                         </select>
                       </div>
 
@@ -430,14 +431,20 @@ function AccountComponent() {
                 )}
               </div>
             )}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
             {buildContainers.map((container) => (
-              <div key={container.id}>
-                <h2>{container.name}</h2>
-                <p>{container.description}</p>
+              <div key={container.id} className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+                 <img
+                className="w-2/3"
+                src={BuildImgage}
+                alt="Build Default Image"
+              ></img>
+                <h2 className="text-xxl">{container.name}</h2>
                 <p>{container.type}</p>
-                {/* Add any other components or actions related to the build container */}
               </div>
             ))}
+            </div>
+            
           </div>
         ) : (
           <div>
