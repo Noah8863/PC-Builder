@@ -62,6 +62,24 @@ function AccountComponent() {
     return () => unsubscribe();
   }, []);
 
+  //Fetching Build Containers
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "builds"));
+        const buildsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBuildContainers(buildsData);
+      } catch (error) {
+        console.error("Error fetching build containers: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const fetchUserBlogPosts = async () => {
     try {
       const user = auth.currentUser; // Get the currently logged-in user
@@ -444,7 +462,6 @@ function AccountComponent() {
               </div>
             ))}
             </div>
-            
           </div>
         ) : (
           <div>
