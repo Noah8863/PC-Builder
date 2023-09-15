@@ -75,11 +75,50 @@ function Monitor() {
     setMonitorParts(sortedParts);
   };
 
+  const sort240 = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => {
+      if (a.hz === '240hz' && b.hz !== '240hz') {
+        return -1; 
+      } else if (a.hz !== '240hz' && b.hz === '240hz') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setMonitorParts(sortedParts);
+  };
+
+  const sort165 = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => {
+      if (a.hz === '165hz' && b.hz !== '165hz') {
+        return -1; 
+      } else if (a.hz !== '165hz' && b.hz === '165hz') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setMonitorParts(sortedParts);
+  };
+
   const sort144 = () => {
     const sortedParts = [...monitorParts].sort((a, b) => {
       if (a.hz === '144hz' && b.hz !== '144hz') {
         return -1; 
       } else if (a.hz !== '144hz' && b.hz === '144hz') {
+        return 1; 
+      } else {
+        return 0; 
+      }
+    });
+    setMonitorParts(sortedParts);
+  };
+
+  const sort75 = () => {
+    const sortedParts = [...monitorParts].sort((a, b) => {
+      if (a.hz === '75hz' && b.hz !== '75hz') {
+        return -1; 
+      } else if (a.hz !== '75hz' && b.hz === '75hz') {
         return 1; 
       } else {
         return 0; 
@@ -164,9 +203,27 @@ function Monitor() {
           <p className="text-xxl text-left px-4">Refresh Rate</p>
           <button
             className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort240}
+          >
+            240hz
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort165}
+          >
+            165hz
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
             onClick={sort144}
           >
             144hz
+          </button>
+          <button
+            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+            onClick={sort75}
+          >
+            75hz
           </button>
         </div>
 
