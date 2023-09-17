@@ -18,7 +18,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
-import BuildImgage from "../../images/pc-building.jpg"
+import BuildImgage from "../../images/pc-building.jpg";
 
 import "./styles.css";
 
@@ -200,16 +200,19 @@ function AccountComponent() {
 
   return (
     <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200 h-screen">
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 bg-blue-400">
         <div className="h-full grid col-span-1 justify-left p-4 m-4">
           {currentUser ? (
             <div>
               <p className="text-2xl p-2 text-left">Account</p>
-              <img
+              {/* <img
                 className="w-2/3"
                 src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
                 alt="profilePicture"
-              ></img>
+              ></img> */}
+              <div class="flex items-center justify-center w-40 h-40 mx-1 bg-pink-400 overflow-hidden rounded-lg">
+                <img src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"></img>
+              </div>
               <p className="text-xl p-4">Welcome, {currentUser.displayName}</p>
               <div className="space-y-2">
                 <button
@@ -450,17 +453,20 @@ function AccountComponent() {
               </div>
             )}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
-            {buildContainers.map((container) => (
-              <div key={container.id} className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-                 <img
-                className="w-2/3"
-                src={BuildImgage}
-                alt="Build Default Image"
-              ></img>
-                <h2 className="text-xxl">{container.name}</h2>
-                <p>{container.type}</p>
-              </div>
-            ))}
+              {buildContainers.map((container) => (
+                <div
+                  key={container.id}
+                  className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl"
+                >
+                  <img
+                    className="w-2/3"
+                    src={BuildImgage}
+                    alt="Build Default Image"
+                  ></img>
+                  <h2 className="text-xxl">{container.name}</h2>
+                  <p>{container.type}</p>
+                </div>
+              ))}
             </div>
           </div>
         ) : (

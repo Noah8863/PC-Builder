@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db, auth, storage } from "../../config/firebase";
-import {
-  getDocs,
-  collection,
-  addDoc,
-} from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 function BlogComponent() {
@@ -14,11 +10,13 @@ function BlogComponent() {
   //New Blog States
   const [newBlog, setNewBlog] = useState("");
   const [newBlogTitle, setNewBlogTitle] = useState("");
-  const [newBlogDate, setNewBlogDate] = useState(7162023);
+  const [newBlogDate, setNewBlogDate] = useState("");
 
   //File Upload State
   const [fileUpload, setFileUpload] = useState(null);
   const [imageURL, setImageURL] = useState("");
+
+  const currentDate = new Date().toLocaleDateString();
 
   const getBlogPost = async () => {
     try {
@@ -54,13 +52,13 @@ function BlogComponent() {
       await addDoc(blogCollectionRef, {
         title: newBlogTitle,
         post: newBlog,
-        date: newBlogDate,
+        date: currentDate,
         userId: auth?.currentUser?.uid,
         imageURL: imageURL,
       });
       setNewBlog("");
       setNewBlogTitle("");
-      setNewBlogDate(7162023);
+      setNewBlogDate(currentDate);
       setImageURL("");
       getBlogPost();
       window.location.reload(false);
@@ -70,17 +68,12 @@ function BlogComponent() {
     }
   };
 
-  const uploadFile = async () => {
-    if (!fileUpload) return;
-    const filesFolderRef = ref(storage, `projectFiles/${fileUpload.name}`);
-    try {
-      await uploadBytes(filesFolderRef, fileUpload);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
+  const lineHeightUsername = {
+    lineHeight:"3.75rem"
+  }
+  
   return (
+    
     <div className="container mx-auto p-4">
       <section>
         <h2 className="text-2xl font-bold mb-4">Create New Blog Post</h2>
@@ -108,18 +101,26 @@ function BlogComponent() {
         >
           Create Post
         </button>
-        <input type="file" onChange={(e) => setFileUpload(e.target.files[0])} />
-        <button onClick={uploadFile}>Upload File</button>
       </section>
 
       <section className="mt-8">
         <h2 className="text-2xl font-bold mb-4">Blog Posts</h2>
+
         {blogPosts.map((post, index) => (
           <div
             key={index}
             className="bg-white border border-gray-300 rounded-md p-4 mb-4"
           >
             <p className="text-gray-600">{post.date}</p>
+            <div style={lineHeightUsername} className="inline-block mb-6 rounded-full bg-gray-300 pr-5 h-16">
+              <img
+                className="rounded-full float-left h-full"
+                src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
+               />
+                {" "}
+                <span class="ml-4">Kate Horwitz</span>
+              
+            </div>
 
             <h3 className="text-xxl font-bold">{post.title}</h3>
             {post.imageURL && (
