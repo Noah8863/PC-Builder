@@ -139,11 +139,7 @@ function AccountComponent() {
     const buildName = document.getElementById("buildName").value;
     const buildDescription = document.getElementById("buildDescription").value;
     const buildType = document.getElementById("buildType").value;
-
-    // Generate a unique ID (e.g., using current timestamp)
     const uniqueID = Date.now();
-
-    // Create a new build container object
     const newBuildContainer = {
       id: uniqueID,
       name: buildName,
@@ -151,13 +147,11 @@ function AccountComponent() {
       type: buildType,
     };
 
-    // Add the new build container to the state
     setBuildContainers((prevContainers) => [
       ...prevContainers,
       newBuildContainer,
     ]);
 
-    // Close the popup
     setShowPopup(false);
   };
 
@@ -210,7 +204,7 @@ function AccountComponent() {
                 src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
                 alt="profilePicture"
               ></img> */}
-              <div class="flex items-center justify-center w-40 h-40 mx-1 bg-pink-400 overflow-hidden rounded-lg">
+              <div class="flex items-center justify-center w-40 h-40 mx-1 overflow-hidden rounded-lg">
                 <img src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"></img>
               </div>
               <p className="text-xl p-4">Welcome, {currentUser.displayName}</p>
