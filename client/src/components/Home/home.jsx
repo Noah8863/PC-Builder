@@ -8,6 +8,7 @@ import RamImage from "../../images/ram.jpg";
 import CaseImage from "../../images/case.jpg";
 import MonitorImage from "../../images/monitor.jpg";
 import PCImage3 from "../../images/custom-PC-3.jpg";
+import communityImage from "../../images/community.png";
 import "./style.css";
 
 function Home() {
@@ -105,14 +106,11 @@ function Home() {
   }
 
   return (
-    <main className="m-auto justify-center h-full relative">
+    <main className="m-auto justify-center h-full relative customBackgroundColor">
       {/* Section 1 */}
-      <header className="customBackground h-screen items-center justify-center pt-2 relative">
-        <p className="text-2xl text-center">
-          Welcome to the PC Builder community!
-        </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:w-5/6 md:w-3/4 max-h-2 mx-auto ">
-          <div className="bg-customBlue p-4 rounded-lg shadow-lg">
+      <header className="flex items-center customBackground h-screen pt-2 relative">
+        <div className=" w-1/2 h-auto ml-10 mb-10">
+          <div className="text-white p-4 rounded-lg">
             <h2 className=" mb-2 md:text-3xl sm:text-2xl">
               Build Your Dream PC
             </h2>
@@ -136,7 +134,7 @@ function Home() {
               Sign Up Now
             </a>
           </div>
-          <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
+          {/* <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
             <p className="md:text-3xl sm:text-2xl mb-2">
               Join the PC-Builder Community
             </p>
@@ -160,10 +158,40 @@ function Home() {
             >
               Join the Community
             </a>
-          </div>
+          </div> */}
         </div>
       </header>
 
+      <section className="grid grid-cols-2 grid-rows-1 h-auto bg-blue-200">
+        <div>
+          <img src={communityImage} className="m-auto p-4" alt="CommunityPicture"/>
+        </div>
+        <div className="p-4 sm:mt-0 relative w-2/3">
+            <p className="md:text-3xl sm:text-2xl mb-2">
+              Join the PC Builder Community
+            </p>
+            <p className="mb-2">
+              Building a PC is not just about the hardware; it's also about the
+              community. Join our PC-Builder community and connect with fellow
+              PC enthusiasts from around the world.
+            </p>
+            <p className="mb-2">
+              Share your experiences, ask questions, and learn from others. Our
+              community blog is the perfect place to discuss PC building tips,
+              troubleshoot issues, and stay up-to-date with the latest trends.
+            </p>
+            <p className="mb-2">
+              Whether you're a beginner or an experienced builder, our community
+              is here to support you throughout your PC-building journey.
+            </p>
+            <a
+              href="/signup"
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
+            >
+              Join Now
+            </a>
+          </div>
+      </section>
       {/* Section 2 */}
       <section className="w-5/6 justify-center item-center m-auto relative ">
         <div>
@@ -221,7 +249,11 @@ function Home() {
             </button>
             <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
               <a href="/Monitor">
-                <img src={MonitorImage} alt="Monitor" className="max-w-40 max-h-40" />
+                <img
+                  src={MonitorImage}
+                  alt="Monitor"
+                  className="max-w-40 max-h-40"
+                />
               </a>
               Monitor
             </button>

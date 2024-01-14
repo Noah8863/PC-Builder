@@ -1,11 +1,6 @@
 .customBackground {
-    background-image: url("../../images/coolBackground.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-  }
-  .bg-customBlue {
-    background-color: rgb(199, 225, 243);
-    top:200px;
-    position: relative;
-  }
+  background-image: url("../../images/hero.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
