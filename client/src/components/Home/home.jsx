@@ -203,12 +203,12 @@ function Home() {
         </div>
       </section>
       {/* Section 2 */}
-      <section>
+      <section className="m-20">
         <p className="text-xxl font-medium text-center">Featured Categories</p>
         <div class="flex items-center justify-center">
-          <div class="border-2 border-blue-400 w-1/4"></div>
+          <div class="border-2 border-blue-400 w-1/6"></div>
         </div>
-        <div className="w-5/6 my-8 grid grid-cols-8 rows-1 gap-2 bg-400-blue justify-center item-center m-auto relative ">
+        <div className="w-5/6 my-8 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 rows-1 gap-2 bg-400-blue justify-center item-center m-auto relative ">
           <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
             <a href="/CPU">
               <img src={CPUImage} alt="CPU" className="max-w-42 max-h-40" />
@@ -272,79 +272,69 @@ function Home() {
         </div>
       </section>
       {/* Section 3 */}
-      <section>
-        <div className="flex bg-customLightBlue mb-10">
-          <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
-            <div className="col-span-2 p-6 bg-customLightBlue">
-              <p className="text-2xl text-black text-center">
-                Check out these hot deals across all categories!
-              </p>
-            </div>
-          </div>
-          <div className="w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
-            {Object.entries(partCategorie).map(([category, prefixes]) => {
-              const cheapestItem = findCheapestItem(prefixes);
-              return (
-                <div key={category} className="grid">
-                  <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                    <img
-                      src={cheapestItem.img}
-                      alt={cheapestItem.title}
-                      className="lg:w-60 sm:w-full z-1 justify-center flex"
-                    />
+      <section className="m-20">
+        <p className="text-xxl font-medium text-center">Hot Deals!</p>
+        <div class="flex items-center justify-center">
+          <div class="border-2 border-blue-400 w-1/6"></div>
+        </div>
 
-                    <div className="text-small h-auto">
-                      <a href={cheapestItem.part}>
-                        <p className="text-sm underline">
-                          {cheapestItem.title}
-                        </p>
-                      </a>
-                      <p className="text-lg">Price: {cheapestItem.price}</p>
-                    </div>
+        <div className="w-5/6 my-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 rows-2 gap-2 justify-center item-center m-auto relative">
+          {Object.entries(partCategorie).map(([category, prefixes]) => {
+            const cheapestItem = findCheapestItem(prefixes);
+            return (
+              <div key={category} className="grid">
+                <div className="grid bg-white m-4 items-center text-center text-xl justify-center">
+                  
+                  <img
+                    src={cheapestItem.img}
+                    alt={cheapestItem.title}
+                    className="lg:w-60 sm:w-full z-1 justify-center flex"
+                  />
+                  <p className="text-sm text-blue-400 text-start">Brand: {cheapestItem.manufacturer}</p>
+                  <div className="text-small h-auto">
+                    <a href={cheapestItem.part}>
+                      <p className="text-sm font-semibold text-left">{cheapestItem.title}</p>
+                    </a>
+                    <p className="text-sm text-left font-semibold text-red-500">Price: {cheapestItem.price}</p>
+                    
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
       {/* Section 4 */}
-      <section>
-        <div className="flex bg-customLightBlue mb-10">
-          <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
-            <div className="col-span-2 p-6 bg-customLightBlue">
-              <p className="text-2xl text-black text-center">
-                Looking to maximize the preformance of your PC? We got you
-                covered!
-              </p>
-            </div>
-          </div>
-          <div className="w-4/6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-customLightBlue grab-3">
-            {Object.entries(partCategories).map(([category, prefixes]) => {
-              const mostExpensiveItem = findMostExpensiveItem(prefixes);
-              return (
-                <div key={category} className=" grid">
-                  <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
-                    <img
-                      src={mostExpensiveItem.img}
-                      alt={mostExpensiveItem.title}
-                      className="lg:w-60 sm:w-full z-1 justify-center flex"
-                    />
-                    <div className=" text-small h-auto">
-                      <a href={mostExpensiveItem.part}>
-                        <p className="text-sm underline">
-                          {mostExpensiveItem.title}
-                        </p>
-                      </a>
-                      <p className="text-lg">
-                        Price: {mostExpensiveItem.price}
+      <section className="m-20">
+        <p className="text-xxl font-medium text-center">Max Preformance</p>
+        <div class="flex items-center justify-center">
+          <div class="border-2 border-blue-400 w-1/6"></div>
+        </div>
+
+        <div className="w-5/6 my-8 grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 rows-2 gap-2 justify-center item-center m-auto relative">
+          {Object.entries(partCategories).map(([category, prefixes]) => {
+            const mostExpensiveItem = findMostExpensiveItem(prefixes);
+            return (
+              <div key={category} className=" grid">
+                <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
+                  <img
+                    src={mostExpensiveItem.img}
+                    alt={mostExpensiveItem.title}
+                    className="lg:w-60 sm:w-full z-1 justify-center flex"
+                  />
+                  <p className="text-sm text-blue-400 text-start">Brand: {mostExpensiveItem.manufacturer}</p>
+                  <div className=" text-small h-auto">
+                    <a href={mostExpensiveItem.part}>
+                      <p className="text-sm font-semibold text-left">
+                        {mostExpensiveItem.title}
                       </p>
-                    </div>
+                    </a>
+                    <p className="text-lg text-left font-semibold text-red-500">Price: {mostExpensiveItem.price}</p>
                   </div>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </main>
