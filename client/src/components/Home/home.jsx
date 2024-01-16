@@ -162,14 +162,23 @@ function Home() {
         </div>
       </header>
 
-      <section className="grid grid-cols-2 grid-rows-1 h-auto bg-blue-200">
+      <section className="grid grid-cols-2 grid-rows-1 h-auto mx-20 mt-4">
         <div>
-          <img src={communityImage} className="m-auto p-4" alt="CommunityPicture"/>
+          <img
+            src={communityImage}
+            className="m-auto p-4 "
+            alt="CommunityPicture"
+          />
+          <div className="relative bottom-10 left-28 w-16 h-16 bg-opacity-75 bg-blue-500 rounded-full "></div>
         </div>
+
         <div className="p-4 sm:mt-0 relative w-2/3">
-            <p className="md:text-3xl sm:text-2xl mb-2">
+          <div className=" mr-10 ">
+            <p className="md:text-3xl sm:text-2xl mb-2 font-medium">
               Join the PC Builder Community
             </p>
+            <div className="absolute top-0 right-1 w-24 h-24 bg-opacity-75 bg-blue-500 rounded-full "></div>
+
             <p className="mb-2">
               Building a PC is not just about the hardware; it's also about the
               community. Join our PC-Builder community and connect with fellow
@@ -191,77 +200,79 @@ function Home() {
               Join Now
             </a>
           </div>
+        </div>
       </section>
       {/* Section 2 */}
-      <section className="w-5/6 justify-center item-center m-auto relative ">
-        <div>
-          <p className="text-xxl text-center lg:mt-28">Shop by Category</p>
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 m-4 p-4">
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/CPU">
-                <img src={CPUImage} alt="CPU" className="max-w-42 max-h-40" />
-              </a>
-              CPUs
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/GPU">
-                <img src={GPUImage} alt="GPU" className="max-w-40 max-h-40" />
-              </a>
-              GPUs
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/motherboards">
-                <img
-                  src={MotherboardImage}
-                  alt="Motherboard"
-                  className="max-w-40 max-h-40"
-                />
-              </a>
-              Motherboards
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/RAM">
-                <img src={RamImage} alt="RAM" className="max-w-40 max-h-40" />
-              </a>
-              RAM
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/Fans">
-                <img src={FanImage} alt="Fan" className="max-w-40 max-h-40" />
-              </a>
-              Fans
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/PowerSupply">
-                <img
-                  src={PowerSupplyImage}
-                  alt="Power Supply"
-                  className="max-w-40 max-h-40"
-                />
-              </a>
-              Power Supplies
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/Cases">
-                <img src={CaseImage} alt="Case" className="max-w-40 max-h-40" />
-              </a>
-              Cases
-            </button>
-            <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
-              <a href="/Monitor">
-                <img
-                  src={MonitorImage}
-                  alt="Monitor"
-                  className="max-w-40 max-h-40"
-                />
-              </a>
-              Monitor
-            </button>
-          </div>
+      <section>
+        <p className="text-xxl font-medium text-center">Featured Categories</p>
+        <div class="flex items-center justify-center">
+          <div class="border-2 border-blue-400 w-1/4"></div>
         </div>
-
-        {/* Section 3 */}
-
+        <div className="w-5/6 my-8 grid grid-cols-8 rows-1 gap-2 bg-400-blue justify-center item-center m-auto relative ">
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/CPU">
+              <img src={CPUImage} alt="CPU" className="max-w-42 max-h-40" />
+            </a>
+            CPUs
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/GPU">
+              <img src={GPUImage} alt="GPU" className="max-w-40 max-h-40" />
+            </a>
+            GPUs
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/motherboards">
+              <img
+                src={MotherboardImage}
+                alt="Motherboard"
+                className="max-w-40 max-h-40"
+              />
+            </a>
+            Motherboards
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/RAM">
+              <img src={RamImage} alt="RAM" className="max-w-40 max-h-40" />
+            </a>
+            RAM
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/Fans">
+              <img src={FanImage} alt="Fan" className="max-w-40 max-h-40" />
+            </a>
+            Fans
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/PowerSupply">
+              <img
+                src={PowerSupplyImage}
+                alt="Power Supply"
+                className="max-w-40 max-h-40"
+              />
+            </a>
+            Power Supplies
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/Cases">
+              <img src={CaseImage} alt="Case" className="max-w-40 max-h-40" />
+            </a>
+            Cases
+          </button>
+          <button className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl">
+            <a href="/Monitor">
+              <img
+                src={MonitorImage}
+                alt="Monitor"
+                className="max-w-40 max-h-40"
+              />
+            </a>
+            Monitor
+          </button>
+        </div>
+      </section>
+      {/* Section 3 */}
+      <section>
         <div className="flex bg-customLightBlue mb-10">
           <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
             <div className="col-span-2 p-6 bg-customLightBlue">
@@ -296,9 +307,9 @@ function Home() {
             })}
           </div>
         </div>
-
-        {/* Section 4 */}
-
+      </section>
+      {/* Section 4 */}
+      <section>
         <div className="flex bg-customLightBlue mb-10">
           <div className="w-2/6 bg-gray-400 p-4 my-auto mx-4">
             <div className="col-span-2 p-6 bg-customLightBlue">
