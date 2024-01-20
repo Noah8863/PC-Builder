@@ -1,12 +1,21 @@
 import React from "react";
+import Icon from "../../images/pc-builder-icon.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-8 h-contain">
+    <footer className="bg-gray-900 py-4 h-contain text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 item-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="grid grid-cols-6 gap-4 text-center m-auto justify-center items-center">
+          {/* Image */}
+          <div className="col-span-2">
+            <img src={Icon} className="w-2/3"></img>
+            <p className=" text-left pt-4">PC-Builder is a platform dedicated to educational purposes, providing resources and information about PC building. We do not engage in the sale of any user information.</p>
+            <br></br>
+            <p className=" text-left pt-4">®2024. All rights reserved.</p>
+          </div>
+
           {/* Resources */}
-          <div className="text-white">
+          <div className="col-span-1">
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul>
               <li>
@@ -21,24 +30,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Company */}
-          <div className="text-white">
-            <h3 className="text-lg font-semibold mb-4" >Company</h3>
-            <ul>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">Link 1</a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">Link 2</a>
-              </li>
-              <li>
-                <a href="#" target="_blank" rel="noopener noreferrer">Link 3</a>
-              </li>
-            </ul>
-          </div>
-
           {/* Social */}
-          <div className="text-white">
+          <div className="col-span-1">
             <h3 className="text-lg font-semibold mb-4">Social</h3>
             <ul>
               <li>
@@ -52,6 +45,24 @@ const Footer = () => {
               </li>
             </ul>
           </div>
+
+          {/* Support */}
+
+          <div className="col-span-1">
+            <h3 className="text-lg font-semibold mb-4" >Support</h3>
+            <ul>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">My Account</a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">Help and Support</a>
+              </li>
+              <li>
+                <a href="#" target="_blank" rel="noopener noreferrer">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </footer>

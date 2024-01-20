@@ -42,7 +42,7 @@ function NavBar() {
   };
 
   return (
-    <header className="bg-gray-800 z-3">
+    <header className="bg-gray-900 z-3">
       <div className="container mx-auto px-4 py-6 flex items-center justify-between">
         <div>
           <a href="/">
