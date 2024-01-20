@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db, auth, storage } from "../../config/firebase";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import stockImage from "../../images/blog.png"
 
 function BlogComponent() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -74,19 +75,21 @@ function BlogComponent() {
   
   return (
     
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 bg-gray-200">
       <section>
-        <h2 className="text-2xl font-bold mb-4">Create New Blog Post</h2>
-        <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-700 font-bold">
+        <h2 className="text-2xl font-bold mb-4 bg-blue-500 text-white text-center py-2">Create New Blog Post</h2>
+        <div className="mx-20 mb-8">
+          
+          <label htmlFor="title" className="block text-gray-700 font-bold ">
             Title:
           </label>
           <input
-            className="border border-gray-300 rounded-md p-2 w-full text-black"
+            className="border border-gray-300 rounded-md p-2 w-full text-black "
             onChange={(e) => setNewBlogTitle(e.target.value)}
           />
+        
         </div>
-        <div className="mb-4">
+        <div className="mx-20 mb-8">
           <label htmlFor="post" className="block text-gray-700 font-bold">
             Post:
           </label>
@@ -97,22 +100,32 @@ function BlogComponent() {
         </div>
         <button
           onClick={submitBlogPost}
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-1/5 justify-center flex m-auto"
         >
           Create Post
         </button>
       </section>
 
-      <section className="mt-8">
+      <section className="mt-8 mx-20">
         <h2 className="text-2xl font-bold mb-4">Blog Posts</h2>
 
         {blogPosts.map((post, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-300 rounded-md p-4 mb-4"
+            className="bg-white border border-gray-300 rounded-md mb-4 grid grid-cols-5"
           >
-            <p className="text-gray-600">{post.date}</p>
-            <div style={lineHeightUsername} className="inline-block mb-6 rounded-full bg-gray-300 pr-5 h-16">
+            <div className="col-span-1">
+              <img className="" src={stockImage}></img>
+            </div>
+            <div className="col-span-4">
+            <p className="text-gray-600 py-2">{post.date}</p>
+            <h3 className="text-xxl font-bold mb-2">{post.title}</h3>
+            <p className="mb-2 text-lg text-gray-500">{post.post}</p>
+
+            <span className="mb-1 mt-2 top-8 relative">Kate Horwitz</span>
+
+            {/* <div style={lineHeightUsername} className="inline-block rounded-full bg-blue-400 pr-5 h-16">
+              
               <img
                 className="rounded-full float-left h-full"
                 src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
@@ -120,18 +133,18 @@ function BlogComponent() {
                 {" "}
                 <span class="ml-4">Kate Horwitz</span>
               
-            </div>
+            </div> */}
 
-            <h3 className="text-xxl font-bold">{post.title}</h3>
-            {post.imageURL && (
+            
+            {/* {post.imageURL && (
               <img
                 src={post.imageURL}
                 alt="Blog Post"
                 className="my-4 bg-blue-400 w-10 h-20"
               />
-            )}
+            )} */}
 
-            <p className="mb-2 text-xl">{post.post}</p>
+          </div>
           </div>
         ))}
       </section>
