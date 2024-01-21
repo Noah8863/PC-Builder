@@ -310,7 +310,7 @@ function Motherboards() {
               {parts.length > 0 &&
                 parts.map((part, index) => (
                   <div key={index} className="relative">
-                    <div className="flex flex-col items-center justify-cent z-1">
+                    <div className="flex flex-col items-center text-left justify-center z-1">
                       <img
                         src={part.img}
                         alt={part.title}
@@ -330,9 +330,9 @@ function Motherboards() {
                           </button>
                         </div>
                       </div>
-                      <p>Price: ${part.price}</p>
-                      <p>Manufacture: {part.manufacturer}</p>
-                      <p>Model: {part.model}</p>
+                      <p className="text-blue-500">Brand: {part.manufacturer}</p>
+                      <p className="font-medium text-xl text-left">Model: {part.model}</p>
+                      <p className="text-red-400 font-semibold">Price: ${part.price}</p>
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">

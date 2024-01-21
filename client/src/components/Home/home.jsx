@@ -134,31 +134,7 @@ function Home() {
               Sign Up Now
             </a>
           </div>
-          {/* <div className="bg-customBlue p-4 rounded-lg shadow-lg sm:mt-0 relative">
-            <p className="md:text-3xl sm:text-2xl mb-2">
-              Join the PC-Builder Community
-            </p>
-            <p className="mb-2">
-              Building a PC is not just about the hardware; it's also about the
-              community. Join our PC-Builder community and connect with fellow
-              PC enthusiasts from around the world.
-            </p>
-            <p className="mb-2">
-              Share your experiences, ask questions, and learn from others. Our
-              community blog is the perfect place to discuss PC building tips,
-              troubleshoot issues, and stay up-to-date with the latest trends.
-            </p>
-            <p className="mb-2">
-              Whether you're a beginner or an experienced builder, our community
-              is here to support you throughout your PC-building journey.
-            </p>
-            <a
-              href="/signup"
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg inline-block"
-            >
-              Join the Community
-            </a>
-          </div> */}
+          
         </div>
       </header>
 
@@ -283,8 +259,8 @@ function Home() {
             const cheapestItem = findCheapestItem(prefixes);
             return (
               <div key={category} className="grid">
-                <div className="grid bg-white m-4 items-center text-center text-xl justify-center">
-                  
+                <a className="grid bg-white m-4 items-center text-center text-xl justify-center" href={cheapestItem.part}>
+                <div>
                   <img
                     src={cheapestItem.img}
                     alt={cheapestItem.title}
@@ -299,6 +275,7 @@ function Home() {
                     
                   </div>
                 </div>
+                </a>
               </div>
             );
           })}
@@ -316,7 +293,8 @@ function Home() {
             const mostExpensiveItem = findMostExpensiveItem(prefixes);
             return (
               <div key={category} className=" grid">
-                <div className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center">
+                <a className="grid p-6 bg-white m-4 items-center text-center text-xl justify-center" href={mostExpensiveItem.part}>
+                <div>
                   <img
                     src={mostExpensiveItem.img}
                     alt={mostExpensiveItem.title}
@@ -332,6 +310,7 @@ function Home() {
                     <p className="text-lg text-left font-semibold text-red-500">Price: {mostExpensiveItem.price}</p>
                   </div>
                 </div>
+                </a>
               </div>
             );
           })}
