@@ -7,28 +7,10 @@ function Motherboards() {
 
   // Toggle dropdown setting
 
-  const [isOpenPrice, setIsOpenPrice] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
-  const toggleDropdownPrice = () => {
-    setIsOpenPrice(!isOpenPrice);
-  };
-
-  const [isOpenAlpha, setIsOpenAlpha] = useState(false);
-
-  const toggleDropdownAlpha = () => {
-    setIsOpenAlpha(!isOpenAlpha);
-  };
-
-  const [isOpenColor, setIsOpenColor] = useState(false);
-
-  const toggleDropdownColor = () => {
-    setIsOpenColor(!isOpenColor);
-  };
-
-  const [isOpenSize, setIsOpenSize] = useState(false);
-
-  const toggleDropdownSize = () => {
-    setIsOpenSize(!isOpenSize);
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prevDropdown) => (prevDropdown === dropdownName ? null : dropdownName));
   };
 
   useEffect(() => {
@@ -126,9 +108,9 @@ function Motherboards() {
               <button
                 type="button"
                 className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
-                onClick={toggleDropdownPrice}
+                onClick={() => toggleDropdown("price")}
               >
-                {selectedOption ? selectedOption : "Price"}
+                Price
                 <svg
                   className="-mr-1 ml-2 h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +122,7 @@ function Motherboards() {
                 </svg>
               </button>
             </div>
-            {isOpenPrice && (
+            {openDropdown === "price" && (
               <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1"
@@ -172,9 +154,9 @@ function Motherboards() {
               <button
                 type="button"
                 className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
-                onClick={toggleDropdownAlpha}
+                onClick={() => toggleDropdown("alphabetical")}
               >
-                {selectedOption ? selectedOption : "Alphabetical"}
+                Alphabetical
                 <svg
                   className="-mr-1 ml-2 h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +168,7 @@ function Motherboards() {
                 </svg>
               </button>
             </div>
-            {isOpenAlpha && (
+            {openDropdown === "alphabetical" && (
               <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1"
@@ -218,9 +200,9 @@ function Motherboards() {
               <button
                 type="button"
                 className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
-                onClick={toggleDropdownColor}
+                onClick={() => toggleDropdown("color")}
               >
-                {selectedOption ? selectedOption : "Color"}
+                Color
                 <svg
                   className="-mr-1 ml-2 h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +214,7 @@ function Motherboards() {
                 </svg>
               </button>
             </div>
-            {isOpenColor && (
+            {openDropdown === "color" && (
               <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1"
@@ -264,9 +246,9 @@ function Motherboards() {
               <button
                 type="button"
                 className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
-                onClick={toggleDropdownSize}
+                onClick={() => toggleDropdown("size")}
               >
-                {selectedOption ? selectedOption : "Size"}
+                Motherboard Size
                 <svg
                   className="-mr-1 ml-2 h-5 w-5"
                   xmlns="http://www.w3.org/2000/svg"
@@ -278,7 +260,7 @@ function Motherboards() {
                 </svg>
               </button>
             </div>
-            {isOpenSize && (
+            {openDropdown === "size" && (
               <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
                 <div
                   className="py-1"

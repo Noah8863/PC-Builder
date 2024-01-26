@@ -343,7 +343,7 @@ function CPU() {
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-600 w-2/3 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                          <p className="text-center">Cores: {part.cores}</p>
+                          <p className="text-center">Cores: {part.core}</p>
                           <p className="text-center">Threads: {part.threads}</p>
                           <p className="text-center">
                             Socket Type: {part.socket}

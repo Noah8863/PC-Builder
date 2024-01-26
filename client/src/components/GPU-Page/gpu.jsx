@@ -1,22 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 function GPU() {
-
   const [gpuParts, setGpuParts] = useState([]);
   const [popUpMenu, setPopUpMenu] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
+  // Toggle dropdown setting
+
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prevDropdown) =>
+      prevDropdown === dropdownName ? null : dropdownName
+    );
+  };
+
   useEffect(() => {
-    fetch('/GPU')
+    fetch("/GPU")
       .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error('Error fetching parts data');
+          throw new Error("Error fetching parts data");
         }
       })
       .then((jsonResult) => {
-        const gpus = jsonResult.gpus // Flatten the arrays of parts
+        const gpus = jsonResult.gpus; // Flatten the arrays of parts
         setGpuParts(gpus);
       })
       .catch((error) => {
@@ -66,20 +75,20 @@ function GPU() {
     const sortedParts = [...gpuParts].sort((a, b) => b.vRam - a.vRam);
     setGpuParts(sortedParts);
   };
-  
+
   const sortLowestVRam = () => {
     const sortedParts = [...gpuParts].sort((a, b) => a.vRam - b.vRam);
     setGpuParts(sortedParts);
   };
-  
+
   const sortSingle = () => {
     const sortedParts = [...gpuParts].sort((a, b) => {
-      if (a.size === 'Single Slot' && b.size !== 'Single Slot') {
-        return -1; 
-      } else if (a.size !== 'Single Slot' && b.size === 'Single Slot') {
-        return 1; 
+      if (a.size === "Single Slot" && b.size !== "Single Slot") {
+        return -1;
+      } else if (a.size !== "Single Slot" && b.size === "Single Slot") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setGpuParts(sortedParts);
@@ -87,12 +96,12 @@ function GPU() {
 
   const sortDouble = () => {
     const sortedParts = [...gpuParts].sort((a, b) => {
-      if (a.size === 'Dual Slot' && b.size !== 'Dual Slot') {
-        return -1; 
-      } else if (a.size !== 'Dual Slot' && b.size === 'Dual Slot') {
-        return 1; 
+      if (a.size === "Dual Slot" && b.size !== "Dual Slot") {
+        return -1;
+      } else if (a.size !== "Dual Slot" && b.size === "Dual Slot") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setGpuParts(sortedParts);
@@ -100,12 +109,12 @@ function GPU() {
 
   const sortTriple = () => {
     const sortedParts = [...gpuParts].sort((a, b) => {
-      if (a.size === 'Triple Slot' && b.size !== 'Triple Slot') {
-        return -1; 
-      } else if (a.size !== 'Triple Slot' && b.size === 'Triple Slot') {
-        return 1; 
+      if (a.size === "Triple Slot" && b.size !== "Triple Slot") {
+        return -1;
+      } else if (a.size !== "Triple Slot" && b.size === "Triple Slot") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setGpuParts(sortedParts);
@@ -126,83 +135,250 @@ function GPU() {
 
   return (
     <main className="z-1">
-      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
+      <div className=" text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
         Graphic Cards
       </div>
       <div className="flex flex-col sm:flex-row ">
-        <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
-          <p className="text-xxl text-center px-4 py-2">Sort By:</p>
-          <p className="text-xxl text-left px-4">Price</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortMax}
-          >
-            Highest
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLeast}
-          >
-            Lowest
-          </button>
-          <p className="text-xxl text-left px-4">Alphabetical</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortAZ}
-          >
-            Sort: A - Z
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortZA}
-          >
-            Sort: Z - A
-          </button>
-          <p className="text-xxl text-left px-4">Color</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortBlackFirst}
-          >
-            Color: Black
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortWhiteFirst}
-          >
-            Color: White
-          </button>
-          <p className="text-xxl text-left px-4">V-Ram</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortVRam}
-          >
-            Highest V-Ram Cards
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLowestVRam}
-          >
-            Lowest V-Ram Cards
-          </button>
-          <p className="text-xxl text-left px-4">Sort by Size</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortSingle}
-          >
-            Single Slot
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortDouble}
-          >
-            Dual Slot
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortTriple}
-          >
-            Triple Slot
-          </button>
+        <div className="w-90 sm:w-1/5 bg-gray-300 rounded-xl m-2 mt-4 h-1/3">
+          <p className="text-xl text-left bg-blue-500 px-4 py-4 rounded-t-xl text-white">
+            Filter By
+          </p>
+
+          {/* Price */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("price")}
+              >
+                Price
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "price" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortMax}
+                  >
+                    Highest
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortLeast}
+                  >
+                    Lowest
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Alphabetical */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("alphabetical")}
+              >
+                Alphabetical
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "alphabetical" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortAZ}
+                  >
+                    Sort: A - Z
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortZA}
+                  >
+                    Sort: Z - A
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Color */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("color")}
+              >
+                Color
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "color" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortBlackFirst}
+                  >
+                    Color: Black
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortWhiteFirst}
+                  >
+                    Color: White
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* V-Ram */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("vram")}
+              >
+                Amount of V-Ram
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "vram" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortVRam}
+                  >
+                    Highest V-Ram Cards
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortLowestVRam}
+                  >
+                    Lowest V-Ram Cards
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Size */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("size")}
+              >
+                Size of Card
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "size" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortSingle}
+                  >
+                    Single Slot
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortDouble}
+                  >
+                    Dual Slot
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortTriple}
+                  >
+                    Triple Slot
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -220,9 +396,7 @@ function GPU() {
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bg-gray-600 w-2/3 text-white p-4 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                           <p className="text-center">Slots: {part.size}</p>
-                          <p className="text-center">
-                            V RAM: {part.vRam} GB
-                          </p>
+                          <p className="text-center">V RAM: {part.vRam} GB</p>
                           <button
                             className="bg-blue-400 px-4 my-2 rounded-md flex items-center m-auto"
                             onClick={openListMenu}
@@ -231,40 +405,48 @@ function GPU() {
                           </button>
                         </div>
                       </div>
-                      <p>Price: ${part.price}</p>
-                      <p>Manufacture: {part.manufacturer}</p>
-                      <p>Model: {part.model}</p>
+                      <p className="text-blue-500">Price: ${part.price}</p>
+                      <p className="font-medium text-xl text-left">Manufacture: {part.manufacturer}</p>
+                      <p className="text-red-400 font-semibold">Model: {part.model}</p>
                       {popUpMenu && (
-                      <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
-                        <div className="bg-white p-6 rounded-lg shadow-lg lg:w-1/3 sm:w-2/3">
-                          <h2 className="text-xl font-semibold mb-4">
-                            Select a build
-                          </h2>
-                          <div className="mt-4">
-                            <label
-                              htmlFor="buildOptions"
-                              className="block font-medium"
+                        <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
+                          <div className="bg-white p-6 rounded-lg shadow-lg lg:w-1/3 sm:w-2/3">
+                            <h2 className="text-xl font-semibold mb-4">
+                              Select a build
+                            </h2>
+                            <div className="mt-4">
+                              <label
+                                htmlFor="buildOptions"
+                                className="block font-medium"
+                              >
+                                Current Builds:
+                              </label>
+                              <select
+                                id="buildOptions"
+                                className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
+                                value={selectedOption}
+                                onChange={handleOptionChange}
+                              >
+                                <option value="option1">Shopping List</option>
+                                <option value="option2">Wish List</option>
+                                <option value="option3">Current Set Up</option>
+                              </select>
+                              <button
+                                className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white"
+                                onClick={() => addItemToList(part.id)}
+                              >
+                                Add to List
+                              </button>
+                            </div>
+                            <button
+                              className="mt-4 bg-red-500 text-white p-2 rounded-md"
+                              onClick={addItemToList}
                             >
-                              Current Builds:
-                            </label>
-                            <select
-                              id="buildOptions"
-                              className="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200"
-                              value={selectedOption}
-                              onChange={handleOptionChange}
-                            >
-                              <option value="option1">Shopping List</option>
-                              <option value="option2">Wish List</option>
-                              <option value="option3">Current Set Up</option>
-                            </select>
-                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
+                              Close
+                            </button>
                           </div>
-                          <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
-                            Close
-                          </button>
                         </div>
-                      </div>
-                    )}
+                      )}
                     </div>
                   </div>
                 ))}
@@ -274,7 +456,6 @@ function GPU() {
       </div>
     </main>
   );
-  
 }
 
 export default GPU;
