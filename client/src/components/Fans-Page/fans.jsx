@@ -1,21 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 
 function Fans() {
   const [fanParts, setFanParts] = useState([]);
   const [popUpMenu, setPopUpMenu] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
+  // Toggle dropdown setting
+
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prevDropdown) =>
+      prevDropdown === dropdownName ? null : dropdownName
+    );
+  };
+
   useEffect(() => {
-    fetch('/Fans')
+    fetch("/Fans")
       .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error('Error fetching parts data');
+          throw new Error("Error fetching parts data");
         }
       })
       .then((jsonResult) => {
-        const fans = jsonResult.fans // Flatten the arrays of parts
+        const fans = jsonResult.fans; // Flatten the arrays of parts
         setFanParts(fans);
       })
       .catch((error) => {
@@ -86,64 +96,197 @@ function Fans() {
 
   return (
     <main className="z-1">
-      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
+      <div className="text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
         Case Fans
       </div>
       <div className="flex flex-col sm:flex-row ">
-        <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
-          <p className="text-xxl text-center px-4 py-2">Sort By:</p>
-          <p className="text-xxl text-left px-4">Price</p>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortMax}
-          >
-            Price: Highest to Lowest
-          </button>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLeast}
-          >
-            Price: Lowest to Highest
-          </button>
-          <p className="text-xxl text-left px-4">Alphabetical</p>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortAZ}
-          >
-            Sort: A - Z
-          </button>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortZA}
-          >
-            Sort: Z - A
-          </button>
-          <p className="text-xxl text-left px-4">Color</p>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortBlackFirst}
-          >
-            Color: Black
-          </button>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortWhiteFirst}
-          >
-            Color: White
-          </button>
-          <p className="text-xxl text-left px-4">By Size</p>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort120}
-          >
-            120mm
-          </button>
-          <button
-            className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort140}
-          >
-            140mm
-          </button>
+        <div className="w-90 sm:w-1/5 bg-gray-300 rounded-xl m-2 mt-4 h-1/3">
+          <p className="text-xl text-left bg-blue-500 px-4 py-4 rounded-t-xl text-white">
+            Filter By
+          </p>
+          {/* Price */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("price")}
+              >
+                Price
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "price" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortMax}
+                  >
+                    Highest
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortLeast}
+                  >
+                    Lowest
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Alphabetocal */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("alphabetical")}
+              >
+                Alphabetical
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "alphabetical" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortAZ}
+                  >
+                    Sort: A - Z
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortZA}
+                  >
+                    Sort: Z - A
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Color */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("color")}
+              >
+                Color
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "color" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortBlackFirst}
+                  >
+                    Color: Black
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortWhiteFirst}
+                  >
+                    Color: White
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Size */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("size")}
+              >
+                Size
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "size" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort120}
+                  >
+                    120mm
+                  </button>
+                  <button
+                    className="block px-4 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort140}
+                  >
+                    140mm
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -172,9 +315,9 @@ function Fans() {
                           </button>
                         </div>
                       </div>
-                      <p>Price: ${part.price}</p>
-                      <p>Manufacture: {part.manufacturer}</p>
-                      <p>Model: {part.model}</p>
+                      <p className="text-blue-500">Price: ${part.price}</p>
+                      <p className="font-medium text-xl text-left">Manufacture: {part.manufacturer}</p>
+                      <p className="text-red-400 font-semibold">Model: {part.model}</p>
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
@@ -199,9 +342,14 @@ function Fans() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
-                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white">Add to List</button>
+                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white">
+                              Add to List
+                            </button>
                           </div>
-                          <button className="mt-4 bg-red-500 text-white p-2 rounded-md" onClick={addItemToList}>
+                          <button
+                            className="mt-4 bg-red-500 text-white p-2 rounded-md"
+                            onClick={addItemToList}
+                          >
                             Close
                           </button>
                         </div>
@@ -215,7 +363,6 @@ function Fans() {
       </div>
     </main>
   );
-  
 }
 
 export default Fans;
