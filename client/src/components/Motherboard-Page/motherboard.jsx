@@ -113,7 +113,7 @@ function Motherboards() {
   return (
     <main className="z-1">
       <div className=" text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
-        MotherBoards
+        Motherboards
       </div>
       <div className="flex flex-col sm:flex-row ">
         <div className="w-90 sm:w-1/5 bg-gray-300 rounded-xl m-2 mt-4 h-1/3">
