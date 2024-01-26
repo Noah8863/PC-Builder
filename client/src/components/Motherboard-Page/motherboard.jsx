@@ -10,7 +10,9 @@ function Motherboards() {
   const [openDropdown, setOpenDropdown] = useState(null);
 
   const toggleDropdown = (dropdownName) => {
-    setOpenDropdown((prevDropdown) => (prevDropdown === dropdownName ? null : dropdownName));
+    setOpenDropdown((prevDropdown) =>
+      prevDropdown === dropdownName ? null : dropdownName
+    );
   };
 
   useEffect(() => {
@@ -94,12 +96,14 @@ function Motherboards() {
 
   return (
     <main className="z-1">
-      <div className=" text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
+      <div className="text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
         Motherboards
       </div>
       <div className="flex flex-col sm:flex-row ">
         <div className="w-90 sm:w-1/5 bg-gray-300 rounded-xl m-2 mt-4 h-1/3">
-          <p className="text-xl text-left bg-blue-500 px-4 py-4 rounded-t-xl text-white">Filter By</p>
+          <p className="text-xl text-left bg-blue-500 px-4 py-4 rounded-t-xl text-white">
+            Filter By
+          </p>
 
           {/* Price */}
 
@@ -131,13 +135,13 @@ function Motherboards() {
                   aria-labelledby="options-menu"
                 >
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortMax}
                   >
                     Highest
                   </button>
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortLeast}
                   >
                     Lowest
@@ -177,13 +181,13 @@ function Motherboards() {
                   aria-labelledby="options-menu"
                 >
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortAZ}
                   >
                     Sort: A - Z
                   </button>
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortZA}
                   >
                     Sort: Z - A
@@ -223,13 +227,13 @@ function Motherboards() {
                   aria-labelledby="options-menu"
                 >
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortBlackFirst}
                   >
                     Color: Black
                   </button>
                   <button
-                    className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
                     onClick={sortWhiteFirst}
                   >
                     Color: White
@@ -312,9 +316,15 @@ function Motherboards() {
                           </button>
                         </div>
                       </div>
-                      <p className="text-blue-500">Brand: {part.manufacturer}</p>
-                      <p className="font-medium text-xl text-left">Model: {part.model}</p>
-                      <p className="text-red-400 font-semibold">Price: ${part.price}</p>
+                      <p className="text-blue-500">
+                        Brand: {part.manufacturer}
+                      </p>
+                      <p className="font-medium text-xl text-left">
+                        Model: {part.model}
+                      </p>
+                      <p className="text-red-400 font-semibold">
+                        Price: ${part.price}
+                      </p>
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
