@@ -12,13 +12,15 @@ import {
 } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import ConstructionIcon from "@mui/icons-material/Construction";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from "@mui/icons-material/Logout";
 import BuildImg from "../../images/custom-PC-3.jpg";
-import BuildImgage from "../../images/pc-building.jpg";
+import buildImgage from "../../images/pc-building.jpg";
+import stockImg from "../../images/blog.png";
+import sadComputerIcon from "../../images/sadComputerIcon.png";
 
 import "./styles.css";
 
@@ -193,100 +195,107 @@ function AccountComponent() {
   };
 
   return (
-    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4 bg-gray-200 h-screen">
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 bg-blue-400">
-        <div className="h-full grid col-span-1 justify-left p-4 m-4">
+    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4">
+      <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-2">
+        <div className="grid col-span-1 justify-left p-4 m-4">
           {currentUser ? (
-            <div>
-              <p className="text-2xl p-2 text-left">Account</p>
+            <div className="bg-blue-500 rounded-lg text-white">
               {/* <img
                 className="w-2/3"
                 src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
                 alt="profilePicture"
               ></img> */}
-              <div class="flex items-center justify-center w-40 h-40 mx-1 overflow-hidden rounded-lg">
-                <img src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"></img>
+              <img
+                className="rounded-full m-auto mt-8"
+                src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
+                alt="Avatar"
+              ></img>
+              <p className="text-xxl p-4 text-center">
+                {currentUser.displayName}
+              </p>
+              <div class="flex items-center justify-center">
+                <div class="border-2 border-white w-4/5 mt-2 mb-4"></div>
               </div>
-              <p className="text-xl p-4">Welcome, {currentUser.displayName}</p>
-              <div className="space-y-2">
+              <div className="space-y-2 mx-4 text-xl">
                 <button
                   className="w-full flex items-center justify-between"
                   onClick={ShowAccount}
                 >
-                  <span className="ml-2">
-                    Profile <AccountCircleIcon />{" "}
+                  <span className="space-between-2">
+                    <AccountCircleIcon /> Profile{" "}
                   </span>
                 </button>
                 <button
                   className="w-full flex items-center justify-between"
                   onClick={ShowBuilds}
                 >
-                  <span className="ml-2">
-                    Builds <ConstructionIcon />{" "}
-                  </span>
-                </button>
-                <button
-                  className="w-full flex items-center justify-between"
-                  onClick={logOut}
-                >
-                  <span className="ml-2">
-                    Logout <LogoutIcon />{" "}
+                  <span>
+                    <SettingsOutlinedIcon /> Builds{" "}
                   </span>
                 </button>
               </div>
+              <button
+                className="flex items-center justify-between relative mt-4 ml-4 text-xl"
+                onClick={logOut}
+              >
+                <span>
+                  <LogoutIcon /> Logout{" "}
+                </span>
+              </button>
             </div>
           ) : (
             <p className="text-xl p-4">Loading</p>
           )}
         </div>
         {currentUser ? (
-          <div className="col-span-2 h-full p-4 m-4">
+          <div className="col-span-2 p-4 m-4 rounded-lg bg-blue-500">
             {showProfile && (
-              <div>
+              <div className="text-white p-4">
                 <p className="text-2xl py-2 text-left">
-                  {currentUser.displayName}
+                  Welcome, {currentUser.displayName}
                 </p>
-                <p>
-                  Member since: {formatDate(currentUser.metadata.creationTime)}
+                <p className="mb-2">
+                  Member Since: {formatDate(currentUser.metadata.creationTime)}
                 </p>
-                <div className="border-t border-gray-500 py-2"></div>
-                <div className="text-blue-600 text-lg flex">
-                  Email: <p className="text-black pl-2">{currentUser.email}</p>
-                </div>
+                <div className="border-t border-white py-2"></div>
+                <div className="text-lg flex">Email: {currentUser.email}</div>
                 <div className="mt-8 h-max">
-                  <h2 className="text-2xl text-center underline font-bold mb-4">
-                    Your Blog Posts
-                  </h2>
-                  <div>
+                  <h2 className="text-xxl mb-4">Your Blog Posts</h2>
+                  <div className="text-black">
                     {blogPosts ? (
                       <section className="mt-8">
                         <section className="mt-8">
                           {userBlogPosts.map((post) => (
                             <div
                               key={post.id}
-                              className="bg-white border border-gray-300 rounded-md p-4 mb-4"
+                              className="bg-white mb-4 grid grid-cols-5"
                             >
-                              <h3 className="text-xxl font-bold">
-                                {post.title}
-                              </h3>
-                              <p className="mb-2 text-xl">{post.post}</p>
-                              <div className="flex justify-between items-center">
-                                <button
-                                  button
-                                  onClick={() => openEditPopup(post)}
-                                >
-                                  <span className="ml-2">
-                                    Edit Post <EditIcon />{" "}
-                                  </span>
-                                </button>
-                                <button
-                                  className="bg-red-500 text-white p-2 rounded-md"
-                                  onClick={() => deleteBlog(post.id)}
-                                >
-                                  <span className="ml-2">
-                                    Delete Post <DeleteIcon />{" "}
-                                  </span>
-                                </button>
+                              <div className="col-span-1 w-full">
+                                <img className="h-full" src={stockImg}></img>
+                              </div>
+                              <div className="col-span-4 p-4">
+                                <h3 className="text-xxl font-bold">
+                                  {post.title}
+                                </h3>
+                                <p className="mb-2 text-xl">{post.post}</p>
+                                <div className="flex justify-between items-center">
+                                  <button
+                                    button
+                                    onClick={() => openEditPopup(post)}
+                                  >
+                                    <span className="ml-2">
+                                      Edit Post <EditIcon />{" "}
+                                    </span>
+                                  </button>
+                                  <button
+                                    className="bg-red-500 text-white p-2 rounded-md"
+                                    onClick={() => deleteBlog(post.id)}
+                                  >
+                                    <span className="ml-2">
+                                      Delete Post <DeleteIcon />{" "}
+                                    </span>
+                                  </button>
+                                </div>
                               </div>
                               {showEditPopup && (
                                 <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -355,13 +364,17 @@ function AccountComponent() {
                         </section>
                       </section>
                     ) : (
-                      <div className="text-center">
-                        <p className="py-4">
-                          Looks like you haven't created any Blog Posts yet.
-                          Care to start today?
+                      <div className="text-center bg-white rounded-xl p-4">
+                        <p className="py-4 text-xl text-black">
+                          Looks like you haven't created any posts yet. Care to
+                          start today?
                         </p>
+                        <img
+                          className="relative m-auto"
+                          src={sadComputerIcon}
+                        ></img>
                         <a href="/Blog">
-                          <div className="rounded-md bg-blue-400 text-white">
+                          <div className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 w-1/5 justify-center flex m-auto">
                             Blog Page
                           </div>
                         </a>
@@ -372,21 +385,30 @@ function AccountComponent() {
               </div>
             )}
             {showBuilds && (
-              <div className="bg-blue-400">
-                <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
+              <div className=" p-2 m-2 text-white">
+                <p className="text-2xl py-2 text-left">
+                  Welcome, {currentUser.displayName}
+                </p>
+                <p className="mb-2">
+                  Member Since: {formatDate(currentUser.metadata.creationTime)}
+                </p>
+                <div className="border-t border-white py-2"></div>
+                <div className="text-lg flex">Email: {currentUser.email}</div>
+                {/* <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
                   Work Station
                 </h1>
-                <div className="bg-gray-400 border-4 p-4 justify-center text-center">
+                <div className=" border-4 p-4 justify-center text-center">
                   <p className="p-4">
                     It looks like you don't have a build yet, how about creating
                     one?
                   </p>
+                  <img className="relative m-auto" src={sadComputerIcon}></img>
                   <button onClick={openPopup}>
                     <span className="ml-2">
                       Add a Build <ControlPointIcon />{" "}
                     </span>
                   </button>
-                </div>
+                </div> */}
                 {showPopup && (
                   <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
@@ -454,7 +476,7 @@ function AccountComponent() {
                 >
                   <img
                     className="w-2/3"
-                    src={BuildImgage}
+                    src={buildImgage}
                     alt="Build Default Image"
                   ></img>
                   <h2 className="text-xxl">{container.name}</h2>
