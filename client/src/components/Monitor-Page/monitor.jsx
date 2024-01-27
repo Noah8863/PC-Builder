@@ -5,6 +5,16 @@ function Monitor() {
   const [popUpMenu, setPopUpMenu] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
 
+  // Toggle dropdown setting
+
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (dropdownName) => {
+    setOpenDropdown((prevDropdown) =>
+      prevDropdown === dropdownName ? null : dropdownName
+    );
+  };
+
   useEffect(() => {
     fetch("/Monitor")
       .then((res) => {
@@ -48,41 +58,27 @@ function Monitor() {
   };
 
   const sortLargestSize = () => {
-    const sortedParts = [...monitorParts].sort((a, b) =>
-      parseInt(b.size) - parseInt(a.size)
+    const sortedParts = [...monitorParts].sort(
+      (a, b) => parseInt(b.size) - parseInt(a.size)
     );
     setMonitorParts(sortedParts);
   };
 
   const sortSmallestSize = () => {
-    const sortedParts = [...monitorParts].sort((a, b) =>
-      parseInt(a.size) - parseInt(b.size)
-    );
-    setMonitorParts(sortedParts);
-  };
-
-  const sortHighestRefresh = () => {
-    const sortedParts = [...monitorParts].sort((a, b) =>
-      parseInt(b.hz) - parseInt(a.hz)
-    );
-    setMonitorParts(sortedParts);
-  };
-
-  const sortLowestRefresh = () => {
-    const sortedParts = [...monitorParts].sort((a, b) =>
-      parseInt(a.hz) - parseInt(b.hz)
+    const sortedParts = [...monitorParts].sort(
+      (a, b) => parseInt(a.size) - parseInt(b.size)
     );
     setMonitorParts(sortedParts);
   };
 
   const sort240 = () => {
     const sortedParts = [...monitorParts].sort((a, b) => {
-      if (a.hz === '240hz' && b.hz !== '240hz') {
-        return -1; 
-      } else if (a.hz !== '240hz' && b.hz === '240hz') {
-        return 1; 
+      if (a.hz === "240hz" && b.hz !== "240hz") {
+        return -1;
+      } else if (a.hz !== "240hz" && b.hz === "240hz") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setMonitorParts(sortedParts);
@@ -90,12 +86,12 @@ function Monitor() {
 
   const sort165 = () => {
     const sortedParts = [...monitorParts].sort((a, b) => {
-      if (a.hz === '165hz' && b.hz !== '165hz') {
-        return -1; 
-      } else if (a.hz !== '165hz' && b.hz === '165hz') {
-        return 1; 
+      if (a.hz === "165hz" && b.hz !== "165hz") {
+        return -1;
+      } else if (a.hz !== "165hz" && b.hz === "165hz") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setMonitorParts(sortedParts);
@@ -103,12 +99,12 @@ function Monitor() {
 
   const sort144 = () => {
     const sortedParts = [...monitorParts].sort((a, b) => {
-      if (a.hz === '144hz' && b.hz !== '144hz') {
-        return -1; 
-      } else if (a.hz !== '144hz' && b.hz === '144hz') {
-        return 1; 
+      if (a.hz === "144hz" && b.hz !== "144hz") {
+        return -1;
+      } else if (a.hz !== "144hz" && b.hz === "144hz") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setMonitorParts(sortedParts);
@@ -116,12 +112,12 @@ function Monitor() {
 
   const sort75 = () => {
     const sortedParts = [...monitorParts].sort((a, b) => {
-      if (a.hz === '75hz' && b.hz !== '75hz') {
-        return -1; 
-      } else if (a.hz !== '75hz' && b.hz === '75hz') {
-        return 1; 
+      if (a.hz === "75hz" && b.hz !== "75hz") {
+        return -1;
+      } else if (a.hz !== "75hz" && b.hz === "75hz") {
+        return 1;
       } else {
-        return 0; 
+        return 0;
       }
     });
     setMonitorParts(sortedParts);
@@ -142,89 +138,210 @@ function Monitor() {
 
   return (
     <main className="z-1">
-      <div className="m-4 text-center text-2xl underline underline-offset-4 h-32 bg-slate-400 pt-10">
+      <div className="text-center text-2xl font-medium h-32 bg-gray-300 pt-10">
         Monitors
       </div>
       <div className="flex flex-col sm:flex-row ">
-        <div className="w-90 sm:w-1/5 bg-gray-200 base:min-h-screen m-4">
-          <p className="text-xxl text-center px-4 py-2">Sort By:</p>
-          <p className="text-xxl text-left px-4">Price</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortMax}
-          >
-            Highest
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLeast}
-          >
-            Lowest
-          </button>
-          <p className="text-xxl text-left px-4">Alphabetical</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortAZ}
-          >
-            Sort: A - Z
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortZA}
-          >
-            Sort: Z - A
-          </button>
-          <p className="text-xxl text-left px-4">Size</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortSmallestSize}
-          >
-            Smallest Screen Size
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLargestSize}
-          >
-            Largest Screen Size
-          </button>
-          <p className="text-xxl text-left px-4">Refresh Rate</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortHighestRefresh}
-          >
-            Highest Refresh Rate
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sortLowestRefresh}
-          >
-            Lowest Refresh Rate
-          </button>
-          <p className="text-xxl text-left px-4">Refresh Rate</p>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort240}
-          >
-            240hz
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort165}
-          >
-            165hz
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort144}
-          >
-            144hz
-          </button>
-          <button
-            className="block px-12 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
-            onClick={sort75}
-          >
-            75hz
-          </button>
+        <div className="w-90 sm:w-1/5 bg-gray-300 rounded-xl m-2 mt-4 h-1/3">
+          <p className="text-xl text-left bg-blue-500 px-4 py-4 rounded-t-xl text-white">
+            Filter By
+          </p>
+
+          {/* Price */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("price")}
+              >
+                Price
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "price" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortMax}
+                  >
+                    Highest
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortLeast}
+                  >
+                    Lowest
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Alphabetocal */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("alphabetical")}
+              >
+                Alphabetical
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "alphabetical" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortAZ}
+                  >
+                    Sort: A - Z
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortZA}
+                  >
+                    Sort: Z - A
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Screen Size */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("size")}
+              >
+                Screen Size
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "size" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortSmallestSize}
+                  >
+                    Smallest Size
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sortLargestSize}
+                  >
+                    Largest Size
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Refresh Rate */}
+
+          <div className="relative my-4 text-left z-3 px-4">
+            <div>
+              <button
+                type="button"
+                className="inline-flex justify-center items-center w-full px-4 py-2 text-xl text-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-blue-400"
+                onClick={() => toggleDropdown("refresh")}
+              >
+                Refresh Rate
+                <svg
+                  className="-mr-1 ml-2 h-5 w-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path fillRule="evenodd" d="M6 8l4 4 4-4H6z" />
+                </svg>
+              </button>
+            </div>
+            {openDropdown === "refresh" && (
+              <div className="origin-top-right absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white z-10 ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort240}
+                  >
+                    240hz
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort165}
+                  >
+                    165hz
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort144}
+                  >
+                    144hz
+                  </button>
+                  <button
+                    className="block pl-2 py-2 text-lg text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                    onClick={sort75}
+                  >
+                    75hz
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="w-full sm:w-4/5 bg-gray-300 m-4 z-1">
@@ -253,9 +370,9 @@ function Monitor() {
                           </button>
                         </div>
                       </div>
-                      <p>Price: ${part.price}</p>
-                      <p>Manufacture: {part.manufacturer}</p>
-                      <p>Model: {part.model}</p>
+                      <p className="text-blue-500">Price: ${part.price}</p>
+                      <p className="font-medium text-xl text-left">Manufacture: {part.manufacturer}</p>
+                      <p className="text-red-400 font-semibold">Model: {part.model}</p>
                     </div>
                     {popUpMenu && (
                       <div className="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center">
@@ -280,7 +397,12 @@ function Monitor() {
                               <option value="option2">Wish List</option>
                               <option value="option3">Current Set Up</option>
                             </select>
-                            <button className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white" onClick={() => addItemToList(part.id)}>Add to List</button>
+                            <button
+                              className="bg-blue-400 p-2 mt-6 mb-2 rounded-md m-auto text-white"
+                              onClick={() => addItemToList(part.id)}
+                            >
+                              Add to List
+                            </button>
                           </div>
                           <button
                             className="mt-4 bg-red-500 text-white p-2 rounded-md"
