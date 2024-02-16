@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from "react";
 import "./index.css";
-import React from "react";
+import DataContext from "./context.js"
+import data from "./data/parts.JSON"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { NavBar } from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/footer.jsx";
@@ -19,8 +21,18 @@ import MonitorPage from "./components/Monitor-Page/monitor.jsx";
 import Reset from "./components/Reset/reset.jsx";
 
 function App() {
+  
+  const [pcParts, setPcParts] = useState([])
+
+  useEffect(() => {
+    setPcParts(data);
+  }, []);
+
+  const appData = { pcParts }
+
   return (
     <Router>
+      <DataContext.Provider value={ appData }>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
@@ -37,8 +49,10 @@ function App() {
         <Route path="/Account" element={<AccountPage />} />
         <Route path="/Monitor" element={<MonitorPage />} />
         <Route path="/Reset" element={<Reset />} />
+        
       </Routes>
       <Footer />
+      </DataContext.Provider>
     </Router>
   );
 }

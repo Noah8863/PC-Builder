@@ -394,23 +394,45 @@ function AccountComponent() {
                 </p>
                 <div className="border-t border-white py-2"></div>
                 <div className="text-lg flex">Email: {currentUser.email}</div>
-                {/* <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
-                  Work Station
-                </h1>
-                <div className=" border-4 p-4 justify-center text-center">
-                  <p className="p-4">
-                    It looks like you don't have a build yet, how about creating
-                    one?
-                  </p>
-                  <img className="relative m-auto" src={sadComputerIcon}></img>
-                  <button onClick={openPopup}>
-                    <span className="ml-2">
-                      Add a Build <ControlPointIcon />{" "}
-                    </span>
-                  </button>
-                </div> */}
+
+                <h1 className="text-left text-xxl py-4">Work Station</h1>
+                <div className="p-4 justify-center text-center">
+                  {buildContainers.length === 0 ? (
+                    <>
+                      <p className="p-4">
+                        It looks like you don't have a build yet, how about
+                        creating one?
+                      </p>
+                      <img
+                        className="relative m-auto"
+                        src={sadComputerIcon}
+                        alt="Sad Computer"
+                      ></img>
+                      <button onClick={openPopup}>
+                        <span className="ml-2">
+                          Add a Build <ControlPointIcon />{" "}
+                        </span>
+                      </button>
+                    </>
+                  ) : (
+                    // Render build containers dynamically
+                    buildContainers.map((build) => (
+                      <div
+                        key={build.id}
+                        className="border p-4 mt-4 rounded-md"
+                      >
+                        <h3> Name: {build.name}</h3>
+                        <p>Build: {build.description}</p>
+                        <p>Type: {build.type}</p>
+                        {/* Add other details as needed */}
+                      </div>
+                    ))
+                  )}
+                </div>
+                
+
                 {showPopup && (
-                  <div className="fixed inset-0 flex items-center justify-center z-50">
+                  <div className="fixed inset-0 flex text-black items-center justify-center z-50">
                     <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
                       <h2 className="text-xl font-semibold mb-4">
                         Add a Build
@@ -468,7 +490,7 @@ function AccountComponent() {
                 )}
               </div>
             )}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
+            {/* <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
               {buildContainers.map((container) => (
                 <div
                   key={container.id}
@@ -483,7 +505,7 @@ function AccountComponent() {
                   <p>{container.type}</p>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         ) : (
           <div>

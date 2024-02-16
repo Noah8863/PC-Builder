@@ -109,9 +109,9 @@ function Home() {
     <main className="m-auto justify-center h-full relative customBackgroundColor">
       {/* Section 1 */}
       <header className="flex items-center customBackground h-screen pt-2 relative">
-        <div className=" w-1/2 h-auto ml-10 mb-10">
+        <div className=" md:w-1/2 h-auto md:ml-10 mb-10">
           <div className="text-white p-4 rounded-lg">
-            <h2 className=" mb-2 md:text-3xl sm:text-2xl">
+            <h2 className=" mb-2 text-2xl">
               Build Your Dream PC
             </h2>
             <p className="mb-4">
@@ -138,7 +138,7 @@ function Home() {
         </div>
       </header>
 
-      <section className="grid grid-cols-2 grid-rows-1 h-auto mx-20 mt-4">
+      <section className="grid md:grid-cols-2 md:grid-rows-1 h-auto md:mx-20 mt-4">
         <div>
           <img
             src={communityImage}
@@ -148,9 +148,9 @@ function Home() {
           <div className="relative bottom-10 left-28 w-16 h-16 bg-opacity-75 bg-blue-500 rounded-full "></div>
         </div>
 
-        <div className="p-4 sm:mt-0 relative w-2/3">
+        <div className="p-4 sm:mt-0 relative sm:w-2/3">
           <div className=" mr-10 ">
-            <p className="md:text-3xl sm:text-2xl mb-2 font-medium">
+            <p className="text-2xl mb-2 font-medium">
               Join the PC Builder Community
             </p>
             <div className="absolute top-0 right-1 w-24 h-24 bg-opacity-75 bg-blue-500 rounded-full "></div>
@@ -179,7 +179,7 @@ function Home() {
         </div>
       </section>
       {/* Section 2 */}
-      <section className="m-20">
+      <section className="md:m-20">
         <p className="text-xxl font-medium text-center">Featured Categories</p>
         <div class="flex items-center justify-center">
           <div class="border-2 border-blue-400 w-1/6"></div>
@@ -248,7 +248,7 @@ function Home() {
         </div>
       </section>
       {/* Section 3 */}
-      <section className="m-20">
+      <section className="md:m-20">
         <p className="text-xxl font-medium text-center">Hot Deals!</p>
         <div class="flex items-center justify-center">
           <div class="border-2 border-blue-400 w-1/6"></div>
@@ -282,7 +282,7 @@ function Home() {
         </div>
       </section>
       {/* Section 4 */}
-      <section className="m-20">
+      <section className="md:m-20">
         <p className="text-xxl font-medium text-center">Max Preformance</p>
         <div class="flex items-center justify-center">
           <div class="border-2 border-blue-400 w-1/6"></div>
