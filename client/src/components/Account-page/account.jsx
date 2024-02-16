@@ -138,9 +138,21 @@ function AccountComponent() {
   };
 
   const createBuild = async () => {
-    const buildName = document.getElementById("buildName").value;
-    const buildDescription = document.getElementById("buildDescription").value;
-    const buildType = document.getElementById("buildType").value;
+    const buildNameInput = document.getElementById("buildName");
+    const buildDescriptionInput = document.getElementById("buildDescription");
+    const buildTypeInput = document.getElementById("buildType");
+  
+    // Extract values from input fields
+    const buildName = buildNameInput.value;
+    const buildDescription = buildDescriptionInput.value;
+    const buildType = buildTypeInput.value;
+  
+    // Validate if any input is empty before proceeding
+    if (!buildName || !buildDescription || !buildType) {
+      console.error("Please fill out all fields");
+      return;
+    }
+  
     const uniqueID = Date.now();
     const newBuildContainer = {
       id: uniqueID,
@@ -148,15 +160,22 @@ function AccountComponent() {
       description: buildDescription,
       type: buildType,
     };
-
-    setBuildContainers((prevContainers) => [
-      ...prevContainers,
-      newBuildContainer,
-    ]);
-
+  
+    // Update state with the new build
+    setBuildContainers((prevContainers) => [...prevContainers, newBuildContainer]);
+  
+    // Clear input fields
+    buildNameInput.value = "";
+    buildDescriptionInput.value = "";
+    buildTypeInput.value = "";
+  
+    // Show the latest build details immediately
+    console.log("Latest Build:", newBuildContainer);
+  
     setShowPopup(false);
   };
-
+  
+  
   const openEditPopup = (post) => {
     setUpdatedTitle(post.title);
     setUpdatedDescription(post.post);
@@ -397,7 +416,7 @@ function AccountComponent() {
 
                 <h1 className="text-left text-xxl py-4">Work Station</h1>
                 <div className="p-4 justify-center text-center">
-                  {buildContainers.length === 0 ? (
+                  {buildContainers.length > 0 ? (
                     <>
                       <p className="p-4">
                         It looks like you don't have a build yet, how about
@@ -425,9 +444,16 @@ function AccountComponent() {
                         <p>Build: {build.description}</p>
                         <p>Type: {build.type}</p>
                         {/* Add other details as needed */}
+                        
                       </div>
+                      
                     ))
                   )}
+                  {/* <button onClick={openPopup}>
+                        <span className="ml-2">
+                          Add a Build <ControlPointIcon />{" "}
+                        </span>
+                      </button> */}
                 </div>
                 
 
