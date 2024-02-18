@@ -21,6 +21,7 @@ import BuildImg from "../../images/custom-PC-3.jpg";
 import buildImgage from "../../images/pc-building.jpg";
 import stockImg from "../../images/blog.png";
 import sadComputerIcon from "../../images/sadComputerIcon.png";
+import placeHolder from "../../images/profile.png"
 
 import "./styles.css";
 
@@ -207,7 +208,8 @@ function AccountComponent() {
               ></img> */}
               <img
                 className="rounded-full m-auto mt-8"
-                src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
+                // src={currentUser.photoURL ? currentUser.photoURL : placeHolder}
+                src={placeHolder}
                 alt="Avatar"
               ></img>
               <p className="text-xxl p-4 text-center">
@@ -385,7 +387,7 @@ function AccountComponent() {
               </div>
             )}
             {showBuilds && (
-              <div className=" p-2 m-2 text-white">
+              <div className=" p-2 m-2 text-black">
                 <p className="text-2xl py-2 text-left">
                   Welcome, {currentUser.displayName}
                 </p>
@@ -394,7 +396,7 @@ function AccountComponent() {
                 </p>
                 <div className="border-t border-white py-2"></div>
                 <div className="text-lg flex">Email: {currentUser.email}</div>
-                {/* <h1 className="text-center bg-gray-300 border-4 p-4 text-xl">
+                <h1 className="mt-4 text-xxl">
                   Work Station
                 </h1>
                 <div className=" border-4 p-4 justify-center text-center">
@@ -408,7 +410,7 @@ function AccountComponent() {
                       Add a Build <ControlPointIcon />{" "}
                     </span>
                   </button>
-                </div> */}
+                </div>
                 {showPopup && (
                   <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
@@ -474,11 +476,11 @@ function AccountComponent() {
                   key={container.id}
                   className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl"
                 >
-                  <img
+                  {/* <img
                     className="w-2/3"
                     src={buildImgage}
                     alt="Build Default Image"
-                  ></img>
+                  ></img> */}
                   <h2 className="text-xxl">{container.name}</h2>
                   <p>{container.type}</p>
                 </div>

@@ -43,4 +43,23 @@ function App() {
   );
 }
 
+//Passing props from app to components
+// const App = () => (
+//   <>
+//     <h1>Online Store</h1>
+//     <Product name="Green iguana" price={579} />
+//   </>
+// );
+
+
+// Child Component (Product)
+// const Product = (props) => (
+//   <>
+//     <p>Product name: {props.name}</p>
+//     <p>Price: ${props.price}</p>
+//   </>
+// );
+
+
+
 export default App;
