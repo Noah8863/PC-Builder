@@ -197,11 +197,11 @@ function AccountComponent() {
   };
 
   return (
-    <div className="container xl:w-3/4 lg:w-full md:w-full sm:w-full mx-auto p-8 m-4">
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-2">
-        <div className="grid col-span-1 justify-left p-4 m-4">
+    <div className="container mx-auto p-8 m-4 ">
+      <div className="grid lg:grid-cols-3 grid-cols-1 gap-2 w-full">
+        <div className="grid col-span-1 justify-left p-4  relative w-full">
           {currentUser ? (
-            <div className="bg-blue-500 rounded-lg text-white">
+            <div className="bg-blue-500 rounded-lg text-white p-4 ">
               {/* <img
                 className="w-2/3"
                 src={currentUser.photoURL ? currentUser.photoURL : BuildImg}
@@ -209,8 +209,8 @@ function AccountComponent() {
               ></img> */}
               <img
                 className="rounded-full m-auto mt-8"
-                // src={currentUser.photoURL ? currentUser.photoURL : placeHolder}
-                src={placeHolder}
+                src={currentUser.photoURL ? currentUser.photoURL : placeHolder}
+                // src={placeHolder}
                 alt="Avatar"
               ></img>
               <p className="text-xxl p-4 text-center">
@@ -251,9 +251,9 @@ function AccountComponent() {
           )}
         </div>
         {currentUser ? (
-          <div className="col-span-2 p-4 m-4 rounded-lg bg-blue-500">
+          <div className="col-span-2 m-4 rounded-lg bg-blue-500">
             {showProfile && (
-              <div className="text-white p-4">
+              <div className="text-white p-6">
                 <p className="text-2xl py-2 text-left">
                   Welcome, {currentUser.displayName}
                 </p>
@@ -271,10 +271,10 @@ function AccountComponent() {
                           {userBlogPosts.map((post) => (
                             <div
                               key={post.id}
-                              className="bg-white mb-4 grid grid-cols-5"
+                              className="bg-white mb-4 grid sm:grid-cols-5 grid-cols-1"
                             >
-                              <div className="col-span-1 w-full">
-                                <img className="h-full" src={stockImg}></img>
+                              <div className="col-span-1">
+                                <img className="w-full" src={stockImg}></img>
                               </div>
                               <div className="col-span-4 p-4">
                                 <h3 className="text-xxl font-bold">
@@ -302,13 +302,13 @@ function AccountComponent() {
                               </div>
                               {showEditPopup && (
                                 <div className="fixed inset-0 flex items-center justify-center z-50">
-                                  <div className="p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
-                                    <h2 className="text-xl font-semibold mb-4">
+                                  <div className="p-6 rounded-lg shadow-lg md:w-2/5 w-full mx-4 bg-gray-100">
+                                    <h2 className="text-xxl font-semibold mb-4 text-center">
                                       Edit your blog post
                                     </h2>
 
                                     {/* Input fields */}
-                                    <div className="mb-4 w-1/3">
+                                    <div className="my-4 w-2/3 grid m-auto">
                                       <label htmlFor="buildName">
                                         New Title:
                                       </label>
@@ -322,27 +322,27 @@ function AccountComponent() {
                                         }
                                       />
                                       <button
-                                        className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                        className="mt-4 px-2 rounded-md bg-blue-400 text-white"
                                         onClick={() => updateBlogTitle(post.id)}
                                       >
                                         Edit Title
                                       </button>
                                     </div>
 
-                                    <div className="mb-4 w-1/3">
+                                    <div className="my-4 w-2/3 grid m-auto">
                                       <label htmlFor="buildDescription">
                                         New Description:
                                       </label>
                                       <textarea
                                         id="buildDescription"
-                                        className="border rounded-md p-2"
+                                        className="border rounded-md p-2 "
                                         value={updatedDescription}
                                         onChange={(e) =>
                                           setUpdatedDescription(e.target.value)
                                         }
                                       ></textarea>
                                       <button
-                                        className="mt-2 px-2 rounded-md bg-blue-400 text-white"
+                                        className="mt-4 px-2 rounded-md bg-blue-400 text-white"
                                         onClick={() =>
                                           updateBlogDescription(post.id)
                                         }
@@ -388,7 +388,7 @@ function AccountComponent() {
               </div>
             )}
             {showBuilds && (
-              <div className=" p-2 m-2 text-black">
+              <div className=" p-2 m-2 text-white">
                 <p className="text-2xl py-2 text-left">
                   Welcome, {currentUser.displayName}
                 </p>
@@ -433,14 +433,14 @@ function AccountComponent() {
                 
 
                 {showPopup && (
-                  <div className="fixed inset-0 flex items-center justify-center z-50">
-                    <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
+                  <div className="fixed inset-0 flex items-center justify-center z-50 text-black">
+                    <div className=" p-6 rounded-lg shadow-lg md:w-2/5 bg-gray-200">
                       <h2 className="text-xl font-semibold mb-4">
                         Add a Build
                       </h2>
 
                       {/* Input fields */}
-                      <div className="mb-4 w-1/3">
+                      <div className="mb-4 w-1/3 ">
                         <label htmlFor="buildName">Build Name:</label>
                         <input
                           type="text"

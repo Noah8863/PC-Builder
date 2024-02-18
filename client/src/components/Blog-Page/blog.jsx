@@ -102,24 +102,26 @@ function BlogComponent() {
         </button>
       </section>
 
-      <section className="mt-8 mx-20">
+      <section className="mt-8 sm:mx-20 mx-4">
         <h2 className="text-2xl font-bold mb-4">Blog Posts</h2>
 
         {blogPosts.map((post, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-300 rounded-md mb-4 grid grid-cols-5"
+            className="bg-white border border-gray-300 rounded-md mb-4 grid md:grid-cols-5 grid-cols-1 h-full"
           >
             <div className="col-span-1">
-              <img className="" src={stockImage}></img>
+              <img className="md:w-auto w-full" src={stockImage}></img>
             </div>
             <div className="col-span-4 pl-4">
-            <p className="text-gray-600 py-2">{post.date}</p>
-            <h3 className="text-xxl font-bold mb-2">{post.title}</h3>
+            
+            <h3 className="text-xxl font-bold my-2">{post.title}</h3>
+            <p className="mb-1 mt-2 text-gray-500">Posted by: Kate Horwitz</p>
+            <p className="text-blue-400 py-2">{post.date}</p>
             <p className="mb-2 text-lg text-gray-500">{post.post}</p>
 
-            <span className="mb-1 mt-2 top-8 relative">Kate Horwitz</span>
-
+            
+            {/* TODO: Pull in real user name */}
             {/* <div style={lineHeightUsername} className="inline-block rounded-full bg-blue-400 pr-5 h-16">
               
               <img
