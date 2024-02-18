@@ -66,22 +66,23 @@ function AccountComponent() {
   }, []);
 
   //Fetching Build Containers
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "builds"));
-        const buildsData = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setBuildContainers(buildsData);
-      } catch (error) {
-        console.error("Error fetching build containers: ", error);
-      }
-    };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const querySnapshot = await getDocs(collection(db, "builds"));
+  //       const buildsData = querySnapshot.docs.map((doc) => ({
+  //         id: doc.id,
+  //         ...doc.data(),
+  //       }));
+  //       setBuildContainers(buildsData);
+  //       console.log(buildsData);
+  //     } catch (error) {
+  //       console.error("Error fetching build containers: ", error);
+  //     }
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const fetchUserBlogPosts = async () => {
     try {
@@ -396,22 +397,6 @@ function AccountComponent() {
                 </p>
                 <div className="border-t border-white py-2"></div>
                 <div className="text-lg flex">Email: {currentUser.email}</div>
-                <h1 className="mt-4 text-xxl">
-                  Work Station
-                </h1>
-                <div className=" border-4 p-4 justify-center text-center">
-                  <p className="p-4">
-                    It looks like you don't have a build yet, how about creating
-                    one?
-                  </p>
-                  <img className="relative m-auto" src={sadComputerIcon}></img>
-                  <button onClick={openPopup}>
-                    <span className="ml-2">
-                      Add a Build <ControlPointIcon />{" "}
-                    </span>
-                  </button>
-                </div>
-
                 <h1 className="text-left text-xxl py-4">Work Station</h1>
                 <div className="p-4 justify-center text-center">
                   {buildContainers.length === 0 ? (
@@ -425,11 +410,6 @@ function AccountComponent() {
                         src={sadComputerIcon}
                         alt="Sad Computer"
                       ></img>
-                      <button onClick={openPopup}>
-                        <span className="ml-2">
-                          Add a Build <ControlPointIcon />{" "}
-                        </span>
-                      </button>
                     </>
                   ) : (
                     // Render build containers dynamically
@@ -440,18 +420,15 @@ function AccountComponent() {
                       >
                         <h3> Name: {build.name}</h3>
                         <p>Build: {build.description}</p>
-                        <p>Type: {build.type}</p>
-                        {/* Add other details as needed */}
-                        
+                        <p>Type: {build.type}</p> 
                       </div>
-                      
                     ))
                   )}
-                  {/* <button onClick={openPopup}>
+                  <button onClick={openPopup}>
                         <span className="ml-2">
                           Add a Build <ControlPointIcon />{" "}
                         </span>
-                      </button> */}
+                      </button>
                 </div>
                 
 
@@ -514,22 +491,6 @@ function AccountComponent() {
                 )}
               </div>
             )}
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 m-4 p-4">
-              {buildContainers.map((container) => (
-                <div
-                  key={container.id}
-                  className="flex flex-col items-center justify-center bg-blue-500 text-white rounded-lg p-4 text-xl"
-                >
-                  {/* <img
-                    className="w-2/3"
-                    src={buildImgage}
-                    alt="Build Default Image"
-                  ></img> */}
-                  <h2 className="text-xxl">{container.name}</h2>
-                  <p>{container.type}</p>
-                </div>
-              ))}
-            </div>
           </div>
         ) : (
           <div>
