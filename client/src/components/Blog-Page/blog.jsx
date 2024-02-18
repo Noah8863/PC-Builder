@@ -68,11 +68,7 @@ function BlogComponent() {
       alert("There has been an issue, please try again");
     }
   };
-
-  const lineHeightUsername = {
-    lineHeight:"3.75rem"
-  }
-  
+ 
   return (
     
     <div className="container mx-auto p-4 bg-gray-200">
@@ -117,7 +113,7 @@ function BlogComponent() {
             <div className="col-span-1">
               <img className="" src={stockImage}></img>
             </div>
-            <div className="col-span-4">
+            <div className="col-span-4 pl-4">
             <p className="text-gray-600 py-2">{post.date}</p>
             <h3 className="text-xxl font-bold mb-2">{post.title}</h3>
             <p className="mb-2 text-lg text-gray-500">{post.post}</p>

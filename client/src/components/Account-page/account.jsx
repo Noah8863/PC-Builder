@@ -411,6 +411,50 @@ function AccountComponent() {
                     </span>
                   </button>
                 </div>
+
+                <h1 className="text-left text-xxl py-4">Work Station</h1>
+                <div className="p-4 justify-center text-center">
+                  {buildContainers.length === 0 ? (
+                    <>
+                      <p className="p-4">
+                        It looks like you don't have a build yet, how about
+                        creating one?
+                      </p>
+                      <img
+                        className="relative m-auto"
+                        src={sadComputerIcon}
+                        alt="Sad Computer"
+                      ></img>
+                      <button onClick={openPopup}>
+                        <span className="ml-2">
+                          Add a Build <ControlPointIcon />{" "}
+                        </span>
+                      </button>
+                    </>
+                  ) : (
+                    // Render build containers dynamically
+                    buildContainers.map((build) => (
+                      <div
+                        key={build.id}
+                        className="border p-4 mt-4 rounded-md"
+                      >
+                        <h3> Name: {build.name}</h3>
+                        <p>Build: {build.description}</p>
+                        <p>Type: {build.type}</p>
+                        {/* Add other details as needed */}
+                        
+                      </div>
+                      
+                    ))
+                  )}
+                  {/* <button onClick={openPopup}>
+                        <span className="ml-2">
+                          Add a Build <ControlPointIcon />{" "}
+                        </span>
+                      </button> */}
+                </div>
+                
+
                 {showPopup && (
                   <div className="fixed inset-0 flex items-center justify-center z-50">
                     <div className=" p-6 rounded-lg shadow-lg w-2/5 bg-gray-100">
