@@ -3,6 +3,7 @@ import { db, auth, storage } from "../../config/firebase";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import stockImage from "../../images/blog.png"
+import { v4 } from 'uuid'
 
 function BlogComponent() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -68,6 +69,22 @@ function BlogComponent() {
       alert("There has been an issue, please try again");
     }
   };
+
+  const [imageUpload, setImageUpload] = useState(null)
+
+  const uploadImage = () => {
+    if (imageUpload == null){
+      console.log("No image was uploaded")
+      return;
+    } 
+
+    // This creates a random string of letters to the image upload so no two images have the same path name
+    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
+    uploadBytes(imageRef, imageUpload).then(() => {
+      console.log("image was uploaded")
+      alert("Image Uploaded!")
+    })
+  }
  
   return (
     
@@ -93,6 +110,10 @@ function BlogComponent() {
             className="border border-gray-300 rounded-md p-2 w-full h-40"
             onChange={(e) => setNewBlog(e.target.value)}
           ></textarea>
+        </div>
+        <div className="mx-20 mb-8 text-center">
+          <input type="file" />
+          <button className="bg-gray-400 p-2 hover:bg-gray-500 text-white" onClick={uploadImage}>Upload Image</button>
         </div>
         <button
           onClick={submitBlogPost}

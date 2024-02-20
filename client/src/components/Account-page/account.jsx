@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { db, auth } from "../../config/firebase";
 import {
   getDocs,
@@ -17,8 +17,8 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LogoutIcon from "@mui/icons-material/Logout";
-import BuildImg from "../../images/custom-PC-3.jpg";
-import buildImgage from "../../images/pc-building.jpg";
+// import BuildImg from "../../images/custom-PC-3.jpg";
+// import buildImgage from "../../images/pc-building.jpg";
 import stockImg from "../../images/blog.png";
 import sadComputerIcon from "../../images/sadComputerIcon.png";
 import placeHolder from "../../images/profile.png"
@@ -26,8 +26,8 @@ import placeHolder from "../../images/profile.png"
 import "./styles.css";
 
 function AccountComponent() {
-  const location = useLocation();
-  const userData = location.state;
+  // const location = useLocation();
+  // const userData = location.state;
   const [currentUser, setCurrentUser] = useState(null);
   const [blogPosts, setBlogPosts] = useState(false);
   const [showProfile, setShowProfile] = useState(true);
@@ -274,7 +274,7 @@ function AccountComponent() {
                               className="bg-white mb-4 grid sm:grid-cols-5 grid-cols-1"
                             >
                               <div className="col-span-1">
-                                <img className="w-full" src={stockImg}></img>
+                                <img className="w-full" alt="post" src={stockImg}></img>
                               </div>
                               <div className="col-span-4 p-4">
                                 <h3 className="text-xxl font-bold">
@@ -374,6 +374,7 @@ function AccountComponent() {
                         </p>
                         <img
                           className="relative m-auto"
+                          alt="Sad Computer Error"
                           src={sadComputerIcon}
                         ></img>
                         <a href="/Blog">
@@ -421,6 +422,7 @@ function AccountComponent() {
                         <h3> Name: {build.name}</h3>
                         <p>Build: {build.description}</p>
                         <p>Type: {build.type}</p> 
+                        <p>Parts Here: []</p>
                       </div>
                     ))
                   )}
