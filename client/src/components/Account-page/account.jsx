@@ -66,25 +66,6 @@ function AccountComponent() {
     return () => unsubscribe();
   }, []);
 
-  //Fetching Build Containers
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const querySnapshot = await getDocs(collection(db, "builds"));
-  //       const buildsData = querySnapshot.docs.map((doc) => ({
-  //         id: doc.id,
-  //         ...doc.data(),
-  //       }));
-  //       setBuildContainers(buildsData);
-  //       console.log(buildsData);
-  //     } catch (error) {
-  //       console.error("Error fetching build containers: ", error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
   const fetchUserBlogPosts = async () => {
     try {
       const user = auth.currentUser; // Get the currently logged-in user
@@ -140,6 +121,25 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
+  //Fetching Build Containers
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "builds"));
+        const buildsData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBuildContainers(buildsData);
+        console.log(buildsData);
+      } catch (error) {
+        console.error("Error fetching build containers: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const buildCollectionRef = collection(db, "userBuilds")
   const [newBuildName, setNewBuildName] = useState("")
   const [newBuildDescription, setNewBuildDescription] = useState("")
@@ -149,38 +149,24 @@ function AccountComponent() {
     const buildName = document.getElementById("buildName").value;
     const buildDescription = document.getElementById("buildDescription").value;
     const buildType = document.getElementById("buildType").value;
-    const uniqueID = Date.now();
     const userId = auth.currentUser.uid; // Retrieve the user ID
-    const newBuildContainer = {
-      id: uniqueID,
-      name: buildName,
-      description: buildDescription,
-      type: buildType,
-    };
-  
+
     try {
       // Add the build to Firestore
       await addDoc(buildCollectionRef, {
         name: newBuildName,
         description: newBuildDescription,
         type: newBuildType,
+        userId: userId,
       });
-      console.log("Got down to setting build info")
-      setNewBuildName("")
-      setNewBuildDescription("")
-      setNewBuildType("")
-      
-      // db.collection('builds').doc(userId).collection('userBuilds').doc(uniqueID.toString()).set(newBuildContainer);
-      // console.log("info sent to firebase")
+      setNewBuildName(buildName)
+      setNewBuildDescription(buildDescription)
+      setNewBuildType(buildType)
+
     } catch (error) {
       console.error('Error adding build to Firestore', error);
     }
-  
-    setBuildContainers((prevContainers) => [
-      ...prevContainers,
-      newBuildContainer,
-    ]);
-  
+
     setShowPopup(false);
   };
   
@@ -445,9 +431,9 @@ function AccountComponent() {
                         key={build.id}
                         className="border p-4 mt-4 rounded-md"
                       >
-                        <h3> Name: {build.name}</h3>
-                        <p>Build: {build.description}</p>
-                        <p>Type: {build.type}</p> 
+                        <h3> Name: {newBuildName}</h3>
+                        <p>Build: {newBuildDescription}</p>
+                        <p>Type: {newBuildType}</p> 
                         <p>Parts Here: []</p>
                       </div>
                     ))
