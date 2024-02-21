@@ -3,7 +3,7 @@ import { db, auth, storage } from "../../config/firebase";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import stockImage from "../../images/blog.png"
-import { v4 } from 'uuid'
+// import { v4 } from 'uuid'
 
 function BlogComponent() {
   const [blogPosts, setBlogPosts] = useState([]);
@@ -28,11 +28,11 @@ function BlogComponent() {
         id: doc.id,
       }));
       setBlogPosts(filteredData);
-      console.log(filteredData);
     } catch (err) {
       console.error(err);
     }
   };
+
   useEffect(() => {
     getBlogPost();
   }, []);
@@ -50,7 +50,10 @@ function BlogComponent() {
         const downloadURL = await getDownloadURL(imageRef);
         setImageURL(downloadURL);
       }
-
+      if (!setNewBlog == "" || !setNewBlog == ""){
+        alert("Please fill out both the title and description")
+        return;
+      }
       await addDoc(blogCollectionRef, {
         title: newBlogTitle,
         post: newBlog,
@@ -63,29 +66,12 @@ function BlogComponent() {
       setNewBlogDate(currentDate);
       setImageURL("");
       getBlogPost();
-      window.location.reload(false);
     } catch (err) {
       console.error(err);
       alert("There has been an issue, please try again");
     }
   };
 
-  const [imageUpload, setImageUpload] = useState(null)
-
-  const uploadImage = () => {
-    if (imageUpload == null){
-      console.log("No image was uploaded")
-      return;
-    } 
-
-    // This creates a random string of letters to the image upload so no two images have the same path name
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`)
-    uploadBytes(imageRef, imageUpload).then(() => {
-      console.log("image was uploaded")
-      alert("Image Uploaded!")
-    })
-  }
- 
   return (
     
     <div className="container mx-auto p-4 bg-gray-200">
@@ -113,7 +99,7 @@ function BlogComponent() {
         </div>
         <div className="mx-20 mb-8 text-center">
           <input type="file" />
-          <button className="bg-gray-400 p-2 hover:bg-gray-500 text-white" onClick={uploadImage}>Upload Image</button>
+          {/* <button className="bg-gray-400 p-2 hover:bg-gray-500 text-white" onClick={uploadImage}>Upload Image</button> */}
         </div>
         <button
           onClick={submitBlogPost}
@@ -132,7 +118,7 @@ function BlogComponent() {
             className="bg-white border border-gray-300 rounded-md mb-4 grid md:grid-cols-5 grid-cols-1 h-full"
           >
             <div className="col-span-1">
-              <img className="md:w-auto w-full" src={stockImage}></img>
+              <img className="md:w-auto w-full" alt="postImg" src={stockImage}></img>
             </div>
             <div className="col-span-4 pl-4">
             
@@ -140,29 +126,6 @@ function BlogComponent() {
             <p className="mb-1 mt-2 text-gray-500">Posted by: Kate Horwitz</p>
             <p className="text-blue-400 py-2">{post.date}</p>
             <p className="mb-2 text-lg text-gray-500">{post.post}</p>
-
-            
-            {/* TODO: Pull in real user name */}
-            {/* <div style={lineHeightUsername} className="inline-block rounded-full bg-blue-400 pr-5 h-16">
-              
-              <img
-                className="rounded-full float-left h-full"
-                src="https://images.unsplash.com/photo-1548544149-4835e62ee5b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-               />
-                {" "}
-                <span class="ml-4">Kate Horwitz</span>
-              
-            </div> */}
-
-            
-            {/* {post.imageURL && (
-              <img
-                src={post.imageURL}
-                alt="Blog Post"
-                className="my-4 bg-blue-400 w-10 h-20"
-              />
-            )} */}
-
           </div>
           </div>
         ))}

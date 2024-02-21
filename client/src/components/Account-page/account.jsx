@@ -4,6 +4,7 @@ import { db, auth } from "../../config/firebase";
 import {
   getDocs,
   collection,
+  addDoc,
   query,
   where,
   deleteDoc,
@@ -139,25 +140,50 @@ function AccountComponent() {
     setShowPopup(false);
   };
 
+  const buildCollectionRef = collection(db, "userBuilds")
+  const [newBuildName, setNewBuildName] = useState("")
+  const [newBuildDescription, setNewBuildDescription] = useState("")
+  const [newBuildType, setNewBuildType] = useState("")
+
   const createBuild = async () => {
     const buildName = document.getElementById("buildName").value;
     const buildDescription = document.getElementById("buildDescription").value;
     const buildType = document.getElementById("buildType").value;
     const uniqueID = Date.now();
+    const userId = auth.currentUser.uid; // Retrieve the user ID
     const newBuildContainer = {
       id: uniqueID,
       name: buildName,
       description: buildDescription,
       type: buildType,
     };
-
+  
+    try {
+      // Add the build to Firestore
+      await addDoc(buildCollectionRef, {
+        name: newBuildName,
+        description: newBuildDescription,
+        type: newBuildType,
+      });
+      console.log("Got down to setting build info")
+      setNewBuildName("")
+      setNewBuildDescription("")
+      setNewBuildType("")
+      
+      // db.collection('builds').doc(userId).collection('userBuilds').doc(uniqueID.toString()).set(newBuildContainer);
+      // console.log("info sent to firebase")
+    } catch (error) {
+      console.error('Error adding build to Firestore', error);
+    }
+  
     setBuildContainers((prevContainers) => [
       ...prevContainers,
       newBuildContainer,
     ]);
-
+  
     setShowPopup(false);
   };
+  
 
   const openEditPopup = (post) => {
     setUpdatedTitle(post.title);
@@ -216,8 +242,8 @@ function AccountComponent() {
               <p className="text-xxl p-4 text-center">
                 {currentUser.displayName}
               </p>
-              <div class="flex items-center justify-center">
-                <div class="border-2 border-white w-4/5 mt-2 mb-4"></div>
+              <div className="flex items-center justify-center">
+                <div className="border-2 border-white w-4/5 mt-2 mb-4"></div>
               </div>
               <div className="space-y-2 mx-4 text-xl">
                 <button
